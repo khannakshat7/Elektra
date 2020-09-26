@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +6,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="shortcut icon" href="{% static 'favicon.ico' %}" />
   <title>Elektra | Electricity Outage prediction.
   </title>
 
@@ -15,16 +16,16 @@
     rel="stylesheet" />
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet" />
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
+  <link href="{% static 'vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/icofont/icofont.min.css' %}" rel="stylesheet" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
 
   <!-- Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet" />
+  <link href="{% static 'style.css' %}" rel="stylesheet" />
 
-  <script type="text/javascript" src="assets/js/main.js">
+  <script type="text/javascript" src="{% static 'main.js' %}">
   </script>
 </head>
 
@@ -35,8 +36,8 @@
       <div class="logo mr-auto">
         <h1>
           <!-- <img src="assets/img/Icon.png" style="margin-top: -10px;"> -->
-          <img src="assets/img/Icon.png" style="margin-top: -15px;" alt="">
-          <a href="index.html"><img src="assets/img/Elektra_Logo.png" style="margin-top: -10px;" alt=""></a>
+          <img src="{% static 'Icon.png' %}" style="margin-top: -15px;" alt="">
+          <a href="/"><img src="{% static 'Elektra_Logo.png' %}" style="margin-top: -10px;" alt=""></a>
         </h1>
       </div>
 
@@ -44,11 +45,11 @@
 
       <nav class="nav-menu d-none d-lg-block ml-auto">
         <ul>
-          <li class="active"><a href="index.html">Home</a></li>
-          <li><a href="#modes">Map</a></li>
-          <li><a href="#symptoms">Dashboard</a></li>
-          <li><a href="#prevention">Announcements</a></li>
-          <li><a href="#cases">Feedback</a></li>
+          <li class="active"><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'map' %}">Map</a></li>
+          <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+          <li><a href="#">Announcements</a></li>
+          <li><a href="#">Feedback</a></li>
           <li style=" font-weight: 800;
                 font-size: 13px;
                 display: inline-block;
@@ -57,7 +58,7 @@
                 transition: 0.5s;
                 background: #FED103;
                 border-style: none;
-                color: #fff;"><a href="login.html">Login/Signup</a></li>
+                color: #fff;"><a href="{% url 'login' %}">Login/Signup</a></li>
 
         </ul>
       </nav>
@@ -82,7 +83,7 @@
 
         <div class="col-lg-6 pt-4 pt-lg-0">
 
-          <img src="assets/img/Elektra_Logo.png" width="320px">
+          <img src="{% static 'Elektra_Logo.png' %}" width="320px">
           <p style="text-align: left;">
             <br>
 
@@ -96,7 +97,7 @@
             <br>
             <br>
 
-            <a href="guidelines.html"><button style=" font-weight: 800;
+            <a href="{% url 'login' %}"><button style=" font-weight: 800;
                 font-size: 13px;
                 display: inline-block;
                 padding: 10px 10px 10px 10px;
@@ -110,7 +111,7 @@
         </div>
 
         <div class="col-lg-6">
-          <a href=""><img src="assets/img/header.jpg " class="img-fluid" alt=""></a>
+          <a href=""><img src="{% static 'header.jpg' %}" class="img-fluid" alt=""></a>
         </div>
       </div>
     </div>
@@ -135,7 +136,7 @@
 
         <div class="col-lg-6 pt-4 pt-lg-0">
 
-          <a href=""><img src="assets/img/home-2.jpg" class="img-fluid" alt=""></a>
+          <a href=""><img src="{% static 'home-2.jpg' %}" class="img-fluid" alt=""></a>
 
           <br>
           <br>
@@ -315,7 +316,7 @@
           <div class="row">
             <div class="col-lg-4 col-md-6 footer-info">
               <h3>
-                <img src="assets/img/Elektra_Logo.png" style="width: 130px; margin-left: 80px;" />
+                <img src="{% static 'Elektra_Logo.png' %}" style="width: 130px; margin-left: 80px;" />
               </h3>
               <p>
                 An ML powered Electricity Outage prediction tool.
@@ -326,16 +327,16 @@
               <h4>Useful Links</h4>
               <ul>
                 <li>
-                  <i class="ion-ios-arrow-right"></i> <a href="index.html">Home</a>
+                  <i class="ion-ios-arrow-right"></i> <a href="{% url 'home' %}">Home</a>
                 </li>
                 <li>
-                  <i class="ion-ios-arrow-right"></i> <a href="#modes">Maps</a>
+                  <i class="ion-ios-arrow-right"></i> <a href="{% url 'map' %}">Maps</a>
                 </li>
                 <li>
-                  <i class="ion-ios-arrow-right"></i> <a href="#symptoms">Dashboard</a>
+                  <i class="ion-ios-arrow-right"></i> <a href="{% url 'dashboard' %}">Dashboard</a>
                 </li>
                 <li>
-                  <i class="ion-ios-arrow-right"></i> <a href="#prevention">Announcements</a>
+                  <i class="ion-ios-arrow-right"></i> <a href="#">Announcements</a>
                 </li>
 
               </ul>
@@ -344,13 +345,8 @@
             <div class="col-lg-4 col-md-6 footer-contact">
               <h4>Contact Us</h4>
               <p>
-                <b>Elektra- </b>Frontline Logistics
-                P.O. Box: 314
-                Office No: 4, Floor 1, Tower 1, Akash Tower, Delhi, India.
-                <br />
-
-                <strong>Phone:</strong>+91 8959631088<br />
-                <strong>Email:</strong>elektra@india.com<br />
+                <b><a href="mailto:khannakshat7@gmail.com">khannakshat7@gmail.com</a></b>
+                <b><a href="mailto:unnaticse2019@gmail.com">unnaticse2019@gmail.com</a></b>
               </p>
 
 
@@ -363,8 +359,8 @@
 
       <div class="container">
         <div class="copyright">
-          Made with ❤️️ by <strong><a href="https://linktr.ee/Ping_Unnati" style="color: #25B0F0;">Unnati</a> & <a
-              href="https://linktr.ee/akshatkhanna" style="color: #25B0F0;">Akshat</a></strong>.
+          Made with ❤️️ by <strong><a
+              href="https://linktr.ee/akshatkhanna" style="color: #25B0F0;">Akshat Khanna</a> & <a href="https://linktr.ee/Ping_Unnati" style="color: #25B0F0;">Unnati Mishra</a></strong>.
         </div>
       </div>
     </footer>
@@ -375,12 +371,12 @@
 
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/jquery/jquery.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/jquery.easing/jquery.easing.min.js' %}"></script>
 
   <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="{% static 'main.js' %}"></script>
 
 </body>
 
