@@ -1,6 +1,6 @@
 #  ⚡ ELEKTRA⚡
 
-An ML powered Electricity Outage prediction.
+<b>An ML powered Electricity Outage prediction tool.</b>
 <br>
 
 <b><a href="https://elecktra.uc.r.appspot.com/">CHECK LIVE</a></b>
