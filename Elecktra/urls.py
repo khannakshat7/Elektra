@@ -26,6 +26,9 @@ urlpatterns = [
     path('register/',views.registeruser,name="register"),
     path('dashboard/',views.dashboard,name="dashboard"),
     path('map/',views.map,name="map"),
+    path('announcements/',views.annnouncements,name="announcements"),
+    path('feedback/',views.feedback,name="feedback"),
+    path('logout/',views.logoutuser,name="logout"),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

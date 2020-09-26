@@ -1,43 +1,6 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="shortcut icon" href="{% static 'favicon.jpg' %}" />
-    <title>Elektra | Electricity Outage prediction
-    </title>
-
-    <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet" />
-
-    <!-- Vendor CSS Files -->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
-
-
-
-
-    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
-    <link href="{% static 'vendor/icofont/icofont.min.css' %}" rel="stylesheet">
-    <link href="{% static 'vendor/icofont/icofont.min.css' %}" rel="stylesheet" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
-
-    <!-- Main CSS File -->
-    <link href="{% static 'style.css' %}" rel="stylesheet" />
-
-    <script type="text/javascript" src="{% static 'main.js' %}">
-    </script>
-</head>
-
-<body>
+{% block content %}
     <div class="container register">
         <div class="row">
             <div class="col-md-3 register-left">
@@ -83,39 +46,4 @@
 
     </div>
 
-
-
-    <!-- Vendor JS Files -->
-    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'vendor/jquery.easing/jquery.easing.min.js' %}"></script>
-
-    <!-- Main JS File -->
-    <script src="{% static 'main.js' %}"></script>
-
-</body>
-
-</html>
-
-
-
-
-
-<!-- JAVASCRIPT FOR FETChING CASES , LIVE UPDATES -->
-<script type="text/javascript">
-    fetch('https://corona.lmao.ninja/v2/countries/India')
-        .then((response) => {
-            return response.json();
-        })
-        .then((data) => {
-            document.getElementById("tests").innerHTML = data.tests;
-            document.getElementById("active").innerHTML = data.active;
-            document.getElementById("cases").innerHTML = data.cases;
-            document.getElementById("population").innerHTML = data.population;
-            document.getElementById("recovered").innerHTML = data.recovered;
-            document.getElementById("deaths").innerHTML = data.deaths;
-            document.getElementById("todayCases").innerHTML = data.todayCases;
-            document.getElementById("todayRecovered").innerHTML = data.todayRecovered;
-            document.getElementById("todayDeaths").innerHTML = data.todayDeaths;
-        })
-</script>
+{% endblock %}

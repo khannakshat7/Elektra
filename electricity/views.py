@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import HttpResponse, redirect, render
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 
 from electricity.forms import UserForm
 from electricity.models import electricity
@@ -52,10 +53,19 @@ def logoutuser(request):
     logout(request)
     return redirect('/')
 
-
+@login_required
 def dashboard(request):
     return render(request,"dashboard.html")
 
+@login_required
 def map(request):
     records = electricity.objects.all()
     return render(request,"map.html",{"data":records})
+
+@login_required
+def annnouncements(request):
+    return render(request,"announcements.html")
+
+@login_required
+def feedback(request):
+    return render(request,"feedback.html")

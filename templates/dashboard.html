@@ -5,17 +5,79 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>Dashboard | Elektra</title>
   <link rel="shortcut icon" href="{% static 'favicon.jpg' %}" />
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <title>Elektra | Electricity Outage prediction
+  </title>
+
+
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet" />
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
   <link type="text/css" href="{% static 'argon.css' %}" rel="stylesheet" />
   <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
 
+  <link href="{% static 'style.css' %}" rel="stylesheet" />
 
 </head>
 
 <body>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+      <div class="logo mr-auto">
+        <h1>
+          <!-- <img src="assets/img/Icon.png" style="margin-top: -10px;"> -->
+          <img src="{% static 'Icon.png' %}" style="margin-top: -15px;" alt="">
+          <a href="/"><img src="{% static 'Elektra_Logo.png' %}" style="margin-top: -10px;" alt=""></a>
+        </h1>
+      </div>
+
+      <!--NAVBAR-->
+
+      <nav class="nav-menu d-none d-lg-block ml-auto">
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'map' %}">Map</a></li>
+          <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+          <li><a href="{% url 'announcements' %}">Announcements</a></li>
+          <li><a href="{% url 'feedback' %}">Feedback</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="#">Welcome, {{ user }}</a></li>
+          <li style=" font-weight: 800;
+                    font-size: 13px;
+                    display: inline-block;
+                    padding: 1px 1px 1px 1px;
+                    border-radius: 50px;
+                    transition: 0.5s;
+                    background: #FED103;
+                    border-style: none;
+                    color: #fff;"><a href="{% url 'logout' %}">Logout</a></li>
+          {% else %}
+                <li style=" font-weight: 800;
+                    font-size: 13px;
+                    display: inline-block;
+                    padding: 1px 1px 1px 1px;
+                    border-radius: 50px;
+                    transition: 0.5s;
+                    background: #FED103;
+                    border-style: none;
+                    color: #fff;"><a href="{% url 'login' %}">Login/Signup</a></li>
+          {% endif %}
+          
+
+        </ul>
+      </nav>
+
+      <!-- NAVBAR -->
+    </div>
+  </header>
+
+  <!-- End Header -->
+
+  <br>
+  <br>
+  <br>
 
   <div class="main-content">
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
@@ -433,10 +495,82 @@
         </div>
       </div>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<!-- ======= Footer ======= -->
+<section id="contact">
+  <div class="section-title">
+    <h2>Contact</h2>
+
+  </div>
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 footer-info">
+            <h3>
+              <img src="{% static 'Elektra_Logo.png' %}" style="width: 130px; margin-left: 80px;" />
+            </h3>
+            <p>
+              An ML powered Electricity Outage prediction tool.
+            </p>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li>
+                <i class="ion-ios-arrow-right"></i> <a href="{% url 'home' %}">Home</a>
+              </li>
+              <li>
+                <i class="ion-ios-arrow-right"></i> <a href="{% url 'map' %}">Maps</a>
+              </li>
+              <li>
+                <i class="ion-ios-arrow-right"></i> <a href="{% url 'dashboard' %}">Dashboard</a>
+              </li>
+              <li>
+                <i class="ion-ios-arrow-right"></i> <a href="{% url 'announcements' %}">Announcements</a>
+              </li>
+
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-contact">
+            <h4>Contact Us</h4>
+            <p>
+              <b><a href="mailto:khannakshat7@gmail.com">khannakshat7@gmail.com</a></b>
+              <b><a href="mailto:unnaticse2019@gmail.com">unnaticse2019@gmail.com</a></b>
+            </p>
+
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        Made with ❤️️ by <strong><a
+            href="https://linktr.ee/akshatkhanna" style="color: #25B0F0;">Akshat Khanna</a> & <a href="https://linktr.ee/Ping_Unnati" style="color: #25B0F0;">Unnati Mishra</a></strong>.
+      </div>
+    </div>
+  </footer>
+</section>
+<!-- End Footer -->
+</section>
+
+
+
+<!-- Vendor JS Files -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
   <script src="{% static 'argon.js' %}"></script>
+
+<!-- Main JS File -->
+<script src="{% static 'main.js' %}"></script>
+
 </body>
+
 </html>

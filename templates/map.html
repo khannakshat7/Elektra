@@ -1,24 +1,9 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Map | Elektra</title>
-    <link rel="shortcut icon" href="{% static 'favicon.jpg' %}" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-   crossorigin=""/>
-   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-   crossorigin=""></script>
+{% block content %}
 
-   <style>
-       #mapid { height: 700px; }
-   </style>
-</head>
-<body>
-    <div id="mapid"></div>
+    
+    <div id="mapid" class="mx-auto"></div>
     <script>
         var mymap = L.map('mapid').setView([24.556680, 73.705724], 14);
         mymap.locate();
@@ -60,6 +45,19 @@
         }
         
         mymap.on('locationfound', onLocationFound);
+        
+        var legend = L.control({ position: "topright" });
+
+        legend.onAdd = function(mymap) {
+        var div = L.DomUtil.create("div", "legend");
+        div.innerHTML += "<h4>Power Status</h4>";
+        div.innerHTML += '<span class="dot" style="  height: 15px;width: 15px;background-color: #0dfd04;border-radius: 50%;display: inline-block;"></span> <span>Power OK</span><br>';
+        div.innerHTML += '<span class="dot" style="  height: 15px;width: 15px;background-color: #f03;border-radius: 50%;display: inline-block;"></span> <span>Power Cut</span><br>';
+        return div;
+        };
+        legend.addTo(mymap);
+    
     </script>
-</body>
-</html>
+
+{% endblock %}
+
