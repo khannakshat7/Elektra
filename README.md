@@ -7,7 +7,7 @@ An ML powered Electricity Outage prediction.
 <br>
 <h3>Check out the <a href="#Y">YouTube</a> video</h3>
 
-<img src="https://i.ibb.co/yk5gRVB/ew1.png" alt="ew1" border="0">
+<img src="https://i.ibb.co/yk5gRVB/ew1.png" alt="ew1" border="0"> <img src="https://i.ibb.co/92CbKnQ/resp.png" alt="resp" border="0">
 <br>
 
 <h1>Features</h1>
