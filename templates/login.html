@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,8 +6,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="shortcut icon" href="assets/img/favicon.ico" />
-    <title>Elektra | Electricity Outage prediction.
+    <link rel="shortcut icon" href="{% static 'favicon.jpg' %}" />
+    <title>Elektra | Electricity Outage prediction
     </title>
 
     <!-- Google Fonts -->
@@ -23,16 +24,16 @@
 
 
 
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-    <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet" />
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/icofont/icofont.min.css' %}" rel="stylesheet" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
 
     <!-- Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="{% static 'style.css' %}" rel="stylesheet" />
 
-    <script type="text/javascript" src="assets/js/main.js">
+    <script type="text/javascript" src="{% static 'main.js' %}">
     </script>
 </head>
 
@@ -43,107 +44,37 @@
                 <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
                 <h3>Welcome</h3>
                 <p>You are 30 seconds away from Elektra!</p>
-                <input type="submit" name="" value="Login" /><br />
             </div>
             <div class="col-md-9 register-right">
-                <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                            aria-controls="home" aria-selected="true">Sign Up</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                            aria-controls="profile" aria-selected="false">Login</a>
-                    </li>
-                </ul>
                 <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <h3 class="register-heading">Sign Up</h3>
-                        <div class="row register-form">
-                            <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <form class="m-5" action="{% url 'register' %}" method="POST">
+                                {% csrf_token %}
+                                <h2>Sign Up</h2>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="First Name *" value="" />
+                                  <input type="text" class="form-control" name="username" placeholder="Username" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                  
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Last Name *" value="" />
+                                  <input type="password" name="password" class="form-control" placeholder="Password" id="exampleInputPassword1">
                                 </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Password *" value="" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Confirm Password *"
-                                        value="" />
-                                </div>
-                                <div class="form-group">
-                                    <div class="maxl">
-                                        <label class="radio inline">
-                                            <input type="radio" name="gender" value="male" checked>
-                                            <span> Male </span>
-                                        </label>
-                                        <label class="radio inline">
-                                            <input type="radio" name="gender" value="female">
-                                            <span>Female </span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Your Email *" value="" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" minlength="10" maxlength="10" name="txtEmpPhone"
-                                        class="form-control" placeholder="Your Phone *" value="" />
-                                </div>
-                                <div class="form-group">
-                                    <select class="form-control">
-                                        <option class="hidden" selected disabled>Please select your Sequrity Question
-                                        </option>
-                                        <option>What is your Birthdate?</option>
-                                        <option>What is Your old Phone Number</option>
-                                        <option>What is your Pet Name?</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Enter Your Answer *"
-                                        value="" />
-                                </div>
-                                <input type="submit" class="btnRegister" value="Register" />
-                            </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                              </form>
                         </div>
-                    </div>
-                    <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <h3 class="register-heading">Login</h3>
-                        <div class="row register-form">
-                            <div class="col-md-6">
+                        <div class="col-md-6">
+                            <form class="m-5" action="{% url 'login' %}" method="POST">
+                                {% csrf_token %}
+                                <h2>Log in</h2>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="First Name *" value="" />
+                                  <input type="text" class="form-control" name="username" placeholder="Username" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                  
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Last Name *" value="" />
+                                  <input type="password" name="password" class="form-control" placeholder="Password" id="exampleInputPassword1">
                                 </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Email *" value="" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" maxlength="10" minlength="10" class="form-control"
-                                        placeholder="Phone *" value="" />
-                                </div>
-
-
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Password *" value="" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Confirm Password *"
-                                        value="" />
-                                </div>
-                                
-                            
-                                <input type="submit" class="btnRegister" value="Login" />
-                            </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                              </form>
                         </div>
                     </div>
                 </div>
@@ -155,12 +86,12 @@
 
 
     <!-- Vendor JS Files -->
-    <script src="assets/vendor/jquery/jquery.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/jquery.easing/jquery.easing.min.js' %}"></script>
 
     <!-- Main JS File -->
-    <script src="assets/js/main.js"></script>
+    <script src="{% static 'main.js' %}"></script>
 
 </body>
 

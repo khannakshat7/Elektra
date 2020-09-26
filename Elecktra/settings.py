@@ -78,8 +78,8 @@ WSGI_APPLICATION = 'Elecktra.wsgi.application'
 DATABASES = {
     'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'HOST': '/cloudsql/elecktra:us-central1:elecktra-instance',
-            # 'HOST' : '127.0.0.1',
+            # 'HOST': '/cloudsql/elecktra:us-central1:elecktra-instance',
+            'HOST' : '127.0.0.1',
             'USER': 'khannakshat7',
             'PASSWORD': 'Akshat@2000',
             'NAME': 'elecktra',

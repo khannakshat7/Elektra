@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index,name="home"),
     path('login/',views.loginuser,name="login"),
+    path('register/',views.registeruser,name="register"),
     path('dashboard/',views.dashboard,name="dashboard"),
     path('map/',views.map,name="map"),
 ]
