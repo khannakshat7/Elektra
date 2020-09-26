@@ -1,0 +1,443 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Dashboard</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <link type="text/css" href="{% static 'argon.css' %}" rel="stylesheet" />
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+
+
+</head>
+
+<body>
+
+  <div class="main-content">
+    <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+      <div class="container-fluid">
+        <a class="h1 mb-0 text-white text-uppercase d-none d-lg-inline-block">Electricity Outage -
+          Dashboard</a>
+        <p class="h5 mb-0 text-white text-uppercase d-none d-lg-inline-block">Udaipur, Rajasthan, India</p>
+    </nav>
+
+    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row">
+            <div class="col-xl-3 col-lg-6">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">
+                        This Week
+                      </h5>
+                      <span class="h2 font-weight-bold mb-0">32 Times</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                        <i class="fas fa-chart-bar"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">
+                        Last Week
+                      </h5>
+                      <span class="h2 font-weight-bold mb-0" id="target2">28 times</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                        <i class="fas fa-chart-pie"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">
+                        Population
+                      </h5>
+                      <span class="h2 font-weight-bold mb-0" id="target3">11,924</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                        <i class="fas fa-users"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">
+                        Outage Chance
+                      </h5>
+                      <span class="h2 font-weight-bold mb-0">86.8%</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                        <i class="fas fa-percent"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid mt--7">
+      <div class="row">
+        <div class="col-xl-8 mb-5 mb-xl-0">
+          <div class="card bg-gradient-default shadow">
+            <div class="card-header bg-transparent">
+              <div class="row align-items-center">
+                <div class="col">
+                  <img align="right" src="./img/icons/question-blue.png" data-toggle="tooltip" data-placement="top"
+                    title="Graph representing total delay incurred in the Present Year Vs the Previous Year ">
+                  <h6 class="text-uppercase text-light ls-1 mb-1">
+                    Growth
+                  </h6>
+                  <h2 class="text-white mb-0">Outages data - Yearly</h2>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+
+              <div>
+                <canvas id="myChart"></canvas>
+              </div>
+              <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+              <script>
+                var ctx = document.getElementById("myChart").getContext("2d");
+                var chart = new Chart(ctx, {
+                  // The type of chart we want to create
+                  type: "line",
+                  // The data for our dataset
+                  data: {
+                    labels: [
+                      "00",
+                      "01",
+                      "02",
+                      "03",
+                      "04",
+                      "05",
+                      "06",
+                      "07",
+                      "08",
+                      "09",
+                      "10",
+                      "11",
+                      "12",
+                      "13",
+                      "14",
+                      "15",
+                      "16",
+                      "17",
+                      "18",
+                      "19",
+                      "20",
+                      "21",
+                      "22",
+                      "23"
+                    ],
+                    datasets: [{
+                        label: "2019",
+                        borderColor: "#f5365c",
+                        data: [0.23, 0.43, 0.37, 0.33, 0.30, 0.68, 0.73, 0.35, 0.40, 0.45, 0.50, 0.48, 0.45, 0.56,
+                          0.23, 0.21, 0.34, 0.45, 0.56, 0.56, 0.23, 0.23, 0.5, 0.2
+                        ]
+                      },
+                      {
+                        label: "2020",
+                        //backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: "#11cdef",
+                        data: [0.32, 0.34, 0.73, 0.33, 0.03, 0.86, 0.37, 0.53, 0.04, 0.54, 0.05, 0.84, 0.54, 0.65,
+                          0.32, 0.12, 0.43, 0.54, 0.65, 0.65, 0.32, 0.32, 0.5, 0.21
+                        ]
+                      }
+                    ]
+                  },
+
+                  // Configuration options go here
+                  options: {
+                    legend: {
+                      display: true,
+                      labels: {
+                        fontColor: "#f4f5f7"
+                      }
+                    },
+                    tooltips: {
+                      enabled: false,
+                      mode: "index",
+                      intersect: false,
+                      custom: function (model) {
+                        // Get tooltip
+                        var $tooltip = $("#chart-tooltip");
+
+                        // Create tooltip on first render
+                        if (!$tooltip.length) {
+                          $tooltip = $(
+                            '<div id="chart-tooltip" class="popover bs-popover-top" role="tooltip"></div>'
+                          );
+
+                          // Append to body
+                          $("body").append($tooltip);
+                        }
+
+                        // Hide if no tooltip
+                        if (model.opacity === 0) {
+                          $tooltip.css("display", "none");
+                          return;
+                        }
+
+                        function getBody(bodyItem) {
+                          return bodyItem.lines;
+                        }
+
+                        // Fill with content
+                        if (model.body) {
+                          var titleLines = model.title || [];
+                          var bodyLines = model.body.map(getBody);
+                          var html = "";
+
+                          // Add arrow
+                          html += '<div class="arrow"></div>';
+
+                          // Add header
+                          titleLines.forEach(function (title) {
+                            html +=
+                              '<h3 class="popover-header text-center">' +
+                              title +
+                              "</h3>";
+                          });
+
+                          // Add body
+                          bodyLines.forEach(function (body, i) {
+                            var colors = model.labelColors[i];
+                            var styles =
+                              "background-color: " + colors.backgroundColor;
+                            var indicator =
+                              '<span class="badge badge-dot"><i class="bg-primary"></i></span>';
+                            var align =
+                              bodyLines.length > 1 ?
+                              "justify-content-left" :
+                              "justify-content-center";
+                            html +=
+                              '<div class="popover-body d-flex align-items-center ' +
+                              align +
+                              '">' +
+                              indicator +
+                              body +
+                              "</div>";
+                          });
+
+                          $tooltip.html(html);
+                        }
+
+                        // Get tooltip position
+                        var $canvas = $(this._chart.canvas);
+
+                        var canvasWidth = $canvas.outerWidth();
+                        var canvasHeight = $canvas.outerHeight();
+
+                        var canvasTop = $canvas.offset().top;
+                        var canvasLeft = $canvas.offset().left;
+
+                        var tooltipWidth = $tooltip.outerWidth();
+                        var tooltipHeight = $tooltip.outerHeight();
+
+                        var top =
+                          canvasTop + model.caretY - tooltipHeight - 16;
+                        var left =
+                          canvasLeft + model.caretX - tooltipWidth / 2;
+
+                        // Display tooltip
+                        $tooltip.css({
+                          top: top + "px",
+                          left: left + "px",
+                          display: "block",
+                          "z-index": "100"
+                        });
+                      },
+                      callbacks: {
+                        label: function (item, data) {
+                          var label =
+                            data.datasets[item.datasetIndex].label || "";
+                          var yLabel = item.yLabel;
+                          var content = "";
+
+                          if (data.datasets.length > 1) {
+                            content +=
+                              '<span class="badge badge-primary mr-auto">' +
+                              label +
+                              "</span>";
+                          }
+
+                          content +=
+                            '<span class="popover-body-value">' +
+                            yLabel +
+                            "</span>";
+                          return content;
+                        }
+                      }
+                    }
+                  }
+                });
+              </script>
+            </div>
+          </div>
+          <br>
+        </div>
+        <div class="col-xl-4">
+          <div class="card shadow">
+            <div class="card-header border-0">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h3 class="mb-0">Electricity area Division</h3>
+                </div>
+
+              </div>
+              <br>
+              <select id="prod3" class="custom-select custom-select-md" onchange="age(this.value)">
+                <option>Select a Region</option>
+                <option selected value="1">Division 1</option>
+                <option value="2">Division 2</option>
+                <option value="3">Division 3</option>
+                <option value="4">Division 4</option>
+                <option value="5">Division 5</option>
+                <option value="6">Division 6</option>
+              </select>
+            </div>
+            <hr />
+            <div class="chart-container">
+              <canvas id="barChart"></canvas>
+              <br>
+            </div>
+            <script>
+              var canvas = document.getElementById("barChart");
+              var ctx = canvas.getContext("2d");
+              // Global Options:
+              var data = {
+                labels: ["Q1", "Q2", "Q3", "Q4"],
+                datasets: [{
+                  fill: true,
+                  backgroundColor: [
+                    "#80b3ff",
+                    "#3385ff",
+                    "#005ce6",
+                    "#003d99"
+                  ],
+                  data: [10, 50, 25, 15],
+                  // Notice the borderColor
+                  borderColor: ["white", "white"],
+                  borderWidth: [2, 2]
+                }]
+              };
+
+              // Notice the rotation from the documentation.
+              var options = {
+                rotation: -0.7 * Math.PI
+              };
+
+              // Chart declaration:
+              var myBarChart = new Chart(ctx, {
+                type: "pie",
+                data: data,
+                options: options
+              });
+
+              function age(choice) {
+                switch (choice) {
+                  case '1':
+                    myBarChart.data.datasets[0].data = [10, 50, 25, 15];
+                    myBarChart.update();
+                    break;
+                  case '2':
+                    myBarChart.data.datasets[0].data = [55, 25, 15, 5];
+                    myBarChart.update();
+                    break;
+                  case '3':
+                    myBarChart.data.datasets[0].data = [0, 50, 25, 25];
+                    myBarChart.update();
+                    break;
+                  case '4':
+                    myBarChart.data.datasets[0].data = [15, 45, 35, 5];
+                    myBarChart.update();
+                    break;
+                  case '5':
+                    myBarChart.data.datasets[0].data = [3, 50, 25, 42];
+                    myBarChart.update();
+                    break;
+                  case '6':
+                    myBarChart.data.datasets[0].data = [25, 6, 23, 50];
+                    myBarChart.update();
+                    break;
+                  case '7':
+                    myBarChart.data.datasets[0].data = [20, 40, 25, 22];
+                    myBarChart.update();
+                    break;
+                  case '8':
+                    myBarChart.data.datasets[0].data = [3, 50, 25, 22];
+                    myBarChart.update();
+                    break;
+                  case '9':
+                    myBarChart.data.datasets[0].data = [6, 40, 33, 18];
+                    myBarChart.update();
+                    break;
+                  case '10':
+                    myBarChart.data.datasets[0].data = [45, 45, 35, 5];
+                    myBarChart.update();
+                    break;
+                  case '11':
+                    myBarChart.data.datasets[0].data = [20, 40, 50, 10];
+                    myBarChart.update();
+                    break;
+                  case '12':
+                    myBarChart.data.datasets[0].data = [25, 42, 60, 11];
+                    myBarChart.update();
+                    break;
+                  case '13':
+                    myBarChart.data.datasets[0].data = [50, 25, 22, 30];
+                    myBarChart.update();
+                    break;
+                  case '14':
+                    myBarChart.data.datasets[0].data = [15, 45, 35, 5];
+                    myBarChart.update();
+                    break;
+                }
+              }
+            </script>
+          </div>
+        </div>
+      </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <script src="{% static 'argon.js' %}"></script>
+</body>
+</html>
