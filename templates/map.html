@@ -29,60 +29,23 @@
             accessToken: 'pk.eyJ1Ijoia2hhbm5ha3NoYXQ3IiwiYSI6ImNrZmlsZjRobTE5ZHMycm8zZ3BkeGFyN3gifQ.1QD2g1KpNcFVUqKJ-M5_9g'
         }).addTo(mymap);
 
-        var circle = L.circle([24.536912,73.691626], {
-            color: 'red',
-            fillColor: '#f03',
-            fillOpacity: 0.5,
-            radius: 500
-        }).addTo(mymap);
-        var circle = L.circle([24.565357, 73.719063], {
-            color: 'red',
-            fillColor: '#f03',
-            fillOpacity: 0.5,
-            radius: 500
-        }).addTo(mymap);
-        var circle = L.circle([24.548988, 73.724816], {
-            color: 'green',
-            fillColor: '#0dfd04',
-            fillOpacity: 0.5,
-            radius: 500
-        }).addTo(mymap);
-        var circle = L.circle([24.572137, 73.702463], {
-            color: 'red',
-            fillColor: '#f03',
-            fillOpacity: 0.5,
-            radius: 500
-        }).addTo(mymap);
-        var circle = L.circle([24.561052, 73.698515], {
-            color: 'green',
-            fillColor: '#0dfd04',
-            fillOpacity: 0.5,
-            radius: 500
-        }).addTo(mymap);
-        var circle = L.circle([24.550747, 73.704008], {
-            color: 'green',
-            fillColor: '#0dfd04',
-            fillOpacity: 0.5,
-            radius: 500
-        }).addTo(mymap);
-        var circle = L.circle([24.580879, 73.742460], {
-            color: 'green',
-            fillColor: '#0dfd04',
-            fillOpacity: 0.5,
-            radius: 500
-        }).addTo(mymap);
-        var circle = L.circle([24.588684, 73.726152], {
-            color: 'red',
-            fillColor: '#f03',
-            fillOpacity: 0.5,
-            radius: 500
-        }).addTo(mymap);
-        var circle = L.circle([24.563862, 73.727354], {
-            color: 'red',
-            fillColor: '#f03',
-            fillOpacity: 0.5,
-            radius: 500
-        }).addTo(mymap);
+        {% for i in data %}
+            {% if i.is_solved %}
+                var circle = L.circle([{{i.latitude}}, {{i.longitude}}], {
+                    color: 'green',
+                    fillColor: '#0dfd04',
+                    fillOpacity: 0.5,
+                    radius: 500
+                }).addTo(mymap);
+            {% else %}
+                var circle = L.circle([{{i.latitude}}, {{i.longitude}}], {
+                    color: 'red',
+                    fillColor: '#f03',
+                    fillOpacity: 0.5,
+                    radius: 500
+                }).addTo(mymap);
+            {% endif %}
+        {% endfor %}
 
         function onLocationFound(e) {
             var radius = e.accuracy;

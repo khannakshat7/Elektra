@@ -4,6 +4,7 @@ from django.shortcuts import HttpResponse, redirect, render
 from django.views.decorators.csrf import csrf_exempt
 
 from electricity.forms import UserForm
+from electricity.models import electricity
 # Create your views here.
 
 def index(request):
@@ -54,3 +55,7 @@ def logoutuser(request):
 
 def dashboard(request):
     return render(request,"dashboard.html")
+
+def map(request):
+    records = electricity.objects.all()
+    return render(request,"map.html",{"data":records})
