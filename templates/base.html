@@ -176,7 +176,13 @@
 
   <!-- Main JS File -->
   <script src="{% static 'main.js' %}"></script>
-
+  <script>
+         $(document).ready(function() {
+        setTimeout(function() {
+            $("#confirm").trigger('click');
+        }, 4000);
+        });
+  </script>
 </body>
 
 </html>

@@ -69,3 +69,14 @@ def annnouncements(request):
 @login_required
 def feedback(request):
     return render(request,"feedback.html")
+
+@csrf_exempt
+def getmapcoordinates(request):
+    if(request.method == 'POST'):
+        latitude = request.POST.get('latitude')
+        longitude = request.POST.get('longitude')
+
+        data = electricity()
+        data.latitude = latitude
+        data.longitude = longitude
+        data.save()
