@@ -41,7 +41,8 @@
                 .bindPopup("You are within " + radius + " meters from this point").openPopup();
 
             L.circle(e.latlng, radius).addTo(mymap);
-            
+            document.getElementById("latitude").value = e.latlng.lat;
+            document.getElementById("longitude").value = e.latlng.lng;
         }
         
         mymap.on('locationfound', onLocationFound);
@@ -58,5 +59,36 @@
         legend.addTo(mymap);
     
     </script>
+
+    <!-- Button trigger modal -->
+<button type="button" id="confirm" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" hidden>
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Power Status</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Do you have a power cut?
+        </div>
+        <div class="modal-footer">
+            <form action="{% url 'coordinates' %}" method="POST">
+                <input type="text" id="latitude" name="latitude" hidden/>
+                <input type="text" id="longitude" name="longitude" hidden/>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button type="submit" class="btn btn-primary">Yes</button>
+            </form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
 
 {% endblock %}

@@ -75,8 +75,9 @@ def getmapcoordinates(request):
     if(request.method == 'POST'):
         latitude = request.POST.get('latitude')
         longitude = request.POST.get('longitude')
-
-        data = electricity()
-        data.latitude = latitude
-        data.longitude = longitude
-        data.save()
+        if(len(latitude) and len(longitude)):
+            data = electricity()
+            data.latitude = latitude
+            data.longitude = longitude
+            data.save()
+        return redirect('map')
