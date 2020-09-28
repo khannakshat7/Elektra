@@ -5,7 +5,7 @@
 
 <b><a href="https://elecktra.uc.r.appspot.com/">CHECK LIVE</a></b>
 <br>
-<h3>Check out the <a href="#Y">YouTube</a> video</h3>
+<h3>Check out the <a href="https://www.youtube.com/watch?v=NODY3Kwz8FU&feature=youtu.be">YouTube</a> video</h3>
 
 <img src="https://i.ibb.co/yk5gRVB/ew1.png" alt="ew1" border="0"> <img src="https://i.ibb.co/92CbKnQ/resp.png" alt="resp" border="0">
 <br>
