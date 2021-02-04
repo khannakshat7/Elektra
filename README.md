@@ -7,12 +7,14 @@
 
 <img src="https://i.ibb.co/yk5gRVB/ew1.png" alt="ew1" border="0"> <img src="https://i.ibb.co/92CbKnQ/resp.png" alt="resp" border="0">
 
-[![Issues](https://img.shields.io/github/issues/khannakshat7/Elektra)](https://github.com/khannakshat7/Elektra/issues)
 [![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 ![Maintenance](https://img.shields.io/maintenance/yes/2021)
 
+[![Issues](https://img.shields.io/github/issues/khannakshat7/Elektra)](https://github.com/khannakshat7/Elektra/issues)
+[![Pull Requests](https://img.shields.io/github/issues-pr/khannakshat7/Elektra)](https://github.com/khannakshat7/Elektra)
+[![Pull Requests](https://img.shields.io/github/issues-pr-closed/khannakshat7/Elektra)](https://github.com/khannakshat7/Elektra)
 
 [![Forks](https://img.shields.io/github/forks/khannakshat7/Elektra?style=social)](https://github.com/khannakshat7/Elektra) 
 [![Stars](https://img.shields.io/github/stars/khannakshat7/Elektra?style=social)](https://github.com/khannakshat7/Elektra) 
