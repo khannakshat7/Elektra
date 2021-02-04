@@ -65,7 +65,7 @@ Akshat Khanna </b></sub></a><br><a href="https://github.com/khannakshat7/Elektra
 </tbody></table>
 
 # Code of Conduct
-You can find our Code of Conduct [here](https://github.com/khannakshat7/Elektra/blob/main/CODE_OF_CONDUCT.md).
+You can find our Code of Conduct [here](https://github.com/khannakshat7/Elektra/blob/master/CODE_OF_CONDUCT.md).
 
 # License
 
