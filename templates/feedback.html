@@ -9,7 +9,7 @@
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
-            pading: 0;
+            padding: 0;
         }
 
         form {
@@ -39,6 +39,7 @@
             <h4>Please rate your service experience for the following parameters</h4>
 
             <form method="post" target="_blank">
+                {% csrf_token %} 
                 <label>1. Your overall experience with us ?</label><br>
 
                 <span class="star-rating">
