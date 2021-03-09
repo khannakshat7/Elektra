@@ -57,13 +57,14 @@ You may go through these guidelines and contribute accordingly:
   * Download and install Git.
   * Fork the Repository.
   * Clone the repository to your local machine `$ git clone https://github.com/<your-github-username>/Elektra.git`
-  * Change directory to JagratiWebApp `$ cd Elektra`
+  * Change directory to Elektra `$ cd Elektra`
   * Install virtualenv `$ pip3 install virtualenv`
   * Create a virtual environment `$ virtualenv env -p python`  
   * Activate the env: `$ source env/bin/activate` (for linux) `> env\Scripts\activate` (for Windows PowerShell)
   * Install the requirements: `$ pip install -r requirements.txt`
   * Go to `Elektra\settings.py` and change the username and password of databases as per your own local mysql database. Here is a reference below to where you can find the code:
-    ![Screenshot (129)](https://user-images.githubusercontent.com/71708571/110442920-5ced8900-80e1-11eb-9d32-f2e6a3e65228.png)
+    ![Screenshot (129)](https://user-images.githubusercontent.com/71708571/110449895-aa212900-80e8-11eb-9469-84da185b9c13.png)
+
     
     After changing the username and password, create a database named `Elektra` and then continue on to following the steps given below.
   * Make migrations `$ python manage.py makemigrations`
