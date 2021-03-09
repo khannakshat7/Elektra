@@ -102,70 +102,83 @@
 
   {% endblock %}
 
-  
-  <!-- ======= Footer ======= -->
+  <!-- ======= Contact Section ======= -->
   <section id="contact">
     <div class="section-title">
       <h2>Contact</h2>
-
     </div>
-    <footer id="footer">
-      <div class="footer-top">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-4 col-md-6 footer-info">
-              <h3>
-                <img src="{% static 'Elektra_Logo.png' %}" style="width: 130px; margin-left: 80px;" />
-              </h3>
-              <p>
-                An ML powered Electricity Outage prediction tool.
-              </p>
-            </div>
 
-            <div class="col-lg-4 col-md-6 footer-links">
-              <h4>Useful Links</h4>
-              <ul>
-                <li>
-                  <i class="ion-ios-arrow-right"></i> <a href="{% url 'home' %}">Home</a>
-                </li>
-                <li>
-                  <i class="ion-ios-arrow-right"></i> <a href="{% url 'map' %}">Maps</a>
-                </li>
-                <li>
-                  <i class="ion-ios-arrow-right"></i> <a href="{% url 'dashboard' %}">Dashboard</a>
-                </li>
-                <li>
-                  <i class="ion-ios-arrow-right"></i> <a href="{% url 'announcements' %}">Announcements</a>
-                </li>
+    <!-- ===========Contact Form ========== -->
+    <div class=" container">
+      <form class="contact-form" action="noaction.php">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name">
+        
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email">
+       
+        <label for="message">Message</label>
+        <textarea name="message" id="message" cols="30" rows="10"></textarea>
+        
+        <input type="submit" class="send-message" value="Send message">
+      </form>
+    </div>
+  </section>
 
-              </ul>
-            </div>
-
-            <div class="col-lg-4 col-md-6 footer-contact">
-              <h4>Contact Us</h4>
-              <p>
-                <b><a href="mailto:khannakshat7@gmail.com">khannakshat7@gmail.com</a></b>
-                <b><a href="mailto:unnaticse2019@gmail.com">unnaticse2019@gmail.com</a></b>
-              </p>
-
-
-            </div>
-
-
-          </div>
-        </div>
-      </div>
-
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
       <div class="container">
-        <div class="copyright">
-          Made with ❤️️ by <strong><a
-              href="https://linktr.ee/akshatkhanna" style="color: #25B0F0;">Akshat Khanna</a> & <a href="https://linktr.ee/Ping_Unnati" style="color: #25B0F0;">Unnati Mishra</a></strong>.
+        <div class="row">
+          <div class="col-lg-4 col-md-6 footer-info">
+            <h3>
+              <img src="{% static 'Elektra_Logo.png' %}" style="width: 130px; margin-left: 80px;" />
+            </h3>
+            <p>
+              An ML powered Electricity Outage prediction tool.
+            </p>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li>
+                <i class="ion-ios-arrow-right"></i> <a href="{% url 'home' %}">Home</a>
+              </li>
+              <li>
+                <i class="ion-ios-arrow-right"></i> <a href="{% url 'map' %}">Maps</a>
+              </li>
+              <li>
+                <i class="ion-ios-arrow-right"></i> <a href="{% url 'dashboard' %}">Dashboard</a>
+              </li>
+              <li>
+                <i class="ion-ios-arrow-right"></i> <a href="{% url 'announcements' %}">Announcements</a>
+              </li>
+
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-contact">
+            <h4>Contact Us</h4>
+            <p>
+              <b><a href="mailto:khannakshat7@gmail.com">khannakshat7@gmail.com</a></b>
+              <b><a href="mailto:unnaticse2019@gmail.com">unnaticse2019@gmail.com</a></b>
+            </p>
+          </div>
+
+
         </div>
       </div>
-    </footer>
-  </section>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        Made with ❤️️ by <strong><a
+            href="https://linktr.ee/akshatkhanna" style="color: #25B0F0;">Akshat Khanna</a> & <a href="https://linktr.ee/Ping_Unnati" style="color: #25B0F0;">Unnati Mishra</a></strong>.
+      </div>
+    </div>
+  </footer>
   <!-- End Footer -->
-  </section>
 
 
 
