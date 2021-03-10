@@ -2,41 +2,55 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="shortcut icon" href="{% static 'favicon.jpg' %}" />
-  <title>Elektra | Electricity Outage prediction
-  </title>
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <link rel="shortcut icon" href="{% static 'favicon.jpg' %}">
+
+<title>Elektra | Electricity Outage prediction
+
+</title>
 
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Exo:wght@500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@720&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital@1&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
   <link href="{% static 'vendor/icofont/icofont.min.css' %}" rel="stylesheet">
   <link href="{% static 'vendor/icofont/icofont.min.css' %}" rel="stylesheet" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+
+
 
   <!-- Main CSS File -->
-  <link href="{% static 'style.css' %}" rel="stylesheet" />
+  <link href="static/style.css" rel="stylesheet">
+
+
 
   <script type="text/javascript" src="{% static 'main.js' %}">
+
   </script>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-  crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-  crossorigin=""></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 
   <style>
-    #mapid { height: 700px; width: 1300px;}
-</style>
+    #mapid {
+      height: 700px;
+      width: 1300px;
+    }
+  </style>
 </head>
 
 <body>
@@ -46,8 +60,8 @@
       <div class="logo mr-auto">
         <h1>
           <!-- <img src="assets/img/Icon.png" style="margin-top: -10px;"> -->
-          <img src="{% static 'Icon.png' %}" style="margin-top: -15px;" alt="">
-          <a href="/"><img src="{% static 'Elektra_Logo.png' %}" style="margin-top: -10px;" alt=""></a>
+          <img src="{% static 'Icon.png' %}"  alt="">
+          <a href="/"><img src="{% static 'Elektra_Logo.png' %}"  alt=""></a>
         </h1>
       </div>
 
@@ -55,34 +69,34 @@
 
       <nav class="nav-menu d-none d-lg-block ml-auto">
         <ul>
-          <li><a href="{% url 'home' %}">Home</a></li>
-          <li><a href="{% url 'map' %}">Map</a></li>
-          <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
-          <li><a href="{% url 'announcements' %}">Announcements</a></li>
-          <li><a href="{% url 'feedback' %}">Feedback</a></li>
+          <li><a href="{% url 'home' %}" style="font-size: 1.3rem;">Home</a></li>
+          <li><a href="{% url 'map' %}" style="font-size: 1.3rem;">Map</a></li>
+          <li><a href="{% url 'dashboard' %}" style="font-size: 1.3rem;">Dashboard</a></li>
+          <li><a href="{% url 'announcements' %}" style="font-size: 1.3rem;">Announcements</a></li>
+          <li><a href="{% url 'feedback' %}" style="font-size: 1.3rem;">Feedback</a></li>
           {% if user.is_authenticated %}
           <li><a href="#">Welcome, {{ user }}</a></li>
           <li style=" font-weight: 800;
                     font-size: 13px;
                     display: inline-block;
-                    padding: 1px 1px 1px 1px;
-                    border-radius: 50px;
+                    padding: 5px 5px 5px 5px;
+                    border-radius: 23px;
                     transition: 0.5s;
-                    background: #FED103;
+                    background: #fcf876;
                     border-style: none;
                     color: #fff;"><a href="{% url 'logout' %}">Logout</a></li>
           {% else %}
-                <li style=" font-weight: 800;
+          <li style=" font-weight: 800;
                     font-size: 13px;
                     display: inline-block;
-                    padding: 1px 1px 1px 1px;
-                    border-radius: 50px;
+                      padding: 5px 5px 5px 5px;
+                    border-radius: 23px;
                     transition: 0.5s;
-                    background: #FED103;
+                    background: #fcf876;
                     border-style: none;
                     color: #fff;"><a href="{% url 'login' %}">Login/Signup</a></li>
           {% endif %}
-          
+
 
         </ul>
       </nav>
@@ -98,13 +112,14 @@
   <br>
   <br>
 
+
   {% block content %}
 
   {% endblock %}
 
   
   <!-- ======= Footer ======= -->
-  <section id="contact">
+   <section id="contact">
     <div class="section-title">
       <h2>Contact</h2>
 
@@ -118,12 +133,12 @@
                 <img src="{% static 'Elektra_Logo.png' %}" style="width: 130px; margin-left: 80px;" />
               </h3>
               <p>
-                An ML powered Electricity Outage prediction tool.
+                <b>An ML powered Electricity Blackout Prediction tool.</b>
               </p>
             </div>
 
             <div class="col-lg-4 col-md-6 footer-links">
-              <h4>Useful Links</h4>
+              <h4>Some useful links</h4>
               <ul>
                 <li>
                   <i class="ion-ios-arrow-right"></i> <a href="{% url 'home' %}">Home</a>
@@ -142,7 +157,7 @@
             </div>
 
             <div class="col-lg-4 col-md-6 footer-contact">
-              <h4>Contact Us</h4>
+              <h4>Reach us</h4>
               <p>
                 <b><a href="mailto:khannakshat7@gmail.com">khannakshat7@gmail.com</a></b>
                 <b><a href="mailto:unnaticse2019@gmail.com">unnaticse2019@gmail.com</a></b>
@@ -165,7 +180,6 @@
     </footer>
   </section>
   <!-- End Footer -->
-  </section>
 
 
 
@@ -209,4 +223,3 @@
       document.getElementById("todayDeaths").innerHTML = data.todayDeaths;
     })
 </script>
-
