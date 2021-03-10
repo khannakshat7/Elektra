@@ -986,6 +986,7 @@ span.scale-rating label:before {
 .home__text {
   font-size: 1.25rem;
   font-family: 'Poppins';
+  letter-spacing: 0.04em;
 }
 
 @media (max-width:993px){
