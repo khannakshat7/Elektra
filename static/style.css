@@ -233,7 +233,7 @@ h6 {
 .mobile-nav a:hover,
 .mobile-nav .active>a,
 .mobile-nav li:hover>a {
-  color: #fa023c;
+  color: #2AB5E8 !important;
   text-decoration: none;
 }
 
@@ -288,7 +288,6 @@ h6 {
   color: #fff;
 }
 
-
 /*--------------------------------------------------------------
 # Sections General
 --------------------------------------------------------------*/
@@ -337,6 +336,8 @@ section {
 * .section-title p {
   margin-bottom: 0;
 }
+
+
 
 /*--------------------------------------------------------------
 # Featured
