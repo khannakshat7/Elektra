@@ -50,40 +50,47 @@
         </h1>
       </div>
 
-      <!--NAVBAR-->
+<!--NAVBAR-->
 
-      <nav class="nav-menu d-none d-lg-block ml-auto">
-        <ul>
-          {% with request.resolver_match.url_name as url_name %}
-          <li><a {% if url_name == 'home' %}class="active"{% endif %} href="{% url 'home' %}">Home</a></li>
-          <li><a {% if url_name == 'map' %}class="active"{% endif %} href="{% url 'map' %}">Map</a></li>
-          <li><a {% if url_name == 'dashboard' %}class="active"{% endif %} href="{% url 'dashboard' %}">Dashboard</a></li>
-          <li><a {% if url_name == 'announcements' %}class="active"{% endif %} href="{% url 'announcements' %}">Announcements</a></li>
-          <li><a {% if url_name == 'feedback' %}class="active"{% endif %} href="{% url 'feedback' %}">Feedback</a></li>
-          {%endwith%}
-          {% if user.is_authenticated %}
-          <li><a href="#">Welcome, {{ user }}</a></li>
-          <li><a class="btn" href="{% url 'logout' %}">Logout</a></li>
-          {% else %}
-                <!-- <li style=" font-weight: 800;
-                    font-size: 13px;
-                    display: inline-block;
-                    padding: 1px 1px 1px 1px;
-                    border-radius: 50px;
-                    transition: 0.5s;
-                    background: #FED103;
-                    border-style: none;
-                    color: #fff;"><a href="{% url 'login' %}">Login/Signup</a></li> -->
-                <li><a class="btn" href="{% url 'login' %}">Login/Signup</a></li>
-          {% endif %}
-        </ul>
-      </nav>
+<nav class="nav-menu d-none d-lg-block ml-auto">
+  <ul>
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'map' %}">Map</a></li>
+    <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+    <li><a href="{% url 'announcements' %}">Announcements</a></li>
+    <li><a href="{% url 'feedback' %}">Feedback</a></li>
+    {% if user.is_authenticated %}
+    <li><a href="#">Welcome, {{ user }}</a></li>
+    <li style=" font-weight: 800;
+              font-size: 13px;
+              display: inline-block;
+              padding: 1px 1px 1px 1px;
+              border-radius: 50px;
+              transition: 0.5s;
+              background: #FED103;
+              border-style: none;
+              color: #fff;"><a href="{% url 'logout' %}">Logout</a></li>
+    {% else %}
+          <li style=" font-weight: 800;
+              font-size: 13px;
+              display: inline-block;
+              padding: 1px 1px 1px 1px;
+              border-radius: 50px;
+              transition: 0.5s;
+              background: #FED103;
+              border-style: none;
+              color: #fff;"><a href="{% url 'login' %}">Login/Signup</a></li>
+    {% endif %}
+    
 
-      <!-- NAVBAR -->
-    </div>
-  </header>
+  </ul>
+</nav>
 
-  <!-- End Header -->
+<!-- NAVBAR -->
+</div>
+</header>
+
+<!-- End Header -->
 
   
   {% block content %}
