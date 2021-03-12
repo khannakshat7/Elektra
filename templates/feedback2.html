@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- ======= About Section ======= -->
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300"
+    rel="stylesheet">
+<style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        form {
+            color: hsl(58, 100%, 48%);
+            font-size: 18px;
+        }
+
+        label {
+            color: #000;
+            font-weight:  bold;
+        }
+       
+    </style>
+ 
+<section style="margin: 6rem; text-align: center; padding: 20px;  " class="border shadow" >
+    <div style="background:#43a7d5">
+
+    </div>
+
+    <aside style="padding:15px">
+        <h5 style="color: #000;">
+            <h1 style="color:#43a7d5; font-weight:bold; ">Feedback  Form</h1>
+            <br>
+            <p >Dear Customer,<br>
+                Thank you for letting us serve you. We would like to know how we
+                performed.
+                Please
+                spare some moments to give us your valuable feedback as it will
+                help us in improving our service.
+            </p>
+        </h5>
+        
+
+        <h5>Please rate your service experience for the following parameters</h5><br>
+        <form method="post" target="_blank">
+            <label>1. Your overall experience with us ?</label><br>
+
+            <span class="star-rating">
+                <input type="radio" name="rating1" value="1"><i></i>
+                <input type="radio" name="rating2" value="2"><i></i>
+                <input type="radio" name="rating3" value="3"><i></i>
+                <input type="radio" name="rating4" value="4"><i></i>
+                <input type="radio" name="rating5" value="5"><i></i>
+            </span>
+
+            <div class="clear"></div>
+            <hr class="survey-hr">
+            <label>2. Time to time update of your location.</label><br>
+            <span class="star-rating">
+                <input type="radio" name="rating6" value="1"><i></i>
+                <input type="radio" name="rating7" value="2"><i></i>
+                <input type="radio" name="rating8" value="3"><i></i>
+                <input type="radio" name="rating9" value="4"><i></i>
+                <input type="radio" name="rating10" value="5"><i></i>
+            </span>
+
+            <div class="clear"></div>
+            <hr class="survey-hr">
+            <label>3. Experience while waiting for response from Electricity
+                board.</label><br>
+            <span class="star-rating">
+                <input type="radio" name="rating11" value="1"><i></i>
+                <input type="radio" name="rating12" value="2"><i></i>
+                <input type="radio" name="rating13" value="3"><i></i>
+                <input type="radio" name="rating14" value="4"><i></i>
+                <input type="radio" name="rating15" value="5"><i></i>
+            </span>
+
+            <div class="clear"></div>
+            <hr class="survey-hr">
+            <label>4. Satisfactory Visuals/Images</label><br>
+            <span class="star-rating">
+                <input type="radio" name="rating16" value="1"><i></i>
+                <input type="radio" name="rating17" value="2"><i></i>
+                <input type="radio" name="rating18" value="3"><i></i>
+                <input type="radio" name="rating19" value="4"><i></i>
+                <input type="radio" name="rating20" value="5"><i></i>
+            </span>
+
+            <div class="clear"></div>
+            <hr class="survey-hr">
+            <label>5. Quality of work done</label><br>
+            <span class="star-rating">
+                <input type="radio" name="rating21" value="1"><i></i>
+                <input type="radio" name="rating22" value="2"><i></i>
+                <input type="radio" name="rating23" value="3"><i></i>
+                <input type="radio" name="rating24" value="4"><i></i>
+                <input type="radio" name="rating25" value="5"><i></i>
+            </span>
+
+            <div class="clear"></div>
+            <hr class="survey-hr">
+            <label>6.The display of Maps</label><br>
+            <span class="star-rating">
+                <input type="radio" name="rating26" value="1"><i></i>
+                <input type="radio" name="rating27" value="2"><i></i>
+                <input type="radio" name="rating28" value="3"><i></i>
+                <input type="radio" name="rating29" value="4"><i></i>
+                <input type="radio" name="rating30" value="5"><i></i>
+            </span>
+
+            <div class="clear"></div>
+            <hr class="survey-hr">
+            <label>7. The Announcements section</label><br><br />
+            <div style="color:grey">
+                <span style="float:left;font-weight: bold;">
+                    POOR
+                </span>
+                <span style="float:right;font-weight: bold;">
+                    BEST
+                </span>
+
+            </div>
+            <span class="scale-rating">
+                <label value="1">
+                    <input type="radio" name="rating">
+                    <label style="width:100%;"></label>
+                </label>
+                <label value="2">
+                    <input type="radio" name="rating">
+                    <label style="width:100%;"></label>
+                </label>
+                <label value="3">
+                    <input type="radio" name="rating">
+                    <label style="width:100%;"></label>
+                </label>
+                <label value="4">
+                    <input type="radio" name="rating">
+                    <label style="width:100%;"></label>
+                </label>
+                <label value="5">
+                    <input type="radio" name="rating">
+                    <label style="width:100%;"></label>
+                </label>
+                <label value="6">
+                    <input type="radio" name="rating">
+                    <label style="width:100%;"></label>
+                </label>
+                <label value="7">
+                    <input type="radio" name="rating">
+                    <label style="width:100%;"></label>
+                </label>
+                <label value="8">
+                    <input type="radio" name="rating">
+                    <label style="width:100%;"></label>
+                </label>
+                <label value="9">
+                    <input type="radio" name="rating">
+                    <label style="width:100%;"></label>
+                </label>
+                <label value="10">
+                    <input type="radio" name="rating" value="10">
+                    <label style="width:100%;"></label>
+                </label>
+            </span>
+
+            <div class="clear"></div>
+            <hr class="survey-hr">
+            <label for="m_3189847521540640526commentText">8. Any Other
+                suggestions:</label><br /><br />
+            <textarea cols="75" name="commentText" rows="5" style="width:350px;height: 100px;color: black;font-weight: bold;"></textarea><br>
+            <br>
+            <div class="clear"></div>
+            <form>
+                {% csrf_token %}
+            </a><button type="submit" class="btn btn-outline-primary  shadow" style="font-weight: bolder;">Submit your review</button>
+            </form>
+        </form>
+
+    </aside>
+</section>
+<hr >
+
+{% endblock %}
