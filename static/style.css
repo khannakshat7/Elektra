@@ -4,7 +4,8 @@
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
-
+  scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
 a {
@@ -66,6 +67,33 @@ h6 {
     padding-left: 6px;
   }
 }
+
+/* Back to top button */
+
+#topbutton
+{
+  position:fixed;
+  right:2%;
+  bottom:5%;
+  background-color:#2AB5E8;
+  border-radius: 50%;
+  color:#fff;
+  transition-duration: 0.4s;
+  transition-property:background-color,transform;
+  outline:none;
+  cursor:pointer;
+  display: none;
+  z-index: 1000;
+
+}
+
+#topbutton:hover{
+background-color:#1f7b9c;
+transform: scale(1.2);
+}
+
+
+/**************************/
 
 /*--------------------------------------------------------------
 # Navigation Menu
