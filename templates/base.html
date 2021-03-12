@@ -61,7 +61,7 @@
           <li><a href="{% url 'announcements' %}">Announcements</a></li>
           <li><a href="{% url 'feedback' %}">Feedback</a></li>
           {% if user.is_authenticated %}
-          <li><a href="#">Welcome, {{ user }}</a></li>
+          <li><a href="#">Welcome, {{ user.first_name }}</a></li>
           <li style=" font-weight: 800;
                     font-size: 13px;
                     display: inline-block;
