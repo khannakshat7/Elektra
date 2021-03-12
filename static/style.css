@@ -233,7 +233,7 @@ h6 {
 .mobile-nav a:hover,
 .mobile-nav .active>a,
 .mobile-nav li:hover>a {
-  color: #fa023c;
+  color: #2AB5E8 !important;
   text-decoration: none;
 }
 
@@ -288,11 +288,11 @@ h6 {
   color: #fff;
 }
 
-
 /*--------------------------------------------------------------
 # Sections General
 --------------------------------------------------------------*/
 section {
+  margin-bottom: 2em;
   padding: 60px 0;
 }
 
@@ -337,6 +337,8 @@ section {
 * .section-title p {
   margin-bottom: 0;
 }
+
+
 
 /*--------------------------------------------------------------
 # Featured
@@ -937,4 +939,53 @@ span.scale-rating label:before {
   text-align: center;
   vertical-align: middle;
   z-index: 2;
+}
+
+/*--------------------------------------------------------------
+# Button
+--------------------------------------------------------------*/
+
+.btn {
+  transition: all 0.5s ease-in-out;
+  background: #FED103;
+  color: #4f5a62;
+  /* font-weight: bold; */
+  font-size: 1.2em;
+  font-family: "Poppins", sans-serif;
+  border: none;
+  border-radius: 5em;
+  margin-bottom: .5em;
+  display: inline-block;
+  padding: 0.8em 2em;
+  width: unset;
+  cursor: pointer;
+}
+
+.btn:hover {
+  color: #2AB5E8;
+  font-weight: 800;
+  border: 4px solid #FED103;
+  background-color: #fff;
+  z-index:1;
+}
+/*--------------------------------------------------------------
+# Home
+--------------------------------------------------------------*/
+.home__title {
+  font-family: 'Raleway', sans-serif;
+  font-size: 3.75rem;
+
+}
+
+.home__text {
+  font-size: 1.25rem;
+  font-family: 'Poppins';
+  letter-spacing: 0.04em;
+}
+
+@media (max-width:993px){
+  .home__text{
+    width: 80%;
+    margin-right: auto;
+  }
 }
