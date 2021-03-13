@@ -352,6 +352,7 @@ section {
   border-radius: 10px;
   background: #fff;
   transition: all ease-in-out 0.3s;
+ 
 }
 
 .featured .icon-box i {
@@ -359,6 +360,7 @@ section {
   font-size: 42px;
   margin-bottom: 15px;
   display: block;
+  text-align: center;
 }
 
 .featured .icon-box h3 {
@@ -377,6 +379,7 @@ section {
   line-height: 24px;
   font-size: 14px;
   margin-bottom: 0;
+  text-align: center;
 }
 
 .featured .icon-box:hover {
