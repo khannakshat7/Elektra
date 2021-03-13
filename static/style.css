@@ -303,6 +303,7 @@ section {
 .section-title {
   text-align: center;
   padding-bottom: 30px;
+  cursor: context-menu;
 }
 
 .section-title h2 {
@@ -344,6 +345,7 @@ section {
 .featured {
   position: relative;
   z-index: 2;
+  cursor: context-menu;
 }
 
 .featured .icon-box {
@@ -377,10 +379,12 @@ section {
   line-height: 24px;
   font-size: 14px;
   margin-bottom: 0;
+
 }
 
 .featured .icon-box:hover {
   background: #DEA902;
+
 }
 
 .featured .icon-box:hover i,
@@ -678,6 +682,7 @@ section {
   border-radius: 15px;
   text-align: center;
   border-bottom: 3px solid #fff;
+  cursor: context-menu;
 }
 
 .services .icon-box:hover {
