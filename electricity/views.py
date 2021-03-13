@@ -29,11 +29,11 @@ def registeruser(request):
                 data.save() 
                 return redirect('/')
             else:
-                context="Length must greter then 8"
+                context="Length must be greter then 8"
                 return render(request,"login.html",{'errorP':context})
 
         else:
-            context="Password confirmation doesn't match Password"
+            context="Password confirmation doesn't match"
             print("wrong password")
             return render(request,"login.html",{'errorPC':context})
 
@@ -74,7 +74,7 @@ def forgotp(request):
                             messages.success(request,"Password Changed")
                             return redirect('/login/')
                         else:
-                            context="Password confirmation doesn't match Password"
+                            context="Password confirmation doesn't match"
                             return render(request,'forgotpassword.html',{'ErrorFP':context})
                     else:
                         context="Wrong First Name"
