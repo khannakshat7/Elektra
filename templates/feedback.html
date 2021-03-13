@@ -9,7 +9,7 @@
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
-            pading: 0;
+            padding: 0;
         }
 
         form {
@@ -29,7 +29,7 @@
         <aside style="padding:15px">
             <h5 style="color: #000;">
                 <p>Dear Customer,<br>
-                    Thank you for getting your car services at our workshop. We would like to know how we performed.
+                    Thank you for letting us serve you. We would like to know how we performed.
                     Please
                     spare some moments to give us your valuable feedback as it will help us in improving our service.
                 </p>
@@ -39,6 +39,9 @@
             <h4>Please rate your service experience for the following parameters</h4>
 
             <form method="post" target="_blank">
+                
+                {% csrf_token %}
+                
                 <label>1. Your overall experience with us ?</label><br>
 
                 <span class="star-rating">

@@ -33,7 +33,6 @@ h6 {
 #header {
   height: 70px;
   transition: all 0.5s;
-  z-index: 997;
   transition: all 0.5s;
   background: #fff;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
@@ -68,6 +67,11 @@ h6 {
   }
 }
 
+.usernamelink{
+  font-weight: 600;
+  pointer-events: none;
+}
+
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
@@ -96,9 +100,9 @@ h6 {
   font-family: "Poppins", sans-serif;
 }
 
-.nav-menu a:hover,
-.nav-menu .active>a,
-.nav-menu li:hover>a {
+.nav-menu li a:hover,
+.nav-menu li .active,
+.nav-menu li a:focus {
   color: #2AB5E8;
   text-decoration: none;
 }
@@ -304,6 +308,7 @@ section {
 .section-title {
   text-align: center;
   padding-bottom: 30px;
+  cursor: context-menu;
 }
 
 .section-title h2 {
@@ -345,6 +350,7 @@ section {
 .featured {
   position: relative;
   z-index: 2;
+  cursor: context-menu;
 }
 
 .featured .icon-box {
@@ -356,6 +362,7 @@ section {
 }
 
 .featured .icon-box i {
+  text-align: center;
   color: #DEA902;
   font-size: 42px;
   margin-bottom: 15px;
@@ -377,7 +384,9 @@ section {
   color: #545454;
   line-height: 24px;
   font-size: 14px;
+  text-align: center;
   margin-bottom: 0;
+
 }
 
 .featured .icon-box:hover {
@@ -679,6 +688,7 @@ section {
   border-radius: 15px;
   text-align: center;
   border-bottom: 3px solid #fff;
+  cursor: context-menu;
 }
 
 .services .icon-box:hover {

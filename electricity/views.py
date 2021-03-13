@@ -123,3 +123,4 @@ def getmapcoordinates(request):
             data.longitude = longitude
             data.save()
         return redirect('map')
+
