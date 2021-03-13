@@ -67,6 +67,12 @@ h6 {
   }
 }
 
+#usernamelink{
+  text-decoration: none;
+  font-weight: bold;
+  pointer-events: none;
+}
+
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
