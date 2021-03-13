@@ -45,8 +45,7 @@
     <div class="container d-flex align-items-center">
       <div class="logo mr-auto">
         <h1>
-          <!-- <img src="assets/img/Icon.png" style="margin-top: -10px;"> -->
-          <img src="{% static 'Icon.png' %}" style="margin-top: -15px;" alt="">
+          <!-- Icon -->
           <a href="/"><img src="{% static 'Elektra_Logo.png' %}" style="margin-top: -10px;" alt=""></a>
         </h1>
       </div>
@@ -63,7 +62,7 @@
           <li><a {% if url_name == 'feedback' %}class="active"{% endif %} href="{% url 'feedback' %}">Feedback</a></li>
           {%endwith%}
           {% if user.is_authenticated %}
-          <li><a href="#">Welcome, {{ user }}</a></li>
+          <li><a class="usernamelink" href="#" >Welcome, {{ user }}</a></li>
           <li style=" font-weight: 800;
                     font-size: 13px;
                     display: inline-block;

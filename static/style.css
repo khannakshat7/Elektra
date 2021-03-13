@@ -67,6 +67,11 @@ h6 {
   }
 }
 
+.usernamelink{
+  font-weight: 600;
+  pointer-events: none;
+}
+
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
@@ -355,6 +360,7 @@ section {
 }
 
 .featured .icon-box i {
+  text-align: center;
   color: #DEA902;
   font-size: 42px;
   margin-bottom: 15px;
@@ -376,6 +382,7 @@ section {
   color: #545454;
   line-height: 24px;
   font-size: 14px;
+  text-align: center;
   margin-bottom: 0;
 }
 
