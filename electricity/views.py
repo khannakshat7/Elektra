@@ -5,7 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 
 from electricity.forms import UserForm
-from electricity.models import electricity
+from electricity.models import electricity,Contact
 # Create your views here.
 
 def index(request):
@@ -72,6 +72,18 @@ def annnouncements(request):
 @login_required
 def feedback(request):
     return render(request,"feedback.html")
+
+#Cobtact view
+def contact(request):
+    if request.method == "POST":
+        name = request.POST['name']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        name = request.POST['name']
+        message = request.POST['message']
+        contact = Contact(name=name,email=email,phone=phone,message=message)
+        contact.save()
+    return render(request,"contact.html")
 
 @csrf_exempt
 def getmapcoordinates(request):
