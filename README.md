@@ -88,7 +88,7 @@ Akshat Khanna </b></sub></a><br><a href="https://github.com/khannakshat7/Elektra
 </tbody></table>
 
 # Contributors:
-## Credit goes to these people:✨:
+## Credit goes to these people:✨
 <table>
 	<tr>
 		<td>
