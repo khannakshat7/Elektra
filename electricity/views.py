@@ -15,32 +15,31 @@ def index(request):
 
 
 def registeruser(request):
-    if request.POST.get("form_two"):
-            if not User.objects.filter(username=request.POST["username"]).exists():
-                if request.POST["password"]==request.POST["rpassword"]:
-                    data=User()
-                    data.password=make_password(request.POST["password"])
-                    data.first_name=request.POST["first_name"]
-                    data.last_name=request.POST["last_name"]
-                    data.username=request.POST["username"]
-                    data.email = request.POST["email"]
-                    data.is_active = True
-                    print("user saved")
-                    data.save()
-                    
-                    return redirect('/login/')
-                else:
-                    context="Password confirmation doesn't match Password"
-                    print("wrong password")
-                    return render(request,"login.html",{'errorP':context})
-
+    if not User.objects.filter(username=request.POST["username"]).exists():
+        if request.POST["password"]==request.POST["rpassword"]:
+            if (len(request.POST["password"]) > 7):
+                data=User()
+                data.password=make_password(request.POST["password"])
+                data.first_name=request.POST["first_name"]
+                data.last_name=request.POST["last_name"]
+                data.username=request.POST["username"]
+                data.email = request.POST["email"]
+                data.is_active = True
+                print("user saved")
+                data.save() 
+                return redirect('/')
             else:
-                context="Email Already Exist"
-                return render(request,"login.html",{'errorE':context})
-                
+                context="Length must greter then 8"
+                return render(request,"login.html",{'errorP':context})
+
+        else:
+            context="Password confirmation doesn't match Password"
+            print("wrong password")
+            return render(request,"login.html",{'errorPC':context})
 
     else:
-        return render(request,"login.html")
+        context="Email Already Exist"
+        return render(request,"login.html",{'errorE':context})
 
 def loginuser(request):
 
@@ -62,40 +61,36 @@ def loginuser(request):
         return render(request, 'login.html')
 
 def forgotp(request):
-        if(request.method=="POST"):
-            if  User.objects.filter(username=request.POST["username"]).exists():
-                if User.objects.filter(first_name= request.POST["first_name"]).exists():
-                    if User.objects.filter(last_name=request.POST["last_name"]).exists():
-                        data=User(request.POST["username"])
-                        
+    if(request.method=="POST"):
+        if User.objects.filter(username=request.POST["username"]).exists():
+            user= User.objects.filter(username=request.POST["username"])
+            for object in user:
+                if object.first_name==request.POST["first_name"]:
+                    if object.last_name==request.POST["last_name"]:
                         if request.POST["password"]==request.POST["rpassword"]:
-                            data.first_name=request.POST["first_name"]
-                            data.last_name=request.POST["last_name"]
-                            data.username=request.POST["username"]
-                            data.password=make_password(request.POST["password"])
-                            data.is_active = True
-                            print("user saved")
-                            data.save()
-                            return redirect('/')
+                            object.password=make_password(request.POST["password"])
+                            object.save()
+                            print('done')
+                            messages.success(request,"Password Changed")
+                            return redirect('/login/')
                         else:
-                            context="Password confirmation doesn't match Password"  
-                            return render(request,'forgotpassword.html' ,{'ErrorFP':context})
+                            context="Password confirmation doesn't match Password"
+                            return render(request,'forgotpassword.html',{'ErrorFP':context})
                     else:
-                        context="Wrong Surname"  
-                        return render(request,'forgotpassword.html' ,{'ErrorWs':context})
+                        context="Wrong First Name"
+                        return render(request,'forgotpassword.html',{'ErrorFN':context})
                 else:
-                    context="Wrong First Name"
-                    return render(request,'forgotpassword.html', {'ErrorFP':context})
-            else:
-                context="Wrong Email"  
-                return render(request,'forgotpassword.html' ,{'ErrorEmail':context})
-                
+                    context="Wrong Last Name"
+                    return render(request,'forgotpassword.html',{'ErrorLN':context})
         else:
-            print("bc")
-            return render(request,'forgotpassword.html')
+            context="Email not found"
+            return render(request,'forgotpassword.html',{'ErrorEmail':context})
+    else:
+        return render(request,'forgotpassword.html')
+
 def logoutuser(request):
     logout(request)
-    return redirect('/')
+    return redirect('login/')
 
 @login_required
 def dashboard(request):

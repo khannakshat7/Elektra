@@ -35,7 +35,7 @@ class MyAccountManager(BaseUserManager):
             user.is_superuser   = True
             user.save(using=self._db)
             return user         
-class Account(AbstractBaseUser):
+class User(AbstractBaseUser):
     first_name = models.CharField(max_length=20, null=True, blank=False ,verbose_name='first_name')
     email = models.EmailField(null=True, blank=False,unique = True, verbose_name='email')
     last_name = models.CharField(max_length=20,null=True, blank=False,verbose_name='last_name')
