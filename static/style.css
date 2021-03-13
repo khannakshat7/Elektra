@@ -95,9 +95,9 @@ h6 {
   font-family: "Poppins", sans-serif;
 }
 
-.nav-menu a:hover,
-.nav-menu .active>a,
-.nav-menu li:hover>a {
+.nav-menu li a:hover,
+.nav-menu li .active,
+.nav-menu li a:focus {
   color: #2AB5E8;
   text-decoration: none;
 }

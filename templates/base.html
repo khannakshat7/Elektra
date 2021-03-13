@@ -36,7 +36,7 @@
 
   <style>
     #mapid { height: 700px; width: 1300px;}
-</style>
+  </style>
 </head>
 
 <body>
@@ -55,11 +55,13 @@
 
       <nav class="nav-menu d-none d-lg-block ml-auto">
         <ul>
-          <li><a href="{% url 'home' %}">Home</a></li>
-          <li><a href="{% url 'map' %}">Map</a></li>
-          <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
-          <li><a href="{% url 'announcements' %}">Announcements</a></li>
-          <li><a href="{% url 'feedback' %}">Feedback</a></li>
+          {% with request.resolver_match.url_name as url_name %}
+          <li><a {% if url_name == 'home' %}class="active"{% endif %} href="{% url 'home' %}">Home</a></li>
+          <li><a {% if url_name == 'map' %}class="active"{% endif %} href="{% url 'map' %}">Map</a></li>
+          <li><a {% if url_name == 'dashboard' %}class="active"{% endif %} href="{% url 'dashboard' %}">Dashboard</a></li>
+          <li><a {% if url_name == 'announcements' %}class="active"{% endif %} href="{% url 'announcements' %}">Announcements</a></li>
+          <li><a {% if url_name == 'feedback' %}class="active"{% endif %} href="{% url 'feedback' %}">Feedback</a></li>
+          {%endwith%}
           {% if user.is_authenticated %}
           <li><a href="#">Welcome, {{ user.first_name }}</a></li>
           <li style=" font-weight: 800;
@@ -209,4 +211,3 @@
       document.getElementById("todayDeaths").innerHTML = data.todayDeaths;
     })
 </script>
-
