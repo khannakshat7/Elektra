@@ -46,6 +46,7 @@
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 
   <style>
+
     #mapid {
       height: 700px;
       width: 1300px;
@@ -69,11 +70,16 @@
 
       <nav class="nav-menu d-none d-lg-block ml-auto">
         <ul>
+
           <li><a href="{% url 'home' %}" style="font-size: 1.3rem;">Home</a></li>
           <li><a href="{% url 'map' %}" style="font-size: 1.3rem;">Map</a></li>
           <li><a href="{% url 'dashboard' %}" style="font-size: 1.3rem;">Dashboard</a></li>
           <li><a href="{% url 'announcements' %}" style="font-size: 1.3rem;">Announcements</a></li>
           <li><a href="{% url 'feedback' %}" style="font-size: 1.3rem;">Feedback</a></li>
+
+          {% with request.resolver_match.url_name as url_name %}
+          {%endwith%}
+
           {% if user.is_authenticated %}
           <li><a href="#">Welcome, {{ user }}</a></li>
           <li style=" font-weight: 800;
