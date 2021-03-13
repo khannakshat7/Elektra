@@ -47,7 +47,8 @@
         <ul>
           <li><a href="{% url 'home' %}">Home</a></li>
           <li><a href="{% url 'map' %}">Map</a></li>
-          <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+          <!--class active added to dashboard link because it does not extends base.html-->
+          <li><a href="{% url 'dashboard' %}" class = "active">Dashboard</a></li>
           <li><a href="{% url 'announcements' %}">Announcements</a></li>
           <li><a href="{% url 'feedback' %}">Feedback</a></li>
           {% if user.is_authenticated %}
