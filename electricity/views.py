@@ -31,23 +31,26 @@ def registeruser(request):
         return render(request,"login.html")
 
 def loginuser(request):
-
-    if(request.method == 'POST'):
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(username=username, password=password)
-        if user:
-            if user.is_active:
-                login(request,user)
-                return redirect('/')
-            else:
-                return render(request,"login.html",{"err":True})
-        else:
-            print("Someone tried to login and failed.")
-            print("They used username: {} and password: {}".format(username,password))
-            return render(request,"login.html",{"invalid":True})
+    if request.user.is_authenticated:
+        print("Already Logged in")
+        return redirect("dashboard")
     else:
-        return render(request, 'login.html')
+        if(request.method == 'POST'):
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            user = authenticate(username=username, password=password)
+            if user:
+                if user.is_active:
+                    login(request,user)
+                    return redirect('/')
+                else:
+                    return render(request,"login.html",{"err":True})
+            else:
+                print("Someone tried to login and failed.")
+                print("They used username: {} and password: {}".format(username,password))
+                return render(request,"login.html",{"invalid":True})
+        else:
+            return render(request, 'login.html')
 
 def logoutuser(request):
     logout(request)
