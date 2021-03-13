@@ -67,9 +67,8 @@ h6 {
   }
 }
 
-#usernamelink{
-  text-decoration: none;
-  font-weight: bold;
+.usernamelink{
+  font-weight: 600;
   pointer-events: none;
 }
 

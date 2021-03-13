@@ -62,7 +62,7 @@
           <li><a {% if url_name == 'feedback' %}class="active"{% endif %} href="{% url 'feedback' %}">Feedback</a></li>
           {%endwith%}
           {% if user.is_authenticated %}
-          <li><a id="usernamelink" href="#" >Welcome, {{ user }}</a></li>
+          <li><a class="usernamelink" href="#" >Welcome, {{ user }}</a></li>
           <li style=" font-weight: 800;
                     font-size: 13px;
                     display: inline-block;
