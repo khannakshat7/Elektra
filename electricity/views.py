@@ -59,7 +59,8 @@ def loginuser(request):
             else:
                 print("Someone tried to login and failed.")
                 print("They used username: {} and password: {}".format(username,password))
-                return render(request,"login.html",{"invalid":True})
+                context="Wrong password or email"
+                return render(request,"login.html",{"invalid":context})
         else:
             return render(request, 'login.html')
 
