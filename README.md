@@ -51,6 +51,29 @@ You may go through these guidelines and contribute accordingly:
 - Strictly use camel case in your functions and classes.
 - Do not update the [README.md](README.md).
 
+# How to fork and run Elektra on your local machine 💻:
+
+  * Download and install Python
+  * Download and install Git.
+  * Fork the Repository.
+  * Clone the repository to your local machine `$ git clone https://github.com/<your-github-username>/Elektra.git`
+  * Change directory to Elektra `$ cd Elektra`
+  * Install virtualenv `$ pip3 install virtualenv`
+  * Create a virtual environment `$ virtualenv env -p python`  
+  * Activate the env: `$ source env/bin/activate` (for linux) `> env\Scripts\activate` (for Windows PowerShell)
+  * Install the requirements: `$ pip install -r requirements.txt`
+  * Go to `Elektra\settings.py` and change the username and password of databases as per your own local mysql database. Here is a reference below to where you can find the code:
+    ![Screenshot (129)](https://user-images.githubusercontent.com/71708571/110449895-aa212900-80e8-11eb-9469-84da185b9c13.png)
+
+    
+    After changing the username and password, create a database named `Elektra` and then continue on to following the steps given below.
+  * Make migrations `$ python manage.py makemigrations`
+  * Migrate the changes to the database `$ python manage.py migrate`
+  * Create admin `$ python manage.py createsuperuser`
+  * Run the server `$ python manage.py runserver`
+  * Open any web browser and then paste the server address to see the webpage working on your local machine
+- Happy Coding 😁
+
 
 ### Deployment ✔️Google Cloud Platform
 
@@ -63,6 +86,18 @@ Akshat Khanna </b></sub></a><br><a href="https://github.com/khannakshat7/Elektra
     <td align="center"><a href="https://github.com/CodesbyUnnati"><img alt="" src="https://avatars.githubusercontent.com/CodesbyUnnati" width="100px;"><br><sub><b>Unnati Mishra</b></sub></a><br><a href="https://github.com/khannakshat7/Elektra/commits?author=CodesbyUnnati" title="Code">💻 🖋</a></td> </a></td>
   </tr>
 </tbody></table>
+
+# Contributors:
+## Credit goes to these people:✨
+<table>
+	<tr>
+		<td>
+			<a href="https://github.com/khannakshat7/Elektra/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=khannakshat7/Elektra" />
+</a>
+		</td>
+	</tr>
+</table>
 
 # Code of Conduct
 You can find our Code of Conduct [here](https://github.com/khannakshat7/Elektra/blob/master/CODE_OF_CONDUCT.md).
