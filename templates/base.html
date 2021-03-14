@@ -50,7 +50,7 @@
           <a href="/"><img src="{% static 'Elektra_Logo.png' %}" style="margin-top: -10px;" alt=""></a>
         </h1>
       </div>
-
+      
       <!--NAVBAR-->
 
       <nav class="nav-menu d-none d-lg-block ml-auto">
@@ -61,7 +61,7 @@
           <li><a href="{% url 'announcements' %}">Announcements</a></li>
           <li><a href="{% url 'feedback' %}">Feedback</a></li>
           {% if user.is_authenticated %}
-          <li><a href="#">Welcome, {{ user }}</a></li>
+          <li><a href="#">Welcome, {{ user.first_name}}</a></li>
           <li style=" font-weight: 800;
                     font-size: 13px;
                     display: inline-block;
@@ -176,7 +176,13 @@
 
   <!-- Main JS File -->
   <script src="{% static 'main.js' %}"></script>
-
+  <script>
+         $(document).ready(function() {
+        setTimeout(function() {
+            $("#confirm").trigger('click');
+        }, 4000);
+        });
+  </script>
 </body>
 
 </html>
