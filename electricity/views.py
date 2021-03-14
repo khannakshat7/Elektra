@@ -27,7 +27,7 @@ def registeruser(request):
                 data.is_active = True
                 print("user saved")
                 data.save() 
-                return redirect('/')
+                return render(request,"login.html")
             else:
                 context="Length must be greter then 8"
                 return render(request,"login.html",{'errorP':context})
