@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
   <link type="text/css" href="{% static 'argon.css' %}" rel="stylesheet" />
   <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
   <link href="{% static 'style.css' %}" rel="stylesheet" />
 
@@ -27,8 +28,7 @@
     <div class="container d-flex align-items-center">
       <div class="logo mr-auto">
         <h1>
-          <!-- <img src="assets/img/Icon.png" style="margin-top: -10px;"> -->
-          <img src="{% static 'Icon.png' %}" style="margin-top: -15px;" alt="">
+          <!-- Icon -->
           <a href="/"><img src="{% static 'Elektra_Logo.png' %}" style="margin-top: -10px;" alt=""></a>
         </h1>
       </div>
@@ -44,7 +44,7 @@
           <li><a href="{% url 'announcements' %}">Announcements</a></li>
           <li><a href="{% url 'feedback' %}">Feedback</a></li>
           {% if user.is_authenticated %}
-          <li><a href="#">Welcome, {{ user }}</a></li>
+          <li><a class="usernamelink" href="#">Welcome, {{ user }}</a></li>
           <li style=" font-weight: 800;
                     font-size: 13px;
                     display: inline-block;
@@ -83,13 +83,41 @@
   <div class="main-content">
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
       <div class="container-fluid">
+
+        
+
         <a class="h1 mb-0 text-white text-uppercase d-none d-lg-inline-block">Electricity Outage -
           Dashboard</a>
-        <p class="h5 mb-0 text-white text-uppercase d-none d-lg-inline-block">Udaipur, Rajasthan, India</p>
+        <p class="h5 mb-0 text-white text-uppercase d-none d-lg-inline-block">
+
+          <!-- Using geolocation to get the location data for dashboard from the user 
+                using a function to get all the data from the user
+          -->
+          <script>
+          $.ajax({
+            url: "https://geolocation-db.com/jsonp",
+            jsonpCallback: "callback",
+            dataType: "jsonp",
+            success: function(location) {
+              $('#country').html(location.country_name);
+              $('#state').html(location.state);
+              $('#city').html(location.city);
+              $('#latitude').html(location.latitude);
+              $('#longitude').html(location.longitude);
+              $('#ip').html(location.IPv4);
+            }
+          });
+        </script>
+        
+        </p>
+        <!-- Data collected from the user and displayed here but latitude longitude and ip address is not displayed -->
+        <div style="color: white;">Country: <span id="country"></span>
+          <div style="color: white;">State: <span id="state"></span>
+            <div style="color: white;">City: <span id="city"></span></div></div></div>
     </nav>
 
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
-      <div class="container-fluid">
+      <div class="container-fluid" style="margin-top: 2.5rem;">
         <div class="header-body">
           <div class="row">
             <div class="col-xl-3 col-lg-6">
