@@ -4,7 +4,7 @@ from django.shortcuts import HttpResponse, redirect, render
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail, BadHeaderError
-from django.http import HttpResponse
+from django.conf import settings
 
 from electricity.forms import UserForm
 from electricity.models import electricity,Contact
@@ -86,7 +86,7 @@ def contact(request):
         contact = Contact(name=name,email=email,phone=phone,message=message)
         contact.save()
         subject = name + ' wants to contact you'
-        send_mail(subject,message,email,['admin@example.com'],fail_silently=False)
+        send_mail(subject,message,email,['your_gmail@gmail.com'],fail_silently=False)
     return render(request,"contact.html")
 
 @csrf_exempt

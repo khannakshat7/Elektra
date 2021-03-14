@@ -79,7 +79,7 @@ DATABASES = {
     'default': {
             'ENGINE': 'django.db.backends.mysql',
             'HOST' : '127.0.0.1',
-            'USER': '',
+            'USER': 'root',
             'PASSWORD': '',
             'NAME': 'elecktra',
         }
@@ -131,3 +131,12 @@ STATICFILES_DIRS = [
 
 LOGIN_REDIRECT_URL = "/"
 LOGIN_URL = '/login/'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'your_email@gmal.com'
+EMAIL_HOST_PASSWORD = 'your gmail password'
+EMAIL_BACKEND = (
+        "django.core.mail.backends.smtp.EmailBackend"
+    )
