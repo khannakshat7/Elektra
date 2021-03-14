@@ -31,6 +31,7 @@ urlpatterns = [
     path('logout/',views.logoutuser,name="logout"),
     path('coordinates/',views.getmapcoordinates,name="coordinates"),
     path('contact/',views.contact,name="contact")
+    path('Forgot_Password/',views.forgotp,name="forgotp"),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
