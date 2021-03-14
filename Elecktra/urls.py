@@ -29,7 +29,7 @@ urlpatterns = [
     path('announcements/',views.annnouncements,name="announcements"),
     path('feedback/',views.feedback,name="feedback"),
     path('logout/',views.logoutuser,name="logout"),
-    path('coordinates/',views.getmapcoordinates,name="coordinates")
+    path('coordinates/',views.getmapcoordinates,name="coordinates"),
     path('Forgot_Password/',views.forgotp,name="forgotp"),
 ]
 
