@@ -63,6 +63,7 @@ def loginuser(request):
                 return render(request,"login.html",{"invalid":context})
         else:
             return render(request, 'login.html')
+
 def forgotp(request):
     if(request.method=="POST"):
         if User.objects.filter(username=request.POST["username"]).exists():
@@ -90,6 +91,7 @@ def forgotp(request):
             return render(request,'forgotpassword.html',{'ErrorEmail':context})
     else:
         return render(request,'forgotpassword.html')
+
 def logoutuser(request):
     logout(request)
     return redirect('/')
@@ -122,3 +124,4 @@ def getmapcoordinates(request):
             data.longitude = longitude
             data.save()
         return redirect('map')
+
