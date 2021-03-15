@@ -76,13 +76,10 @@ WSGI_APPLICATION = 'Elecktra.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'HOST' : '127.0.0.1',
-            'USER': '',
-            'PASSWORD': '',
-            'NAME': 'elecktra',
-        }
+   'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3',
+    }
 }
 
 

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <!---font awsome-->
+        <script src="static/app.js"></script>
+        <style>
+body{
+    margin: 100px 0px;
+}
+:root{
+    --bg:rgb(240, 238, 231);
+    --bg-light:lightgray;
+    --text:gray;
+    --hover:skyblue;
+    --light:#ffff0031;
+}
+footer{
+
+    background-color: var(--bg-light);
+    line-height: 26px;
+    color: var(--text);
+}
+footer .art {
+    background-color: var(--bg);
+    padding-top: 40px;
+    padding: 16px;
+    clip-path: polygon(0% 8% , 15% 0% , 100% 10% , 100% 100% , 0% 100%);
+}
+footer .content {
+    max-width: 1080px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 16px;
+    
+}
+footer header{
+    font-size: 21px;
+    padding-block: 16px;
+
+}
+footer .content a{
+    display: block;
+    padding-block: 14px;
+    color: var(--text);
+}
+footer .content a:hover{
+    color: var(--hover);
+    opacity: 1;
+    font-size: 18px;
+}
+footer input{
+    border-style: solid;
+    line-height: 20px;
+    padding: 14px 16px 10px 10px;
+    font-size: 1rem;
+    width: 86%;
+    margin-block: 8px;
+    border-radius: 8px;
+    border-width: 3px;
+}
+footer input[type='email']{
+    background-color: transparent;
+    border-color: var(--text);
+    color: var(--text);
+}
+footer input[type='email']:hover,
+footer input[type='email']:focus{
+    border-color: var(--hover);
+}
+footer input[type='submit']{
+    background-color: var(--text);
+    border: none;
+    color: var(--bg);
+    text-transform: uppercase;
+}
+footer input[type='submit']:hover{
+    background-color: var(--hover);
+
+}
+
+.banner_social-icon:hover{
+    background-color: var(--brightYellow);
+}
+.banner_icons{
+    width: 50%;
+    margin: 0 auto;
+    display: grid;
+   /* grid-template-columns: 2rem 2rem 2rem 2rem; */
+    grid-template-columns: repeat(4,2rem ); 
+    grid-column-gap:0.8rem ;
+    justify-content: center;
+}
+footer .notice {
+    text-align: center;
+    padding: 24px;
+}
+footer .notice strong {
+    color: var(--hover);
+    text-transform: uppercase;
+}
+</style>
+    </head>
+    <body>
+        <footer>
+            <div class="art">
+                <div class="content">
+                    
+                    <section>
+                        <header style="color: cadetblue;font-size: 30px;">Useful links</header>
+                        <a href="{% url 'home' %}">Home</a>
+                        <a href="{% url 'map' %}">Map</a>
+                        <a href="{% url 'dashboard' %}">Dashboard</a>
+                        <a href="{% url 'announcements' %}">Announcements</a>
+                    </section>
+                    <section>
+                        <header style="color: cadetblue;font-size: 30px;">Contact us</header>
+                        <b><a href="mailto:khannakshat7@gmail.com">khannakshat7@gmail.com</a></b>
+                        <b><a href="mailto:unnaticse2019@gmail.com">unnaticse2019@gmail.com</a></b>
+                        <h3>
+                            <img style="margin-left: 70px;width: 150px;margin-bottom: -30px; margin-top: 30px;" src="static/Elektra_Logo.png"/>
+                          </h3>
+                          <p style="font-size: 30px;color: cadetblue;">
+                            An ML powered Electricity Outage prediction tool.
+                          </p>
+                    </section>
+                    <section>
+                        <header style="color: cadetblue;font-size: 30px;">Connect with us</header>
+                        <form>
+                            <input type="email" placeholder="Enter your email">
+                            <input type="submit" Value="Subscribe Now">
+                        </form>
+                        <div class="banner_icons">
+                            <a href="#" class="banner_social-icon"
+                                style="font-size: 30px;">
+                                <i class="fab fa-facebook fa-fw"></i>
+                            </a>
+                            <a href="#" class="banner_social-icon"
+                                style="font-size: 30px;">
+                                <i class="fab fa-twitter fa-fw"></i>
+                            </a>
+                            <a href="#" class="banner_social-icon"
+                                style="font-size: 30px;">
+                                <i class="fab fa-instagram fa-fw"></i>
+                            </a>
+                            <a href="#" class="banner_social-icon"
+                                style="font-size: 30px;">
+                                <i class="fab fa-google-plus fa-fw"></i>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+                <div class="notice" >
+
+                    Copyright Made with ❤️️ by @ <strong><a style="color:cadetblue;"
+                            href="https://linktr.ee/akshatkhanna">Akshat Khanna</a>
+                        & <a style="color: cadetblue;" href="https://linktr.ee/Ping_Unnati">Unnati Mishra</a></strong>.
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
