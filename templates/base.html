@@ -36,7 +36,7 @@
 
   <style>
     #mapid { height: 700px; width: 1300px;}
-</style>
+  </style>
 </head>
 
 <body>
@@ -45,8 +45,7 @@
     <div class="container d-flex align-items-center">
       <div class="logo mr-auto">
         <h1>
-          <!-- <img src="assets/img/Icon.png" style="margin-top: -10px;"> -->
-          <img src="{% static 'Icon.png' %}" style="margin-top: -15px;" alt="">
+          <!-- Icon -->
           <a href="/"><img src="{% static 'Elektra_Logo.png' %}" style="margin-top: -10px;" alt=""></a>
         </h1>
       </div>
@@ -55,13 +54,15 @@
 
       <nav class="nav-menu d-none d-lg-block ml-auto">
         <ul>
-          <li><a href="{% url 'home' %}">Home</a></li>
-          <li><a href="{% url 'map' %}">Map</a></li>
-          <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
-          <li><a href="{% url 'announcements' %}">Announcements</a></li>
-          <li><a href="{% url 'feedback' %}">Feedback</a></li>
+          {% with request.resolver_match.url_name as url_name %}
+          <li><a {% if url_name == 'home' %}class="active"{% endif %} href="{% url 'home' %}">Home</a></li>
+          <li><a {% if url_name == 'map' %}class="active"{% endif %} href="{% url 'map' %}">Map</a></li>
+          <li><a {% if url_name == 'dashboard' %}class="active"{% endif %} href="{% url 'dashboard' %}">Dashboard</a></li>
+          <li><a {% if url_name == 'announcements' %}class="active"{% endif %} href="{% url 'announcements' %}">Announcements</a></li>
+          <li><a {% if url_name == 'feedback' %}class="active"{% endif %} href="{% url 'feedback' %}">Feedback</a></li>
+          {%endwith%}
           {% if user.is_authenticated %}
-          <li><a href="#">Welcome, {{ user }}</a></li>
+          <li><a class="usernamelink" href="#" >Welcome, {{ user }}</a></li>
           <li style=" font-weight: 800;
                     font-size: 13px;
                     display: inline-block;
@@ -209,4 +210,3 @@
       document.getElementById("todayDeaths").innerHTML = data.todayDeaths;
     })
 </script>
-
