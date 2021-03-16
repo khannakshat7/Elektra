@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import environ
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
@@ -24,16 +24,7 @@ STATIC_DIR = os.path.join(BASE_DIR,'static')
 SECRET_KEY = '%l0if_(99*#lmd732n&o2ue99&5zersve+$l5!zd*lui_pd-&%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-
-env = environ.Env(
-    # set casting, default value
-    DEBUG=(bool, False)
-)
-# reading .env file
-environ.Env.read_env()
-
-# False if not in os.environ
-DEBUG = env('DEBUG')
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -84,27 +75,15 @@ WSGI_APPLICATION = 'Elecktra.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-if DEBUG :
-    DATABASES = {
-        'default': {
-                'ENGINE': 'django.db.backends.mysql',
-                'HOST' : os.environ['DATABASE_URL'],
-                'USER': os.environ['USER'],
-                'PASSWORD': os.environ['PASSWORD'],
-                'NAME': os.environ['DATABASE_NAME'],
-            }
-    }
-
-else:
-    DATABASES = {
-        'default': {
-                'ENGINE': 'django.db.backends.mysql',
-                'HOST' : '127.0.0.1',
-                'USER': '',
-                'PASSWORD': '',
-                'NAME': 'elecktra',
-            }
-    }
+DATABASES = {
+    'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST' : '127.0.0.1',
+            'USER': '',
+            'PASSWORD': '',
+            'NAME': 'elecktra',
+        }
+}
 
 
 # Password validation
