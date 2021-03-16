@@ -100,7 +100,7 @@ else:
         'default': {
                 'ENGINE': 'django.db.backends.mysql',
                 'HOST' : '127.0.0.1',
-                'USER': 'root',
+                'USER': '',
                 'PASSWORD': '',
                 'NAME': 'elecktra',
             }
