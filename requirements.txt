@@ -1,2 +1,3 @@
 Django
 mysqlclient
+django-environ
