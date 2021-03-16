@@ -12,4 +12,11 @@ handlers:
 # the entire handlers section) when there are no static files defined.
 - url: /.*
   script: auto
+
+env_variables:
+  DEBUG : False
+  DATABASE_URL : ${{ secrets.DATABASE_URL }}
+  USER : ${{ secrets.USER }}
+  PASSWORD : ${{ secrets.PASSWORD }}
+  DATABASE_NAME : ${{ secrets.DATABASE_NAME }}
 # [END django_app]
