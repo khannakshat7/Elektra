@@ -12,7 +12,8 @@ from electricity.models import electricity
 
 def index(request):
     return render(request,'index.html')
-
+def check(request):
+    return render(request,'check.html')
 
 def registeruser(request):
     if not User.objects.filter(username=request.POST["username"]).exists():
