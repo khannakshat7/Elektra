@@ -43,4 +43,4 @@ jobs:
       - run: echo DEBUG=False\nDATABASE_URL=${{ secrets.DATABASE_URL }}\nUSER=${{ secrets.USER }}\nPASSWORD=${{ secrets.PASSWORD }}\nDATABASE_NAME=${{ secrets.DATABASE_NAME }} > .env
       - uses: actions/upload-artifact@v2
         with:
-          path: /Elecktra/.env
+          path: Elecktra/.env
