@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import HttpResponse, redirect, render
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
 
 from electricity.forms import UserForm
 from electricity.models import electricity
@@ -71,8 +72,19 @@ def annnouncements(request):
 
 @login_required
 def feedback(request):
-    return render(request,"feedback.html")
-
+    if request.method == 'POST':
+        username = request.POST['recipient-name']
+        location = request.POST['message-text']
+        send_mail(
+            'Modified feedback form of ELECKTRA',
+            'This is an demo of an issue: Acknowledging the user about future outrages. Have a look through this and update me for further modificationds',
+            'sumekagarwal123@gmail.com',
+            [username,'khannakshat7@gmail.com'],
+            fail_silently=False
+            )
+        return render(request,"feedback.html")
+    else:
+        return render(request,"feedback.html")
 @csrf_exempt
 def getmapcoordinates(request):
     if(request.method == 'POST'):
