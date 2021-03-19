@@ -7,8 +7,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.conf import settings
-
-from electricity.forms import UserForm
 from electricity.models import electricity,Contact
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password, check_password
