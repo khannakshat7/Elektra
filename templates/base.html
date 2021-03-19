@@ -37,12 +37,20 @@
   <!--style for contact page-->
   {% block style %}{% endblock style %}
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <style>
     #mapid { height: 700px; width: 1300px;}
   </style>
 </head>
 
 <body>
+  <!-- Preloader -->
+<div class="preloader" id="preloader">
+  <div class=status id="status">
+  <!-- <img src="{% static 'Elektra_Logo.png' %}"> --> 
+  </div>
+</div>
+  
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center">
@@ -202,6 +210,11 @@
 
 <!-- JAVASCRIPT FOR FETChING CASES , LIVE UPDATES -->
 <script type="text/javascript">
+  $(window).on('load', function() { // makes sure the whole site is loaded 
+  $('#status').fadeOut(); // will first fade out the loading animation 
+  $('#preloader').delay(2550).fadeOut('slow'); // will fade out the white DIV that covers the website. 
+  $('body').delay(2850).css({'overflow':'visible'});
+})
   fetch('https://corona.lmao.ninja/v2/countries/India')
     .then((response) => {
       return response.json();
