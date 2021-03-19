@@ -893,17 +893,13 @@ span.scale-rating label:before {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #fff;
-  z-index: 99;
+  background-image: url("/static/Elektra_Logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgb(255, 255, 255);
+  z-index: 9999;
 }
 
 #status {
-  width: 200px;
-  height: 200px;
-  position: absolute;
-  left: 45%;
-  top: 45%;
-  background-repeat: no-repeat;
-  background-position: center;
-  margin: -100px 0 0 -100px;
+  position: relative;
 }
