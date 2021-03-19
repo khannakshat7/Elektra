@@ -39,6 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'electricity',
+
+    #for social auth
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    #google
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -77,17 +85,24 @@ WSGI_APPLICATION = 'Elecktra.wsgi.application'
 
 DATABASES = {
     'default': {
-            'ENGINE': 'django.db.backends.mysql',
+            'ENGINE': 'django.db.backends.sqlite3',
             'HOST' : '127.0.0.1',
             'USER': '',
             'PASSWORD': '',
-            'NAME': 'elecktra',
-        }
+            'NAME': os.path.join(BASE_DIR,'db.sqlite3'),
+        },
 }
 
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
+
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+]
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -128,6 +143,26 @@ STATICFILES_DIRS = [
     STATIC_DIR,
 ]
 # STATIC_ROOT = os.path.join(BASE_DIR,'static')
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
 
 LOGIN_REDIRECT_URL = "/"
 LOGIN_URL = '/login/'
