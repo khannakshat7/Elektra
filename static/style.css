@@ -4,6 +4,7 @@
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
+  overflow: hidden;
 
 }
 
@@ -883,4 +884,26 @@ span.scale-rating label:before {
   text-align: center;
   vertical-align: middle;
   z-index: 2;
+}
+
+
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 99;
+}
+
+#status {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 45%;
+  top: 45%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: -100px 0 0 -100px;
 }
