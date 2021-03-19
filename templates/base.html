@@ -33,13 +33,20 @@
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
   crossorigin=""></script>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <style>
     #mapid { height: 700px; width: 1300px;}
   </style>
 </head>
 
 <body>
+  <!-- Preloader -->
+<div class="preloader" id="preloader">
+  <div class=status id="status">
+  <!-- <img src="{% static 'Elektra_Logo.png' %}"> --> 
+  </div>
+</div>
+  
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center">
@@ -62,7 +69,7 @@
           <li><a {% if url_name == 'feedback' %}class="active"{% endif %} href="{% url 'feedback' %}">Feedback</a></li>
           {%endwith%}
           {% if user.is_authenticated %}
-          <li><a class="usernamelink" href="#" >Welcome, {{ user }}</a></li>
+          <li><a class="usernamelink" href="#" >Welcome, {{ user.first_name }}  {{user.last_name}}</a></li>
           <li style=" font-weight: 800;
                     font-size: 13px;
                     display: inline-block;
@@ -194,6 +201,11 @@
 
 <!-- JAVASCRIPT FOR FETChING CASES , LIVE UPDATES -->
 <script type="text/javascript">
+  $(window).on('load', function() { // makes sure the whole site is loaded 
+  $('#status').fadeOut(); // will first fade out the loading animation 
+  $('#preloader').delay(2550).fadeOut('slow'); // will fade out the white DIV that covers the website. 
+  $('body').delay(2850).css({'overflow':'visible'});
+})
   fetch('https://corona.lmao.ninja/v2/countries/India')
     .then((response) => {
       return response.json();
