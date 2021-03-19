@@ -4,6 +4,7 @@
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
+  overflow: hidden;
 
 }
 
@@ -883,4 +884,22 @@ span.scale-rating label:before {
   text-align: center;
   vertical-align: middle;
   z-index: 2;
+}
+
+
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/static/Elektra_Logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgb(255, 255, 255);
+  z-index: 9999;
+}
+
+#status {
+  position: relative;
 }
