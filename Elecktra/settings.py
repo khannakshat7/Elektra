@@ -143,6 +143,6 @@ EMAIL_PORT = 587
 
 # Optional SMTP authentication information for EMAIL_HOST.
 EMAIL_HOST_USER = 'sumekagarwal123@gmail.com'
-EMAIL_HOST_PASSWORD = 'Sumek@14'
+EMAIL_HOST_PASSWORD = '****'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL=False
