@@ -1,0 +1,120 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  body{
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+      background: radial-gradient(#fff, #3486ed)
+  }
+  
+  .account-page{
+    padding: 40px 0;
+    margin: auto;
+  }
+  
+  /* decoration of form layout */
+  .form-container{
+    background: #fff;
+    width: 300px;
+    height: 350px;
+    position: relative;
+    text-align: center;
+    padding: 20px 0;
+    margin: auto;
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+  }
+  
+  /* decoration of label i.e Login */
+  .form-container label{
+    font-weight: bold;
+    padding: 0, 10;
+    color: #555;
+    cursor: pointer;
+    width: 100px;
+    display: inline-block;
+  }
+  
+  .form-btn{
+    display: inline-block;
+  }
+  
+  .form-container form{
+    max-width: 300px;
+    padding: 0 20px;
+    position: absolute;
+    top: 100px;
+    transition: transform 1s;
+  }
+  
+  /* decoration of text contents i.e username, password */
+  form input{
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+  }
+  
+/* Highligting a tag i.e forgot password */
+  a{
+    display: block;
+    text-align: left;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #999;
+    font-size: 0.9rem;
+    transition: .3s;
+  }
+  
+  a:hover{
+    color: #3486ed;
+  }
+  
+/* Login button */
+  form .btn{
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    margin: 20px 0;
+  }
+  
+  .btn{
+    width: 100%;
+    height: 30px;
+    background-color: #3486ed;
+    border-radius: 50px;
+    color: #fff;
+  }
+  
+  form .btn:focus{
+    outline: none;
+  }
+  
+  /* Social Media Icons */
+  .social-media {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .social-icon {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0.45rem;
+    color: #333;
+    border-radius: 50%;
+    border: 1px solid #333;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: 0.3s;
+  }
+  
+  
+  
