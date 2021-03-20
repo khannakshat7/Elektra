@@ -45,8 +45,9 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    #google
+    #providers
     'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
 ]
 
 MIDDLEWARE = [
@@ -149,6 +150,11 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
+#facebook-auth
+SOCIAL_AUTH_FACEBOOK_KEY = '896548307807820'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'b089c77a2d60927ac58d859dd36471fc'
+ACCOUNT_USERNAME_REQURIED = True
+
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 
@@ -161,7 +167,27 @@ SOCIALACCOUNT_PROVIDERS = {
         'AUTH_PARAMS': {
             'access_type': 'online',
         }
-    }
+    },
+    'facebook':
+    {'METHOD': 'oauth2',
+        'SCOPE': ['email', 'public_profile', 'user_friends'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'FIELDS': [
+            'id',
+            'email',
+            'name',
+            'first_name',
+            'last_name',
+            'verified',
+            'locale',
+            'timezone',
+            'link',
+            'gender',
+            'updated_time'],
+        'EXCHANGE_TOKEN': True,
+        'LOCALE_FUNC': lambda request: 'kr_KR',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v2.4'}
 }
 
 LOGIN_REDIRECT_URL = "/"
