@@ -898,6 +898,7 @@ span.scale-rating label:before {
   background-position: center;
   background-color: rgb(255, 255, 255);
   z-index: 9999;
+  background-size: contain;
 }
 
 #status {
