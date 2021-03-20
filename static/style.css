@@ -4,6 +4,7 @@
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
+  overflow: hidden;
 
 }
 
@@ -210,7 +211,7 @@ h6 {
   top: 55px;
   right: 15px;
   /*Remove left margin to align right.*/
-  bottom: 15px;
+  /*remove bottom margin to reduce height.*/
   z-index: 9999;
   overflow-y: auto;
   background: #fff;
@@ -218,7 +219,7 @@ h6 {
   opacity: 0;
   visibility: hidden;
   border-radius: 10px;
-  padding: 10px 0 0 10px; /*Add padding-left for good indent.*/
+  padding: 10px 0 20px 10px; /*Add padding-(bottom and left) for good indent.*/
 }
 
 .mobile-nav * {
@@ -885,3 +886,24 @@ span.scale-rating label:before {
   vertical-align: middle;
   z-index: 2;
 }
+ master
+
+
+
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/static/Elektra_Logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgb(255, 255, 255);
+  z-index: 9999;
+}
+
+#status {
+  position: relative;
+}
+ master
