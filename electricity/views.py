@@ -8,6 +8,7 @@ from django.contrib.auth.hashers import make_password, check_password
 from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.forms import UserCreationForm
 from electricity.models import electricity
+from django.contrib import messages
 # Create your views here.
 
 def index(request):
@@ -25,6 +26,7 @@ def registeruser(request):
                 data.username=request.POST["username"]
                 data.email = request.POST["email"]
                 data.is_active = True
+                messages.success(request, 'Account is Created. Login Now..')
                 print("user saved")
                 data.save() 
                 return render(request,"login.html")

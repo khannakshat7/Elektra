@@ -4,69 +4,91 @@
 
 
 
-    <div class="container register">
-        <div class="row">
-            <div class="col-md-3 register-left">
-                <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
-                <h3>Welcome</h3>
-                <p>You are 30 seconds away from Elektra!</p>
-            </div>
-            <div class="col-md-9 register-right">
-                <div class="tab-content" id="myTabContent">
-                  
-                    <div class="row">
-                        <div class="col-md-6">
-                          
-                            <form class="m-5" action="{% url 'register' %}" method="POST">
-                                {% csrf_token %}
-                                <h2>Sign Up</h2>
-                                <div class="form-group">
-                                  <input type="text" class="form-control" name="username" placeholder="Email" id="exampleInputEmail1" aria-describedby="emailHelp" required>
-                                  
-                                  {{errorE}}
-                                </div>
-                                <div class="form-group">
-                                  <input type="text" name="first_name" class="form-control" placeholder="first_name" id="exampleInputFirst" required>
-                                </div>
-                                <div class="form-group">
-                                  <input type="text" name="last_name" class="form-control" placeholder="last_name" id="exampleInputFirst" required>
-                                </div>
-                                <div class="form-group">
-                                  <input type="text" name="email" class="form-control" placeholder="Username" id="exampleInputFirst" required>
-                                </div>
-                                <div class="form-group">
-                                  <input type="password" name="password" class="form-control" placeholder="Password" id="exampleInputPassword1" required>
-                                {{errorP}}
-                                </div>
-                                <div class="form-group">
-                                  <input type="password" name="rpassword" class="form-control" placeholder="Confirm Password" id="exampleInputRPassword1" required>
-                                  {{errorPC}}
-                                </div>
-                                <i class="ion-ios-arrow-right"></i> <a href="{% url 'forgotp' %}">Forget Password</a>
-                                <button type="submit" class="btn btn-primary">Submit</button>  
-                              </form>
-                        </div>
-                        <!-- Login form -->
-                        <div class="col-md-6">
-                            <form class="m-5" action="{% url 'login' %}" method="POST">
-                                {% csrf_token %}
-                                <h2>Log in</h2>
-                                <div class="form-group">
-                                  <input type="text" class="form-control" name="username" placeholder="Email" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                  
-                                </div>
-                                <div class="form-group">
-                                  <input type="password" name="password" class="form-control" placeholder="Password" id="exampleInputPassword1">
-                                    {{invalid}}
-                                </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                              </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+<div class="container register">
+  <div class="row">
+    <div class="col-md-3 register-left">
+      <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+      <h3>Welcome</h3>
+      <p>You are 30 seconds away from Elektra!</p>
     </div>
+    <div class="col-md-9 register-right">
+      <div class="row" style="margin-left: 50px; margin-top: 2px;">
+        <div class="col" >
+          {% if messages %}
+          {% for message in messages %}
+          <div class="alert alert-{{message.tags}}" role="alert" style="text-align: center;">
+            {{message}}
+          </div>
+          {% endfor %}
+          {% endif %}
+  
+        </div>
+  
+      </div>
+      <div class="tab-content" id="myTabContent">
+        <div class="row">
+          <div class="col-md-6">
+            <form class="m-5" action="{% url 'register' %}" method="POST">
+              {% csrf_token %}
+              <h2>Sign Up</h2>
+              <div class="form-group">
+                <input type="text" class="form-control" name="username" placeholder="Email" id="exampleInputEmail1"
+                  aria-describedby="emailHelp" required>
+                {{errorE}}
+              </div>
+              <div class="form-group">
+                <input type="text" name="first_name" class="form-control" placeholder="first_name"
+                  id="exampleInputFirst" required>
+              </div>
+              <div class="form-group">
+                <input type="text" name="last_name" class="form-control" placeholder="last_name" id="exampleInputFirst"
+                  required>
+              </div>
+              <div class="form-group">
+                <input type="text" name="email" class="form-control" placeholder="Username" id="exampleInputFirst"
+                  required>
+              </div>
+              <div class="form-group">
+                <input type="password" name="password" class="form-control" placeholder="Password"
+                  id="exampleInputPassword1" required>
+                {{errorP}}
+              </div>
+              <div class="form-group">
+                <input type="password" name="rpassword" class="form-control" placeholder="Confirm Password"
+                  id="exampleInputRPassword1" required>
+                {{errorPC}}
+              </div>
+              <i class="ion-ios-arrow-right"></i> <a href="{% url 'forgotp' %}">Forget Password</a>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+          <!-- Login form -->
+          <div class="col-md-6">
+            <form class="m-5" action="{% url 'login' %}" method="POST">
+              {% csrf_token %}
+              <h2>Log in</h2>
+              <div class="form-group">
+                <input type="text" class="form-control" name="username" placeholder="Email" id="exampleInputEmail1"
+                  aria-describedby="emailHelp">
 
+              </div>
+              <div class="form-group">
+                <input type="password" name="password" class="form-control" placeholder="Password"
+                  id="exampleInputPassword1">
+                {{invalid}}
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script type="text/javascript">
+  $(".alert").delay(10000).slideUp(200, function () {
+      $(this).alert('close');
+  });
+</script>
 {% endblock %}
