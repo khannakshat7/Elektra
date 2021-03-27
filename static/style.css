@@ -210,8 +210,6 @@ h6 {
   position: fixed;
   top: 55px;
   right: 15px;
-  /*Remove left margin to align right.*/
-  /*remove bottom margin to reduce height.*/
   z-index: 9999;
   overflow-y: auto;
   background: #fff;
@@ -886,9 +884,7 @@ span.scale-rating label:before {
   vertical-align: middle;
   z-index: 2;
 }
- master
-
-
+ 
 
 #preloader {
   position: fixed;
@@ -906,4 +902,4 @@ span.scale-rating label:before {
 #status {
   position: relative;
 }
- master
+
