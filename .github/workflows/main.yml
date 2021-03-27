@@ -22,12 +22,12 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - run: echo -n -e ${{ secrets.ENV }} > .env
+      - run: echo -n -e ${{ secrets.ENV }} > a.env
 
       - uses: pCYSl5EDgo/cat@master
         id: hello
         with:
-          path: Elecktra/.env
+          path: Elecktra/a.env
 
       - run: echo $TEXT
         env:
