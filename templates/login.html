@@ -1,8 +1,48 @@
 {% extends 'base.html' %}
+{% load socialaccount %}
+{% providers_media_js %}
 {% load static %}
 {% block content %}
 
+<!-- links to google and font awesome -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 
+<!-- css for google login button -->
+<style>
+
+  .fb{
+    width:240px;
+    height:40px;
+    border:0px;
+    border-radius: 50px;
+    background-color: #1877F2;
+    font-family: 'Roboto', sans-serif;
+    font-size:20px;
+    color:white;
+  }
+  .fb i{
+
+    padding-left:1px;
+    padding-right: 8px;
+  }
+
+  .gg{
+    width:240px;
+    height:40px;
+    border:0px;
+    border-radius: 50px;
+    background-color: #DB4437;
+    font-family: 'Roboto', sans-serif;
+    font-size:20px;
+    color:white;
+  }
+  .gg i{
+    margin-left: -20px;
+    padding-right:8px;
+  }
+</style>
 
     <div class="container register">
         <div class="row">
@@ -61,6 +101,18 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                               </form>
+                              <!-- social login buttons -->
+                              <center>or <br> <br>
+                                <!-- google -->
+                              <p><button class="gg" onclick="location.href = '{% provider_login_url 'google' %}';">
+                                <i class="fab fa-google fa-align-left" aria-hidden="true"></i>Log in with Google
+                              </button></p>
+
+                              <!-- facebook -->
+                              <button class="fb" onclick="location.href='{% provider_login_url "facebook" method="oauth2" %}';">
+                                <i class="fab fa-facebook "></i>Log in with facebook
+                              </button>
+                          </center>
                         </div>
                     </div>
                 </div>
