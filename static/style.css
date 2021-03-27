@@ -900,11 +900,11 @@ span.scale-rating label:before {
   z-index: 9999;
 }
 @keyframes mymove {
-    0%   {background-size: 200px 200px;}
-    25%  {background-size: 250px 250px;}
-    50%  {background-size: 200px 200px;}
-    75%  {background-size: 250px 250px;}
-    100% {background-size: 200px 200px;}
+    0%   {background-size: 400px 200px;}
+    25%  {background-size: 450px 250px;}
+    50%  {background-size: 400px 200px;}
+    75%  {background-size: 450px 250px;}
+    100% {background-size: 400px 200px;}
 }
 
   #status {
