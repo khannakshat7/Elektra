@@ -30,6 +30,7 @@ urlpatterns = [
     path('feedback/',views.feedback,name="feedback"),
     path('logout/',views.logoutuser,name="logout"),
     path('coordinates/',views.getmapcoordinates,name="coordinates"),
+    path('contact/',views.contact,name="contact"),
     path('Forgot_Password/',views.forgotp,name="forgotp"),
     path('accounts/', include('allauth.urls')),
 ]

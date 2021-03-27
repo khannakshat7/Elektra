@@ -3,11 +3,14 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import HttpResponse, redirect, render
 from django.views.decorators.csrf import csrf_exempt
+
+from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from django.conf import settings
+from electricity.models import electricity,Contact
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password, check_password
-from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.forms import UserCreationForm
-from electricity.models import electricity
 # Create your views here.
 
 def index(request):
@@ -112,6 +115,20 @@ def annnouncements(request):
 @login_required
 def feedback(request):
     return render(request,"feedback.html")
+
+#Cobtact view
+def contact(request):
+    if request.method == "POST":
+        name = request.POST['name']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        name = request.POST['name']
+        message = request.POST['message']
+        contact = Contact(name=name,email=email,phone=phone,message=message)
+        contact.save()
+        subject = name + ' wants to contact you'
+        send_mail(subject,message,email,['your_gmail@gmail.com'],fail_silently=False)
+    return render(request,"contact.html")
 
 @csrf_exempt
 def getmapcoordinates(request):
