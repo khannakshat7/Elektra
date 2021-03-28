@@ -142,6 +142,20 @@ def contact(request):
         send_mail(subject,message,email,['your_gmail@gmail.com'],fail_silently=False)
     return render(request,"contact.html")
 
+#Cobtact view
+def contact(request):
+    if request.method == "POST":
+        name = request.POST['name']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        name = request.POST['name']
+        message = request.POST['message']
+        contact = Contact(name=name,email=email,phone=phone,message=message)
+        contact.save()
+        subject = name + ' wants to contact you'
+        send_mail(subject,message,email,['your_gmail@gmail.com'],fail_silently=False)
+    return render(request,"contact.html")
+
 @csrf_exempt
 def getmapcoordinates(request):
     if(request.method == 'POST'):
