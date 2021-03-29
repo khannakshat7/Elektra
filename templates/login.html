@@ -82,7 +82,7 @@
                                   <input type="password" name="rpassword" class="form-control" placeholder="Confirm Password" id="exampleInputRPassword1" required>
                                   {{errorPC}}
                                 </div>
-                                <i class="ion-ios-arrow-right"></i> <a href="{% url 'forgotp' %}">Forget Password</a>
+                                
                                 <button type="submit" class="btn btn-primary">Submit</button>  
                               </form>
                         </div>
@@ -99,6 +99,7 @@
                                   <input type="password" name="password" class="form-control" placeholder="Password" id="exampleInputPassword1">
                                     {{invalid}}
                                 </div>
+                                <i class="ion-ios-arrow-right"></i> <a href="{% url 'forgotp' %}">Forgot Password?</a>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                               </form>
                               <!-- social login buttons -->

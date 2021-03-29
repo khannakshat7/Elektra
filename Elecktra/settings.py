@@ -14,8 +14,8 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
-STATIC_DIR = os.path.join(BASE_DIR,'static')
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -40,12 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'electricity',
 
-    #for social auth
+    # for social auth
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    #providers
+    # providers
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
 ]
@@ -65,7 +65,7 @@ ROOT_URLCONF = 'Elecktra.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_DIR,],
+        'DIRS': [TEMPLATE_DIR, ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -88,8 +88,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'HOST': '127.0.0.1',
-        'USER': '',
-        'PASSWORD': '',
+        'USER': 'root',
+        'PASSWORD': 'sonali',
         'NAME': 'elecktra',
     }
 }
@@ -150,7 +150,7 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-#facebook-auth
+# facebook-auth
 SOCIAL_AUTH_FACEBOOK_KEY = '896548307807820'
 SOCIAL_AUTH_FACEBOOK_SECRET = 'b089c77a2d60927ac58d859dd36471fc'
 ACCOUNT_USERNAME_REQURIED = True
@@ -199,5 +199,5 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'your_email@gmal.com'
 EMAIL_HOST_PASSWORD = 'your gmail password'
 EMAIL_BACKEND = (
-        "django.core.mail.backends.smtp.EmailBackend"
-    )
+    "django.core.mail.backends.smtp.EmailBackend"
+)
