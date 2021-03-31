@@ -11,6 +11,9 @@ from electricity.models import electricity,Contact
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password, check_password
 from django.contrib.auth.forms import UserCreationForm
+from django.http import HttpResponseRedirect
+import requests
+import json
 # Create your views here.
 
 def index(request):
@@ -119,6 +122,19 @@ def feedback(request):
 #Cobtact view
 def contact(request):
     if request.method == "POST":
+        recaptcha_response = request.POST.get("g-recaptcha-response")
+        url = "https://www.google.com/recaptcha/api/siteverify"
+        data = {
+                'secret': "6LfEWpIaAAAAAIJ0DdQCVxe_w5v4tAjyj6Quqp5v",
+                'response': recaptcha_response
+        }
+        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+        result = r.json()
+
+        if result['success']==False:
+            messages.error(request, 'Invalid reCAPTCHA. Please try again.')
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
         name = request.POST['name']
         email = request.POST['email']
         phone = request.POST['phone']
