@@ -22,6 +22,19 @@ def index(request):
 
 def registeruser(request):
     if not User.objects.filter(username=request.POST["username"]).exists():
+        recaptcha_response = request.POST.get("g-recaptcha-response")
+        url = "https://www.google.com/recaptcha/api/siteverify"
+        data = {
+                'secret': "6LfEWpIaAAAAAIJ0DdQCVxe_w5v4tAjyj6Quqp5v",
+                'response': recaptcha_response
+        }
+        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+        result = r.json()
+
+        if result['success']==False:
+            messages.error(request, 'Invalid reCAPTCHA. Please try again.')
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        
         if request.POST["password"]==request.POST["rpassword"]:
             if (len(request.POST["password"]) > 7):
                 data=User()
