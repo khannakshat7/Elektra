@@ -33,9 +33,15 @@
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
   crossorigin=""></script>
+
+  
+  <!--style for contact page-->
+  {% block style %}{% endblock style %}
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <style>
-    #mapid { height: 700px; width: 1300px;}
+    /*width : 100vw is for responsiveness of map*/
+    #mapid { height: 700px; width:100vw;}
   </style>
 </head>
 
@@ -67,6 +73,7 @@
           <li><a {% if url_name == 'dashboard' %}class="active"{% endif %} href="{% url 'dashboard' %}">Dashboard</a></li>
           <li><a {% if url_name == 'announcements' %}class="active"{% endif %} href="{% url 'announcements' %}">Announcements</a></li>
           <li><a {% if url_name == 'feedback' %}class="active"{% endif %} href="{% url 'feedback' %}">Feedback</a></li>
+          <li><a {% if url_name == 'contact' %}class="active"{% endif %} href="{% url 'contact' %}">Contact Us</a></li>
           {%endwith%}
           {% if user.is_authenticated %}
           <li><a href="#" style="font-weight: bolder;  pointer-events: none;">Welcome, {{ user.first_name }}  {{user.last_name}}</a></li>
@@ -112,10 +119,12 @@
 
   
   <!-- ======= Footer ======= -->
+<!--If on contact page then don't use the contact footer-->
+{% with request.resolver_match.url_name as url_name %}
+{% if url_name != 'contact' %}
   <section id="contact">
     <div class="section-title">
       <h2>Contact</h2>
-
     </div>
     <footer id="footer">
       <div class="footer-top">
@@ -172,6 +181,8 @@
       </div>
     </footer>
   </section>
+{% endif %}
+{% endwith %}
   <!-- End Footer -->
   </section>
 
