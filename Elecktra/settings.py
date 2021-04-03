@@ -190,11 +190,17 @@ SOCIALACCOUNT_PROVIDERS = {
 LOGIN_REDIRECT_URL = "/"
 LOGIN_URL = '/login/'
 
+#gmail modified settings by sumek
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# Host for sending e-mail.
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
+
+# Port for sending e-mail.
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'your_email@gmal.com'
-EMAIL_HOST_PASSWORD = 'your gmail password'
-EMAIL_BACKEND = (
-        "django.core.mail.backends.smtp.EmailBackend"
-    )
+
+# Optional SMTP authentication information for EMAIL_HOST.
+EMAIL_HOST_USER = 'your_gmail@gmail.com'
+EMAIL_HOST_PASSWORD = 'your gamil password'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL=False
