@@ -1,3 +1,4 @@
+gunicorn
 Django
 mysqlclient
 django-environ
