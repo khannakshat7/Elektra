@@ -22,16 +22,6 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - run: echo -n -e ${{ secrets.ENV }} > a.env
-
-      - uses: pCYSl5EDgo/cat@master
-        id: hello
-        with:
-          path: Elecktra/a.env
-
-      - run: echo $TEXT
-        env:
-          TEXT: ${{ steps.hello.outputs.text }}
         
       - uses: actions/checkout@v2
 
@@ -50,8 +40,13 @@ jobs:
           gcloud auth activate-service-account ${{ secrets.GCP_SA_EMAIL }} --key-file=client-secret.json
           gcloud config set project ${{ secrets.PROJECT_ID }}
           gcloud -q app deploy app.yaml --promote
-          
-      - run: echo DEBUG=False\nDATABASE_URL=${{ secrets.DATABASE_URL }}\nUSER=${{ secrets.USER }}\nPASSWORD=${{ secrets.PASSWORD }}\nDATABASE_NAME=${{ secrets.DATABASE_NAME }} > .env
+      
+      - run: cd ./Elecktra
+      - run: echo DEBUG=False >> .env
+      - run: echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
+      - run: echo USER=${{ secrets.USER }} >> .env
+      - run: echo PASSWORD=${{ secrets.PASSWORD }} >> .env
+      - run: echo DATABASE_NAME=${{ secrets.DATABASE_NAME }} >> .env
       - uses: actions/upload-artifact@v2
         with:
           path: Elecktra/.env
