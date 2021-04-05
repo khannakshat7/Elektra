@@ -3,11 +3,17 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import HttpResponse, redirect, render
 from django.views.decorators.csrf import csrf_exempt
+
+from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from django.conf import settings
+from electricity.models import electricity,Contact
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password, check_password
-from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.forms import UserCreationForm
-from electricity.models import electricity
+from django.http import HttpResponseRedirect
+import requests
+import json
 # Create your views here.
 
 def index(request):
@@ -16,6 +22,19 @@ def index(request):
 
 def registeruser(request):
     if not User.objects.filter(username=request.POST["username"]).exists():
+        recaptcha_response = request.POST.get("g-recaptcha-response")
+        url = "https://www.google.com/recaptcha/api/siteverify"
+        data = {
+                'secret': "6LfEWpIaAAAAAIJ0DdQCVxe_w5v4tAjyj6Quqp5v",
+                'response': recaptcha_response
+        }
+        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+        result = r.json()
+
+        if result['success']==False:
+            messages.error(request, 'Invalid reCAPTCHA. Please try again.')
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        
         if request.POST["password"]==request.POST["rpassword"]:
             if (len(request.POST["password"]) > 7):
                 data=User()
@@ -112,6 +131,33 @@ def annnouncements(request):
 @login_required
 def feedback(request):
     return render(request,"feedback.html")
+
+#Cobtact view
+def contact(request):
+    if request.method == "POST":
+        recaptcha_response = request.POST.get("g-recaptcha-response")
+        url = "https://www.google.com/recaptcha/api/siteverify"
+        data = {
+                'secret': "6LfEWpIaAAAAAIJ0DdQCVxe_w5v4tAjyj6Quqp5v",
+                'response': recaptcha_response
+        }
+        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+        result = r.json()
+
+        if result['success']==False:
+            messages.error(request, 'Invalid reCAPTCHA. Please try again.')
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+        name = request.POST['name']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        name = request.POST['name']
+        message = request.POST['message']
+        contact = Contact(name=name,email=email,phone=phone,message=message)
+        contact.save()
+        subject = name + ' wants to contact you'
+        send_mail(subject,message,email,['your_gmail@gmail.com'],fail_silently=False)
+    return render(request,"contact.html")
 
 @csrf_exempt
 def getmapcoordinates(request):

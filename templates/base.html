@@ -42,17 +42,21 @@
 
   </script>
 
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""></script>
 
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+  
+  <!--style for contact page-->
+  {% block style %}{% endblock style %}
 
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <style>
-
-    #mapid {
-      height: 700px;
-      width: 1300px;
-    }
+    /*width : 100vw is for responsiveness of map*/
+    #mapid { height: 700px; width:100vw;}
   </style>
 </head>
 
@@ -89,6 +93,7 @@
           <li><a href="{% url 'feedback' %}" style="font-size: 1.3rem;">Feedback</a></li>
 
           {% with request.resolver_match.url_name as url_name %}
+
           {%endwith%}
 
           {% if user.is_authenticated %}
@@ -136,10 +141,13 @@
 
   
   <!-- ======= Footer ======= -->
-   <section id="contact">
+
+<!--If on contact page then don't use the contact footer-->
+{% with request.resolver_match.url_name as url_name %}
+{% if url_name != 'contact' %}
+  <section id="contact">
     <div class="section-title">
       <h2>Contact</h2>
-
     </div>
     <footer id="footer">
       <div class="footer-top">
@@ -196,10 +204,13 @@
       </div>
     </footer>
   </section>
+{% endif %}
+{% endwith %}
   <!-- End Footer -->
 
 
-
+  
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <!-- Vendor JS Files -->
   <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
   <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
