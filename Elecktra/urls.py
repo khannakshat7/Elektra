@@ -19,6 +19,9 @@ from electricity import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index,name="home"),
@@ -33,6 +36,8 @@ urlpatterns = [
     path('contact/',views.contact,name="contact"),
     path('Forgot_Password/',views.forgotp,name="forgotp"),
     path('accounts/', include('allauth.urls')),
+    path('chat/', include('chat.urls'), name="chat"),
+
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
