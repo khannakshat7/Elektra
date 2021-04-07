@@ -75,6 +75,7 @@
           <li><a {% if url_name == 'feedback' %}class="active"{% endif %} href="{% url 'feedback' %}">Feedback</a></li>
           <li><a {% if url_name == 'contact' %}class="active"{% endif %} href="{% url 'contact' %}">Contact Us</a></li>
           {%endwith%}
+          
           {% if user.is_authenticated %}
           <li><a class="usernamelink" href="#" >Welcome, {{ user.first_name }}  {{user.last_name}}</a></li>
           <li style=" font-weight: 800;
@@ -97,7 +98,16 @@
                     border-style: none;
                     color: #fff;"><a href="{% url 'login' %}">Login/Signup</a></li>
           {% endif %}
-          
+          <li>
+              <div>
+            <input type="checkbox" class="checkbox" id="chk" />
+            <label class="label" for="chk">
+              <i class="fas fa-moon"></i>
+              <i class="fas fa-sun"></i>
+              <div class="ball"></div>
+            </label>
+          </div>
+          </li>
 
         </ul>
       </nav>
@@ -209,7 +219,14 @@
 
 
 
+<!-- for dark mode -->
+<script type="text/javascript">
+  const chk = document.getElementById('chk');
 
+  chk.addEventListener('change', () => {
+    document.body.classList.toggle('dark');
+  });
+</script>
 
 <!-- JAVASCRIPT FOR FETChING CASES , LIVE UPDATES -->
 <script type="text/javascript">
