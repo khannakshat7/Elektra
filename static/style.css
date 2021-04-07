@@ -903,3 +903,73 @@ span.scale-rating label:before {
   position: relative;
 }
 
+/* Preloader Css */
+
+.forloader{
+  position: fixed;
+  z-index: 99999;
+  top:0;
+  left:0;
+  width:100vw;
+  height: 100vh;
+  transition: 2s;
+}
+.forloader::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width:50vw;
+   background-image: linear-gradient(to left, #35d6ed, rgba(255,0,0,0)); 
+  transition: 2s;
+}
+.forloader:after{
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  background-image: linear-gradient(to left, rgba(255,0,0,0),#35d6ed); 
+  width:50vw;
+  transition: 2s;
+}
+.forloader.complete:before{
+  left:-50%;
+}
+.forloader.complete:after{
+  right:-50%;
+}
+.forloader.complete{
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+#loader2 img{
+  position: absolute;
+  top:30vh;
+  left:40vw;
+  transform: translate(-50%,-50%);
+  width:850px;
+  height: 350px;
+  animation: cube 1s linear infinite;
+  z-index: 100000;
+}
+@keyframes cube{
+  0%
+  {
+    transform: scale(1);
+  }
+  25%{
+    transform: scale(1.24);
+  }
+  50%{
+    transform: scale(1.16);
+  }
+  75%{
+    transform:scale(1.08);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
