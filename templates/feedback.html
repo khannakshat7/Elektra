@@ -20,7 +20,24 @@
         label {
             color: #000;
         }
+
+        .alert-error{
+            background-color: rgb(247, 160, 160);
+            color: whitesmoke;
+        }
     </style>
+
+    <!-- alert section -->
+    {% if msg %}
+    <div class="alert alert-{{tag}} alert-dismissible fade show text-center mx-2" role="alert">
+        <strong>{{msg}}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endif %}
+
+    <!-- form section -->
     <section style="border:2px solid #43a7d5">
         <div style="background:#43a7d5">
 
@@ -38,135 +55,92 @@
 
             <h4>Please rate your service experience for the following parameters</h4>
 
-            <form method="post" target="_blank">
+            <form method="POST" action={% url 'feedback' %}>
                 
                 {% csrf_token %}
                 
                 <label>1. Your overall experience with us ?</label><br>
 
                 <span class="star-rating">
-                    <input type="radio" name="rating" value="1"><i></i>
-                    <input type="radio" name="rating" value="2"><i></i>
-                    <input type="radio" name="rating" value="3"><i></i>
-                    <input type="radio" name="rating" value="4"><i></i>
-                    <input type="radio" name="rating" value="5"><i></i>
+                    <input type="radio" name="overall_experience" value="1" required><i></i>
+                    <input type="radio" name="overall_experience" value="2" required><i></i>
+                    <input type="radio" name="overall_experience" value="3" required><i></i>
+                    <input type="radio" name="overall_experience" value="4" required><i></i>
+                    <input type="radio" name="overall_experience" value="5" required><i></i>
                 </span>
 
                 <div class="clear"></div>
                 <hr class="survey-hr">
                 <label>2. Time to time update of your location.</label><br>
                 <span class="star-rating">
-                    <input type="radio" name="rating" value="1"><i></i>
-                    <input type="radio" name="rating" value="2"><i></i>
-                    <input type="radio" name="rating" value="3"><i></i>
-                    <input type="radio" name="rating" value="4"><i></i>
-                    <input type="radio" name="rating" value="5"><i></i>
+                    <input type="radio" name="time_to_time_update" value="1" required><i></i>
+                    <input type="radio" name="time_to_time_update" value="2" required><i></i>
+                    <input type="radio" name="time_to_time_update" value="3" required><i></i>
+                    <input type="radio" name="time_to_time_update" value="4" required><i></i>
+                    <input type="radio" name="time_to_time_update" value="5" required><i></i>
                 </span>
 
                 <div class="clear"></div>
                 <hr class="survey-hr">
                 <label>3. Experience while waiting for response from Electricity board.</label><br>
                 <span class="star-rating">
-                    <input type="radio" name="rating" value="1"><i></i>
-                    <input type="radio" name="rating" value="2"><i></i>
-                    <input type="radio" name="rating" value="3"><i></i>
-                    <input type="radio" name="rating" value="4"><i></i>
-                    <input type="radio" name="rating" value="5"><i></i>
+                    <input type="radio" name="experience_due_to_delay" value="1" required><i></i>
+                    <input type="radio" name="experience_due_to_delay" value="2" required><i></i>
+                    <input type="radio" name="experience_due_to_delay" value="3" required><i></i>
+                    <input type="radio" name="experience_due_to_delay" value="4" required><i></i>
+                    <input type="radio" name="experience_due_to_delay" value="5" required><i></i>
                 </span>
 
                 <div class="clear"></div>
                 <hr class="survey-hr">
                 <label>4. Satisfactory Visuals/Images</label><br>
                 <span class="star-rating">
-                    <input type="radio" name="rating" value="1"><i></i>
-                    <input type="radio" name="rating" value="2"><i></i>
-                    <input type="radio" name="rating" value="3"><i></i>
-                    <input type="radio" name="rating" value="4"><i></i>
-                    <input type="radio" name="rating" value="5"><i></i>
+                    <input type="radio" name="visuals_satisfactory" value="1" required><i></i>
+                    <input type="radio" name="visuals_satisfactory" value="2" required><i></i>
+                    <input type="radio" name="visuals_satisfactory" value="3" required><i></i>
+                    <input type="radio" name="visuals_satisfactory" value="4" required><i></i>
+                    <input type="radio" name="visuals_satisfactory" value="5" required><i></i>
                 </span>
 
                 <div class="clear"></div>
                 <hr class="survey-hr">
                 <label>5. Quality of work done</label><br>
                 <span class="star-rating">
-                    <input type="radio" name="rating" value="1"><i></i>
-                    <input type="radio" name="rating" value="2"><i></i>
-                    <input type="radio" name="rating" value="3"><i></i>
-                    <input type="radio" name="rating" value="4"><i></i>
-                    <input type="radio" name="rating" value="5"><i></i>
+                    <input type="radio" name="quality_of_work" value="1" required><i></i>
+                    <input type="radio" name="quality_of_work" value="2" required><i></i>
+                    <input type="radio" name="quality_of_work" value="3" required><i></i>
+                    <input type="radio" name="quality_of_work" value="4" required><i></i>
+                    <input type="radio" name="quality_of_work" value="5" required><i></i>
                 </span>
 
                 <div class="clear"></div>
                 <hr class="survey-hr">
                 <label>6.The display of Maps</label><br>
                 <span class="star-rating">
-                    <input type="radio" name="rating" value="1"><i></i>
-                    <input type="radio" name="rating" value="2"><i></i>
-                    <input type="radio" name="rating" value="3"><i></i>
-                    <input type="radio" name="rating" value="4"><i></i>
-                    <input type="radio" name="rating" value="5"><i></i>
+                    <input type="radio" name="experience_of_display_maps" value="1" required><i></i>
+                    <input type="radio" name="experience_of_display_maps" value="2" required><i></i>
+                    <input type="radio" name="experience_of_display_maps" value="3" required><i></i>
+                    <input type="radio" name="experience_of_display_maps" value="4" required><i></i>
+                    <input type="radio" name="experience_of_display_maps" value="5" required><i></i>
                 </span>
 
                 <div class="clear"></div>
                 <hr class="survey-hr">
-                <label>7. The Announcements section</label><br><br />
-                <div style="color:grey">
-                    <span style="float:left">
-                        POOR
-                    </span>
-                    <span style="float:right">
-                        BEST
-                    </span>
-
-                </div>
-                <span class="scale-rating">
-                    <label value="1">
-                        <input type="radio" name="rating">
-                        <label style="width:100%;"></label>
-                    </label>
-                    <label value="2">
-                        <input type="radio" name="rating">
-                        <label style="width:100%;"></label>
-                    </label>
-                    <label value="3">
-                        <input type="radio" name="rating">
-                        <label style="width:100%;"></label>
-                    </label>
-                    <label value="4">
-                        <input type="radio" name="rating">
-                        <label style="width:100%;"></label>
-                    </label>
-                    <label value="5">
-                        <input type="radio" name="rating">
-                        <label style="width:100%;"></label>
-                    </label>
-                    <label value="6">
-                        <input type="radio" name="rating">
-                        <label style="width:100%;"></label>
-                    </label>
-                    <label value="7">
-                        <input type="radio" name="rating">
-                        <label style="width:100%;"></label>
-                    </label>
-                    <label value="8">
-                        <input type="radio" name="rating">
-                        <label style="width:100%;"></label>
-                    </label>
-                    <label value="9">
-                        <input type="radio" name="rating">
-                        <label style="width:100%;"></label>
-                    </label>
-                    <label value="10">
-                        <input type="radio" name="rating" value="10">
-                        <label style="width:100%;"></label>
-                    </label>
+                <label>7. The Announcements section</label><br>
+                <span class="star-rating">
+                    <input type="radio" name="experience_of_announcements_section" value="1" required><i></i>
+                    <input type="radio" name="experience_of_announcements_section" value="2" required><i></i>
+                    <input type="radio" name="experience_of_announcements_section" value="3" required><i></i>
+                    <input type="radio" name="experience_of_announcements_section" value="4" required><i></i>
+                    <input type="radio" name="experience_of_announcements_section" value="5" required><i></i>
                 </span>
 
                 <div class="clear"></div>
                 <hr class="survey-hr">
-                <label for="m_3189847521540640526commentText">8. Any Other suggestions:</label><br /><br />
-                <textarea cols="75" name="commentText" rows="5" style="width:320px"></textarea><br>
-                <br>
+                <label for="others_suggestions">8. Any Other suggestions (optional):</label><br /><br />
+                <textarea cols="75" name="others_suggestions" rows="5" style="width:100%"></textarea>
+                <p style="color: #ff5151;font-size: 13px;margin-left: 2px;">Write within 100 characters</p>
+                <br><br>
                 <div class="clear"></div>
                 <input style="background:#43a7d5;color:#fff;padding:12px;border:0" type="submit"
                     value="Submit your review">&nbsp;
