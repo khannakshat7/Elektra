@@ -7,7 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.conf import settings
-from electricity.models import electricity,Contact
+from electricity.models import electricity,Contact,Feedback
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password, check_password
 from django.contrib.auth.forms import UserCreationForm
@@ -130,7 +130,31 @@ def annnouncements(request):
 
 @login_required
 def feedback(request):
-    return render(request,"feedback.html")
+    if request.method == 'POST':
+        context = {'msg': '', 'tag': ''}
+        try:
+            form_data = request.POST
+            if request.user.email:
+                user_email = request.user.email
+            else:
+                user_email = None
+            new_feedback = Feedback(overall_experience=form_data['overall_experience'],
+                            time_to_time_update=form_data['time_to_time_update'],
+                            experience_due_to_delay=form_data['experience_due_to_delay'],
+                            visuals_satisfactory=form_data['visuals_satisfactory'],
+                            quality_of_work=form_data['quality_of_work'],
+                            experience_of_display_maps=form_data['experience_of_display_maps'],
+                            experience_of_announcements_section=form_data['experience_of_announcements_section'],
+                            others_suggestions=form_data['others_suggestions'],
+                            user_email=user_email)
+            new_feedback.save()
+            context['msg'] = 'Thank You, your feedback response is saved. We will respond you as soon as possible !'
+            context['tag'] = 'success'
+        except Exception as e:
+            context['msg'] = 'Sorry, your feedback response is not saved. Please try again !'
+            context['tag'] = 'error'
+        return render(request, "feedback.html", context)
+    return render(request, "feedback.html")
 
 #Cobtact view
 def contact(request):

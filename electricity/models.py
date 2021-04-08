@@ -34,7 +34,9 @@ class MyAccountManager(BaseUserManager):
             user.is_staff = True
             user.is_superuser   = True
             user.save(using=self._db)
-            return user         
+            return user    
+
+
 class User(AbstractBaseUser):
     first_name = models.CharField(max_length=20, null=True, blank=False ,verbose_name='first_name')
     email = models.EmailField(null=True, blank=False,unique = True, verbose_name='email')
@@ -50,7 +52,6 @@ class User(AbstractBaseUser):
     last_login = models.DateTimeField(verbose_name= 'last login',null=True,blank=True,auto_now=True)  
     
     objects = MyAccountManager()
-    
     
     USERNAME_FIELD = "email"
 
@@ -69,6 +70,7 @@ class electricity(models.Model):
     longitude = models.CharField(max_length=50)
     is_solved = models.BooleanField(default=False)
 
+
 #Model for contact
 class Contact(models.Model):
     sno = models.AutoField(primary_key=True)
@@ -76,3 +78,21 @@ class Contact(models.Model):
     email = models.EmailField( max_length=254)
     phone = models.CharField(max_length=13)
     message = models.TextField()
+
+
+# model for feedback
+class Feedback(models.Model):
+    overall_experience = models.IntegerField()
+    time_to_time_update = models.IntegerField()
+    experience_due_to_delay = models.IntegerField()
+    visuals_satisfactory = models.IntegerField()
+    quality_of_work = models.IntegerField()
+    experience_of_display_maps = models.IntegerField()
+    experience_of_announcements_section = models.IntegerField()
+    others_suggestions = models.CharField(max_length=100, blank=True, null=True)
+    date_posted = models.DateTimeField(auto_now_add=True )
+    user_email = models.CharField(max_length=100)
+
+    def __str__(self):
+        return str(self.user_email)
+
