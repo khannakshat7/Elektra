@@ -19,7 +19,6 @@ import json
 def index(request):
     return render(request,'index.html')
 
-
 def registeruser(request):
     if not User.objects.filter(username=request.POST["username"]).exists():
         recaptcha_response = request.POST.get("g-recaptcha-response")
@@ -128,10 +127,10 @@ def map(request):
 def annnouncements(request):
     return render(request,"announcements.html")
 
+# feedback view
 @login_required
 def feedback(request):
     if request.method == 'POST':
-        context = {'msg': '', 'tag': ''}
         try:
             form_data = request.POST
             if request.user.email:
@@ -148,12 +147,10 @@ def feedback(request):
                             others_suggestions=form_data['others_suggestions'],
                             user_email=user_email)
             new_feedback.save()
-            context['msg'] = 'Thank You, your feedback response is saved. We will respond you as soon as possible !'
-            context['tag'] = 'success'
+            messages.success(request, 'Thank You, your feedback response is saved. We will respond you as soon as possible !')
         except Exception as e:
-            context['msg'] = 'Sorry, your feedback response is not saved. Please try again !'
-            context['tag'] = 'error'
-        return render(request, "feedback.html", context)
+            messages.error(request, 'Sorry, your feedback response is not saved. Please try again !')
+        return redirect('feedback')
     return render(request, "feedback.html")
 
 #Cobtact view
