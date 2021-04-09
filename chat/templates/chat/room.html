@@ -150,14 +150,15 @@
         chatSocket.send(JSON.stringify({
             'command': 'new_message',
             'message': message,
-            'from': username
+            'from': username,
+            'area':roomName
         }));
 
         messageInputDom.value = '';
     };
 
     function fetchMessages() {
-      chatSocket.send(JSON.stringify({'command': 'fetch_messages' }));
+      chatSocket.send(JSON.stringify({'command': 'fetch_messages','area':roomName }));
     }
 
     function createMessage(data) {

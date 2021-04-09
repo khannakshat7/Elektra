@@ -61,6 +61,7 @@ def loginuser(request):
             data.area = area
             data.city = city
             data.user=username
+            data.status=True
             data.save()
 
             user = authenticate(username=username, password=password)
@@ -109,7 +110,13 @@ def forgotp(request):
 
 
 def logoutuser(request):
+
+    Location.objects.filter(user=request.user.username).delete()
+
     logout(request)
+
+
+
     return redirect('/')
 
 

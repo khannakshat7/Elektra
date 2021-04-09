@@ -10,7 +10,9 @@ User = get_user_model()
 class ChatConsumer(WebsocketConsumer):
 
     def fetch_messages(self, data):
-        messages = Message.last_30_messages()
+        area = data['area']
+        messages = Message.last_30_messages(area)
+
         content = {
             'command': 'messages',
             'messages': self.messages_to_json(messages)
@@ -19,10 +21,18 @@ class ChatConsumer(WebsocketConsumer):
 
     def new_message(self, data):
         author = data['from']
+
         author_user = User.objects.filter(username=author)[0]
+
+        area = data['area']
+
         message = Message.objects.create(
             author=author_user,
-            content=data['message'])
+            content=data['message'],
+            area=data['area']
+        )
+        message.save()
+
         content = {
             'command': 'new_message',
             'message': self.message_to_json(message)

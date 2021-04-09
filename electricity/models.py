@@ -84,4 +84,5 @@ class Contact(models.Model):
 class Location(models.Model):
     area = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
-    user = models.CharField(max_length=100)
+    user = models.CharField(max_length=100,null=True,blank=False)
+
