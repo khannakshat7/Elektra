@@ -36,3 +36,5 @@ urlpatterns = [
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+handler404 = 'electricity.views.error_404'
+handler500 = 'electricity.views.error_404'
