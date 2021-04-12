@@ -171,3 +171,6 @@ def getmapcoordinates(request):
             data.save()
         return redirect('map')
 
+def error_404(request, *args, **argv):
+        data = {}
+        return render(request,'404.html', data)
