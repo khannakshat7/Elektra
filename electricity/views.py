@@ -132,7 +132,7 @@ def annnouncements(request):
 def feedback(request):
     return render(request,"feedback.html")
 
-#Cobtact view
+#Contact view
 def contact(request):
     if request.method == "POST":
         recaptcha_response = request.POST.get("g-recaptcha-response")
