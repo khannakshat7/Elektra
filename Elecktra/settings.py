@@ -77,12 +77,12 @@ WSGI_APPLICATION = 'Elecktra.wsgi.application'
 
 DATABASES = {
     'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'HOST':'127.0.0.1',
-            'USER':'',
-            'PASSWORD':'',
-            'NAME': 'electra',
-        }
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': '127.0.0.1',
+        'USER': '',
+        'PASSWORD': '',
+        'NAME': 'elecktra',
+    }
 }
 
 
