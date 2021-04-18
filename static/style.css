@@ -4,6 +4,7 @@
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
+  overflow: hidden;
 
 }
 
@@ -67,6 +68,11 @@ h6 {
   }
 }
 
+.usernamelink{
+  font-weight: 600;
+  pointer-events: none;
+}
+
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
@@ -95,9 +101,9 @@ h6 {
   font-family: "Poppins", sans-serif;
 }
 
-.nav-menu a:hover,
-.nav-menu .active>a,
-.nav-menu li:hover>a {
+.nav-menu li a:hover,
+.nav-menu li .active,
+.nav-menu li a:focus {
   color: #2AB5E8;
   text-decoration: none;
 }
@@ -200,11 +206,10 @@ h6 {
 }
 
 .mobile-nav {
+  width: 220px;     /*Include width attribute to shrink the menu.*/
   position: fixed;
   top: 55px;
   right: 15px;
-  bottom: 15px;
-  left: 15px;
   z-index: 9999;
   overflow-y: auto;
   background: #fff;
@@ -212,7 +217,7 @@ h6 {
   opacity: 0;
   visibility: hidden;
   border-radius: 10px;
-  padding: 10px 0;
+  padding: 10px 0 20px 10px; /*Add padding-(bottom and left) for good indent.*/
 }
 
 .mobile-nav * {
@@ -303,6 +308,7 @@ section {
 .section-title {
   text-align: center;
   padding-bottom: 30px;
+  cursor: context-menu;
 }
 
 .section-title h2 {
@@ -344,6 +350,7 @@ section {
 .featured {
   position: relative;
   z-index: 2;
+  cursor: context-menu;
 }
 
 .featured .icon-box {
@@ -355,6 +362,7 @@ section {
 }
 
 .featured .icon-box i {
+  text-align: center;
   color: #DEA902;
   font-size: 42px;
   margin-bottom: 15px;
@@ -376,7 +384,9 @@ section {
   color: #545454;
   line-height: 24px;
   font-size: 14px;
+  text-align: center;
   margin-bottom: 0;
+
 }
 
 .featured .icon-box:hover {
@@ -678,6 +688,7 @@ section {
   border-radius: 15px;
   text-align: center;
   border-bottom: 3px solid #fff;
+  cursor: context-menu;
 }
 
 .services .icon-box:hover {
@@ -873,3 +884,22 @@ span.scale-rating label:before {
   vertical-align: middle;
   z-index: 2;
 }
+ 
+
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/static/Elektra_Logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgb(255, 255, 255);
+  z-index: 9999;
+}
+
+#status {
+  position: relative;
+}
+

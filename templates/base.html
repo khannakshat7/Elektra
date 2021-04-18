@@ -34,19 +34,31 @@
   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
   crossorigin=""></script>
 
+  
+  <!--style for contact page-->
+  {% block style %}{% endblock style %}
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <style>
-    #mapid { height: 700px; width: 1300px;}
-</style>
+    /*width : 100vw is for responsiveness of map*/
+    #mapid { height: 700px; width:100vw;}
+  </style>
 </head>
 
 <body>
+  <!-- Preloader -->
+<div class="preloader" id="preloader">
+  <div class=status id="status">
+  <!-- <img src="{% static 'Elektra_Logo.png' %}"> --> 
+  </div>
+</div>
+  
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center">
       <div class="logo mr-auto">
         <h1>
-          <!-- <img src="assets/img/Icon.png" style="margin-top: -10px;"> -->
-          <img src="{% static 'Icon.png' %}" style="margin-top: -15px;" alt="">
+          <!-- Icon -->
           <a href="/"><img src="{% static 'Elektra_Logo.png' %}" style="margin-top: -10px;" alt=""></a>
         </h1>
       </div>
@@ -55,13 +67,16 @@
 
       <nav class="nav-menu d-none d-lg-block ml-auto">
         <ul>
-          <li><a href="{% url 'home' %}">Home</a></li>
-          <li><a href="{% url 'map' %}">Map</a></li>
-          <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
-          <li><a href="{% url 'announcements' %}">Announcements</a></li>
-          <li><a href="{% url 'feedback' %}">Feedback</a></li>
+          {% with request.resolver_match.url_name as url_name %}
+          <li><a {% if url_name == 'home' %}class="active"{% endif %} href="{% url 'home' %}">Home</a></li>
+          <li><a {% if url_name == 'map' %}class="active"{% endif %} href="{% url 'map' %}">Map</a></li>
+          <li><a {% if url_name == 'dashboard' %}class="active"{% endif %} href="{% url 'dashboard' %}">Dashboard</a></li>
+          <li><a {% if url_name == 'announcements' %}class="active"{% endif %} href="{% url 'announcements' %}">Announcements</a></li>
+          <li><a {% if url_name == 'feedback' %}class="active"{% endif %} href="{% url 'feedback' %}">Feedback</a></li>
+          <li><a {% if url_name == 'contact' %}class="active"{% endif %} href="{% url 'contact' %}">Contact Us</a></li>
+          {%endwith%}
           {% if user.is_authenticated %}
-          <li><a href="#">Welcome, {{ user }}</a></li>
+          <li><a class="usernamelink" href="#" >Welcome, {{ user.first_name }}  {{user.last_name}}</a></li>
           <li style=" font-weight: 800;
                     font-size: 13px;
                     display: inline-block;
@@ -104,10 +119,12 @@
 
   
   <!-- ======= Footer ======= -->
+<!--If on contact page then don't use the contact footer-->
+{% with request.resolver_match.url_name as url_name %}
+{% if url_name != 'contact' %}
   <section id="contact">
     <div class="section-title">
       <h2>Contact</h2>
-
     </div>
     <footer id="footer">
       <div class="footer-top">
@@ -164,11 +181,14 @@
       </div>
     </footer>
   </section>
+{% endif %}
+{% endwith %}
   <!-- End Footer -->
   </section>
 
 
-
+  
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <!-- Vendor JS Files -->
   <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
   <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
@@ -193,6 +213,11 @@
 
 <!-- JAVASCRIPT FOR FETChING CASES , LIVE UPDATES -->
 <script type="text/javascript">
+  $(window).on('load', function() { // makes sure the whole site is loaded 
+  $('#status').fadeOut(); // will first fade out the loading animation 
+  $('#preloader').delay(2550).fadeOut('slow'); // will fade out the white DIV that covers the website. 
+  $('body').delay(2850).css({'overflow':'visible'});
+})
   fetch('https://corona.lmao.ninja/v2/countries/India')
     .then((response) => {
       return response.json();
@@ -209,4 +234,3 @@
       document.getElementById("todayDeaths").innerHTML = data.todayDeaths;
     })
 </script>
-

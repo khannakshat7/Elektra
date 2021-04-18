@@ -38,8 +38,41 @@
  
 <section style="margin: 6rem; text-align: center; padding: 20px;  " class="border shadow" >
     <div style="background:#43a7d5">
+            <form method="post" target="_blank">
+                
+                {% csrf_token %}
+                
+                <label>1. Your overall experience with us ?</label><br>
 
-    </div>
+                <span class="star-rating">
+                    <input type="radio" name="rating" value="1"><i></i>
+                    <input type="radio" name="rating" value="2"><i></i>
+                    <input type="radio" name="rating" value="3"><i></i>
+                    <input type="radio" name="rating" value="4"><i></i>
+                    <input type="radio" name="rating" value="5"><i></i>
+                </span>
+
+                <div class="clear"></div>
+                <hr class="survey-hr">
+                <label>2. Time to time update of your location.</label><br>
+                <span class="star-rating">
+                    <input type="radio" name="rating" value="1"><i></i>
+                    <input type="radio" name="rating" value="2"><i></i>
+                    <input type="radio" name="rating" value="3"><i></i>
+                    <input type="radio" name="rating" value="4"><i></i>
+                    <input type="radio" name="rating" value="5"><i></i>
+                </span>
+
+                <div class="clear"></div>
+                <hr class="survey-hr">
+                <label>3. Experience while waiting for response from Electricity board.</label><br>
+                <span class="star-rating">
+                    <input type="radio" name="rating" value="1"><i></i>
+                    <input type="radio" name="rating" value="2"><i></i>
+                    <input type="radio" name="rating" value="3"><i></i>
+                    <input type="radio" name="rating" value="4"><i></i>
+                    <input type="radio" name="rating" value="5"><i></i>
+                </span>
 
     <aside style="padding:15px">
         <h5 style="color: #000;">
