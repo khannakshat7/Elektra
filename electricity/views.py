@@ -141,8 +141,9 @@ def feedback(request):
             Quality_rating = request.POST['Quality_rating']
             map_rating = request.POST['map_rating']
             Announcement_rating = request.POST['Announcement_rating']
+            commentText = request.POST['commentText']
             print(experience_rating)
-            entry = FeedBack(experienceRating=experience_rating,updateRating=update_rating,SatisfactoryRating=Satisfactory_rating,QualityRating=Quality_rating,MapsRating=map_rating,AnnouncementsRating=Announcement_rating,waiting_for_responseRating=wating_response_rating)
+            entry = FeedBack(experienceRating=experience_rating,updateRating=update_rating,SatisfactoryRating=Satisfactory_rating,QualityRating=Quality_rating,MapsRating=map_rating,AnnouncementsRating=Announcement_rating,waiting_for_responseRating=wating_response_rating,commentText=commentText)
             entry.save()
             messages.success(request , "Thanks for the FeedBack!")
         except:

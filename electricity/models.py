@@ -87,3 +87,4 @@ class FeedBack(models.Model):
     MapsRating = models.CharField(max_length=50,default=0)
     AnnouncementsRating = models.CharField(max_length=50,default=0)
     waiting_for_responseRating = models.CharField(max_length=50,default=0)
+    commentText = models.TextField(max_length=500,default=0)
