@@ -21,9 +21,18 @@
             color: #000;
         }
     </style>
+    
     <section  style="margin: 6rem; text-align: center; padding: 20px;  " class="border shadow">
         <div style="background:#43a7d5">
-
+            {% if messages %}
+            <div>
+              {% for message in messages %}
+              
+              <div class="alert alert-{{ message.tags}}" style="margin-top:10px">{{ message }}</div>
+             
+              {% endfor %}
+            </div>
+            {% endif %}
         </div>
 
         <aside style="padding:15px">

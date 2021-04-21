@@ -7,7 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.conf import settings
-from electricity.models import electricity,Contact
+from electricity.models import electricity,Contact,FeedBack
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password, check_password
 from django.contrib.auth.forms import UserCreationForm
@@ -133,6 +133,20 @@ def annnouncements(request):
 def feedback(request):
     if request.method == "POST":
         print("post")
+        try:
+            experience_rating = request.POST['experience_rating']
+            update_rating = request.POST['update_rating']
+            wating_response_rating = request.POST['wating_response_rating']
+            Satisfactory_rating = request.POST['Satisfactory_rating']
+            Quality_rating = request.POST['Quality_rating']
+            map_rating = request.POST['map_rating']
+            Announcement_rating = request.POST['Announcement_rating']
+            print(experience_rating)
+            entry = FeedBack(experienceRating=experience_rating,updateRating=update_rating,SatisfactoryRating=Satisfactory_rating,QualityRating=Quality_rating,MapsRating=map_rating,AnnouncementsRating=Announcement_rating,waiting_for_responseRating=wating_response_rating)
+            entry.save()
+            messages.success(request , "Thanks for the FeedBack!")
+        except:
+            messages.error(request, 'Please Fill FeedBack Properly !!')
     else:
         print("Get")
     return render(request,"feedback.html")
