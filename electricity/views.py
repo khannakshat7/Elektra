@@ -131,6 +131,10 @@ def annnouncements(request):
 
 @login_required
 def feedback(request):
+    if request.method == "POST":
+        print("post")
+    else:
+        print("Get")
     return render(request,"feedback.html")
 
 #Cobtact view
