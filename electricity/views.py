@@ -133,7 +133,7 @@ def annnouncements(request):
 def feedback(request):
     return render(request,"feedback.html")
 
-#Cobtact view
+#Contact view
 def contact(request):
     if request.method == "POST":
         recaptcha_response = request.POST.get("g-recaptcha-response")
@@ -175,7 +175,7 @@ def getmapcoordinates(request):
 def error_404(request, *args, **argv):
         data = {}
         return render(request,'404.html', data)
-
+    
 def check_username(request):
     username = request.GET.get("name")
     if User.objects.filter(username=username).exists():
@@ -187,4 +187,4 @@ def check_email(request):
     email = request.GET.get("email")
     if User.objects.filter(email=email).exists():
         return JsonResponse({"exists":"yes"})
-    return JsonResponse({"exists":"no"}) 
+    return JsonResponse({"exists":"no"})
