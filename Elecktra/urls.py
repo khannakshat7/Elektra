@@ -33,6 +33,10 @@ urlpatterns = [
     path('contact/',views.contact,name="contact"),
     path('Forgot_Password/',views.forgotp,name="forgotp"),
     path('accounts/', include('allauth.urls')),
+    path('check_username',views.check_username,name="check_username"),
+    path('check_email',views.check_email,name="check_email")
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+handler404 = 'electricity.views.error_404'
+handler500 = 'electricity.views.error_404'
