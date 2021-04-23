@@ -26,6 +26,13 @@ h6 {
   font-family: "Raleway", sans-serif;
 }
 
+.btnKnow {
+  background-color: #FED103;
+  border-radius: 2em;
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: #4f5a62;
+  padding: 0.75em 1.75em;}
 
 
 /*--------------------------------------------------------------
