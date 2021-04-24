@@ -27,12 +27,17 @@ h6 {
 }
 
 .btnKnow {
-  background-color: #FED103;
+  background-color: #FED103 !important;
   border-radius: 2em;
   font-weight: bold;
   font-size: 1.25rem;
-  color: #4f5a62;
-  padding: 0.75em 1.75em;}
+  color: #4f5a62 !important;
+  padding: 0.75em 1.75em;
+}
+
+.btnKnow:hover {
+  color: #2AB5E8;
+}
 
 
 /*--------------------------------------------------------------
