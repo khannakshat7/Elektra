@@ -43,7 +43,7 @@
     padding-right:8px;
   }
 
-  
+
   /*css for errror area*/
   .errorarea1
   {
@@ -60,7 +60,7 @@
   #message {
     visibility:hidden;
   }
-  
+
   #message p {
     padding: 0px 5px;
     font-size: 11px;
@@ -70,29 +70,29 @@
   #message2 {
     visibility:hidden;
   }
-  
+
   #message2 p {
     padding: 0px 5px;
     font-size: 11px;
     margin-bottom: 0px;
   }
-  
+
   /* Add a green text color and a checkmark when the requirements are right */
   .valid {
     color: green;
   }
-  
+
   .valid:before {
     position: relative;
     left: -3px;
     content: "✔";
   }
-  
+
   /* Add a red text color and an "x" when the requirements are wrong */
   .invalid {
     color: red;
   }
-  
+
   .invalid:before {
     position: relative;
     left: -3px;
@@ -109,16 +109,16 @@
             </div>
             <div class="col-md-9 register-right">
                 <div class="tab-content" id="myTabContent">
-                  
+
                     <div class="row">
                         <div class="col-md-6">
-                          
+
                             <form class="m-5" action="{% url 'register' %}" method="POST">
                                 {% csrf_token %}
                                 <h2>Sign Up</h2>
                                 <div class="form-group">
                                   <input type="email" class="form-control" name="email" placeholder="Email" id="id_email" aria-describedby="emailHelp" required>
-                                  
+
                                   {{errorE}}
                                 </div>
                                 <div class="form-group">
@@ -170,7 +170,7 @@
                                     {% endif %}
                                 </div>
                                 <i class="ion-ios-arrow-right"></i> <a href="{% url 'forgotp' %}">Forgot Password?</a>
-                                <button type="submit" id="registerBtn" class="btn btn-primary" disabled>Submit</button>  
+                                <button type="submit" id="registerBtn" class="btn btn-primary" disabled>Submit</button>
                               </form>
                         </div>
                         <!-- Login form -->
@@ -179,11 +179,7 @@
                                 {% csrf_token %}
                                 <h2>Log in</h2>
                                 <div class="form-group">
-<!-- <<<<<<< master -->
-                                  <input type="text" class="form-control" name="username" placeholder="Email" id="exampleInputEmail1" aria-describedby="emailHelp" required>
-<!-- ======= -->
-<!-- >>>>>>> master -->
-                                  
+                                  <input type="email" class="form-control" name="username" placeholder="Email" id="exampleInputEmail1" aria-describedby="emailHelp" required>
                                 </div>
                                 <div class="form-group">
                                   <input type="password" name="password" class="form-control" placeholder="Password" id="loginpsw2" required>
@@ -233,17 +229,17 @@ document.getElementById('registerBtn').disabled = true;
     document.getElementById("message").style.visibility = "visible";
     errorarea1.style.display = "block";
   }
-  
+
   // When the user clicks outside of the password field, hide the message box
   myInput.onblur = function() {
     document.getElementById("message").style.visibility = "hidden";
     errorarea1.style.display = "none";
   }
 
-  
+
 
   // for confirm password
-  
+
  // When the user clicks on the password field, show the message box
  myinput2.onfocus = function() {
   document.getElementById("message2").style.visibility = "visible";
@@ -256,40 +252,40 @@ myinput2.onblur = function() {
   errorarea1.style.display = "none";
 }
 
-  
+
   // When the user starts to type something inside the password field
   myInput.onkeyup = function() {
     document.getElementById('registerBtn').disabled = true;
     // Validate lowercase letters
     var lowerCaseLetters = /[a-z]/g;
-    if(myInput.value.match(lowerCaseLetters)) {  
+    if(myInput.value.match(lowerCaseLetters)) {
       letter.classList.remove("invalid");
       letter.classList.add("valid");
     } else {
       letter.classList.remove("valid");
       letter.classList.add("invalid");
     }
-    
+
     // Validate capital letters
     var upperCaseLetters = /[A-Z]/g;
-    if(myInput.value.match(upperCaseLetters)) {  
+    if(myInput.value.match(upperCaseLetters)) {
       capital.classList.remove("invalid");
       capital.classList.add("valid");
     } else {
       capital.classList.remove("valid");
       capital.classList.add("invalid");
     }
-  
+
     // Validate numbers
     var numbers = /[0-9]/g;
-    if(myInput.value.match(numbers)) {  
+    if(myInput.value.match(numbers)) {
       number.classList.remove("invalid");
       number.classList.add("valid");
     } else {
       number.classList.remove("valid");
       number.classList.add("invalid");
     }
-    
+
     // Validate length
     if(myInput.value.length >= 8) {
       length.classList.remove("invalid");
@@ -315,7 +311,7 @@ myinput2.onblur = function() {
         passwordmatch.classList.add("invalid");
         document.getElementById('registerBtn').disabled = true;
     }
-  
+
   }
 </script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -343,7 +339,7 @@ myinput2.onblur = function() {
         var referenceNode = document.querySelector("#validationmark2");
         referenceNode.after(newNode);
 
-       
+
 
         $('#id_username').on('input', function () {
                 $.ajax({
@@ -392,7 +388,7 @@ myinput2.onblur = function() {
                                 x.style = "color: red;font-size: 17px;"
                                 x.innerHTML = "<br>x Email not available <br>"
                                 document.getElementById('registerBtn').disabled = true;
-                              
+
                         }
                         else{
                             // If the input is not empty and the entered email is valid
