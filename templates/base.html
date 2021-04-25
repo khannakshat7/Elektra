@@ -46,12 +46,10 @@
 </head>
 
 <body>
-  <!-- Preloader -->
-<div class="preloader" id="preloader">
-  <div class=status id="status">
-  <!-- <img src="{% static 'Elektra_Logo.png' %}"> --> 
-  </div>
-</div>
+  <!--Preloader Class-->
+    <div class="forloader">
+      <div id="loader2"><img src="{% static'Elektra.png' %}"></div> 
+    </div>
   
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center">
@@ -203,6 +201,12 @@
         }, 4000);
         });
   </script>
+  <!--Preloader Script-->
+    <script> 
+        $(window).on('load',function(){
+         $('.forloader').addClass('complete')
+        })
+      </script>
 </body>
 
 </html>
