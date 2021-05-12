@@ -34,8 +34,12 @@ def registeruser(request):
 
         if result['success']==False:
             messages.error(request, 'Invalid reCAPTCHA. Please try again.')
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-        
+            return render(request,"login.html")
+        if User.objects.filter(email=request.POST['email']).exists():
+            messages.error(request, 'Email Already Exists!!')
+            return render(request,"login.html")
+        else:
+            pass
         if request.POST["password"]==request.POST["rpassword"]:
             if (len(request.POST["password"]) > 7):
                 data=User()
@@ -47,19 +51,19 @@ def registeruser(request):
                 data.is_active = True
                 print("user saved")
                 data.save() 
+                messages.success(request,"Account Created Successfully ! . Please Login.")
                 return render(request,"login.html")
             else:
-                context="Length must be greter then 8"
-                return render(request,"login.html",{'errorP':context})
+                messages.error(request,"Length must be greter then 8")
+                return render(request,"login.html")
 
         else:
-            context="Password confirmation doesn't match"
-            print("wrong password")
-            return render(request,"login.html",{'errorPC':context})
+            messages.error(request,"Password confirmation doesn't match")
+            return render(request,"login.html")
 
     else:
-        context="Username Already Exist"
-        return render(request,"login.html",{'errorE':context})
+        messages.error(request,"Username Already Exist")
+        return render(request,"login.html")
 
 def loginuser(request):
     if request.user.is_authenticated:
@@ -79,8 +83,8 @@ def loginuser(request):
             else:
                 print("Someone tried to login and failed.")
                 print("They used username: {} and password: {}".format(username,password))
-                context="Wrong password or email"
-                return render(request,"login.html",{"invalid":context})
+                messages.error(request,"Wrong password or email")
+                return render(request,"login.html")
         else:
             return render(request, 'login.html')
 
