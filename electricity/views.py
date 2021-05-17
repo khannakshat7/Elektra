@@ -15,7 +15,20 @@ from django.http import HttpResponseRedirect
 import requests
 import json
 from django.http import HttpResponse,JsonResponse
+import random
+import math
 # Create your views here.
+def send_email_to_user(otp,email):
+    import smtplib
+    con = smtplib.SMTP("smtp.gmail.com",587)
+    con.ehlo()
+    con.starttls()
+    admin_email = "your email"
+    admin_password = "your password"
+    con.login(admin_email,admin_password)
+    msg = "Otp is"+str(otp)
+    con.sendmail("your email",email,"Subject:Password Reset \n\n"+msg)
+
 
 def index(request):
     return render(request,'index.html')
@@ -88,7 +101,64 @@ def loginuser(request):
         else:
             return render(request, 'login.html')
 
+global_dict = {'otp':"",'email':""}          
+def generate_otp():
+    digits = [i for i in range(0, 10)]
+    random_str = ""
+    for i in range(6):
+        index = math.floor(random.random() * 10)
+        random_str += str(digits[index])
+    print(random_str,type(random_str))
+    global_dict['otp'] = random_str
+    send_email_to_user(random_str,global_dict['email'])
+    return
+
 def forgotp(request):
+    if request.method == "POST":
+        print("post")
+        if User.objects.filter(email=request.POST["email"]).exists():
+            print("exist")
+            global_dict['email'] = request.POST["email"]
+            generate_otp()
+            return redirect('otp')
+        else:
+            print("Email not found")  
+       
+    else:
+        print("get")
+    return render(request,'forgotpassword.html')
+
+def otp(request):
+    if request.method == "POST":
+        print("post")
+        get_otp = request.POST["otp"]
+        if global_dict['otp'] == get_otp:
+            print("match")
+            return redirect('reset_password')
+        else:
+            print("not match")
+    else:
+        print("get")
+    return render(request,'otp.html')
+
+def reset_password(request):
+    if request.method == "POST":
+        print("post")
+        password = request.POST["password"]
+        rpassword = request.POST["rpassword"]
+        if rpassword != password:
+            print("not matched")
+        else:
+            print("matched",global_dict['email'])
+            user = User.objects.filter(email=global_dict['email']).first()
+            user.password = make_password(request.POST["password"])
+            print(user,user.email)
+            user.save()
+            return redirect("login")
+    else:
+        print("get")
+    return render(request,'resetpassword.html')
+'''def forgotp(request):
     if(request.method=="POST"):
         if User.objects.filter(username=request.POST["username"]).exists():
             user= User.objects.filter(username=request.POST["username"])
@@ -115,6 +185,7 @@ def forgotp(request):
             return render(request,'forgotpassword.html',{'ErrorEmail':context})
     else:
         return render(request,'forgotpassword.html')
+'''
 
 def logoutuser(request):
     logout(request)
