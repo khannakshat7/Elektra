@@ -23,11 +23,11 @@ def send_email_to_user(otp,email):
     con = smtplib.SMTP("smtp.gmail.com",587)
     con.ehlo()
     con.starttls()
-    admin_email = "arpit456jain@gmail.com"
-    admin_password = "#jain vanshika#"
+    admin_email = "your email"
+    admin_password = "your password"
     con.login(admin_email,admin_password)
     msg = "Otp is"+str(otp)
-    con.sendmail("arpit456jain@gmail.com",email,"Subject:Password Reset \n\n"+msg)
+    con.sendmail("your email",email,"Subject:Password Reset \n\n"+msg)
 
 
 def index(request):
