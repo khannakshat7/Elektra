@@ -23,11 +23,11 @@ def send_email_to_user(otp,email):
     con = smtplib.SMTP("smtp.gmail.com",587)
     con.ehlo()
     con.starttls()
-    admin_email = "your email"
-    admin_password = "your password"
+    admin_email = "arpit456jain@gmail.com"
+    admin_password = "#jain vanshika#"
     con.login(admin_email,admin_password)
-    msg = "Otp is"+str(otp)
-    con.sendmail("your email",email,"Subject:Password Reset \n\n"+msg)
+    msg = "Otp is "+str(otp)
+    con.sendmail("arpit456jain@gmail.com",email,"Subject:Password Reset \n\n"+msg)
 
 
 def index(request):
@@ -120,10 +120,11 @@ def forgotp(request):
             print("exist")
             global_dict['email'] = request.POST["email"]
             generate_otp()
+            messages.success(request, 'An otp is send to your Email please Enter that otp')
             return redirect('otp')
         else:
-            print("Email not found")  
-       
+            messages.error(request, 'Email not Found Please Sign up First')
+            return render(request,'forgotpassword.html')
     else:
         print("get")
     return render(request,'forgotpassword.html')
@@ -136,7 +137,8 @@ def otp(request):
             print("match")
             return redirect('reset_password')
         else:
-            print("not match")
+            print("otp is",global_dict['otp'])
+            messages.error(request, 'Otp not Matched Please Try Again')
     else:
         print("get")
     return render(request,'otp.html')
@@ -147,45 +149,20 @@ def reset_password(request):
         password = request.POST["password"]
         rpassword = request.POST["rpassword"]
         if rpassword != password:
-            print("not matched")
+            messages.error(request, 'Password not Matched')
+        elif len(password)<=8:
+            messages.error(request,"Length must be greter then 8")
         else:
             print("matched",global_dict['email'])
             user = User.objects.filter(email=global_dict['email']).first()
             user.password = make_password(request.POST["password"])
             print(user,user.email)
             user.save()
+            messages.success(request,"Password Reset Successfully! Please Login")
             return redirect("login")
     else:
         print("get")
     return render(request,'resetpassword.html')
-'''def forgotp(request):
-    if(request.method=="POST"):
-        if User.objects.filter(username=request.POST["username"]).exists():
-            user= User.objects.filter(username=request.POST["username"])
-            for object in user:
-                if object.first_name==request.POST["first_name"]:
-                    if object.last_name==request.POST["last_name"]:
-                        if request.POST["password"]==request.POST["rpassword"]:
-                            object.password=make_password(request.POST["password"])
-                            object.save()
-                            print('done')
-                            messages.success(request,"Password Changed")
-                            return redirect('/login/')
-                        else:
-                            context="Password confirmation doesn't match"
-                            return render(request,'forgotpassword.html',{'ErrorFP':context})
-                    else:
-                        context="Wrong First Name"
-                        return render(request,'forgotpassword.html',{'ErrorFN':context})
-                else:
-                    context="Wrong Last Name"
-                    return render(request,'forgotpassword.html',{'ErrorLN':context})
-        else:
-            context="Email not found"
-            return render(request,'forgotpassword.html',{'ErrorEmail':context})
-    else:
-        return render(request,'forgotpassword.html')
-'''
 
 def logoutuser(request):
     logout(request)
