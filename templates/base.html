@@ -42,10 +42,66 @@
   <style>
     /*width : 100vw is for responsiveness of map*/
     #mapid { height: 700px; width:100vw;}
+    html {
+  scroll-behavior: smooth;
+}
+a
+{
+  text-decoration: none;
+}
+#button {
+  display: inline-block;
+  background-color: #22b2ee;
+  width: 52px;
+  height: 52px;
+  text-align: center;
+  border-radius: 25px;
+  position: fixed;
+  bottom: 10px;
+  right: -12px;
+  transition: background-color .3s, 
+    opacity .5s, visibility .5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+}
+#button::after {
+  content: "\f077";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 2em;
+  line-height: 50px;
+  color: #fff;
+}
+#button:hover {
+  cursor: pointer;
+  background-color: #1981ad;
+}
+#button:active {
+  background-color: #1981ad;
+}
+#button.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Styles for the content section */
+
+
+@media (min-width: 500px) {
+  
+  #button {
+    margin: 30px;
+  }
+}
   </style>
 </head>
 
 <body>
+  <!-- Back to top button -->
+<a id="button" style="text-decoration:none"></a>
+
   <!-- Preloader -->
 <div class="preloader" id="preloader">
   <div class=status id="status">
@@ -85,7 +141,7 @@
                     transition: 0.5s;
                     background: #FED103;
                     border-style: none;
-                    color: #fff;"><a href="{% url 'logout' %}">Logout</a></li>
+                    color: #fff;"><a href="#" onclick="confirmation()">Logout</a></li>
           {% else %}
                 <li style=" font-weight: 800;
                     font-size: 13px;
@@ -203,6 +259,26 @@
         }, 4000);
         });
   </script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script>
+    function confirmation(){
+    swal({
+      title: "Are you sure?",
+      text: "You Want to LogOut!!",
+      icon: "warning",
+      buttons: true,
+      buttons: ['cancel','Yes, Log out'],
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        window.location = "{% url 'logout' %}";
+      } else {
+        
+      }
+    });
+    }
+  </script>
 </body>
 
 </html>
@@ -233,4 +309,19 @@
       document.getElementById("todayRecovered").innerHTML = data.todayRecovered;
       document.getElementById("todayDeaths").innerHTML = data.todayDeaths;
     })
+</script>
+<script>
+  var btn = $('#button');
+$(window).scroll(function() {
+if ($(window).scrollTop() > 300) {
+btn.addClass('show');
+} else {
+btn.removeClass('show');
+}
+});
+
+btn.on('click', function(e) {
+e.preventDefault();
+$('html, body').animate({scrollTop:0}, '300');
+});
 </script>

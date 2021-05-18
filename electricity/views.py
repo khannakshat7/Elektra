@@ -7,7 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.conf import settings
-from electricity.models import electricity,Contact
+from electricity.models import electricity,Contact,FeedBack
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password, check_password
 from django.contrib.auth.forms import UserCreationForm
@@ -15,7 +15,20 @@ from django.http import HttpResponseRedirect
 import requests
 import json
 from django.http import HttpResponse,JsonResponse
+import random
+import math
 # Create your views here.
+def send_email_to_user(otp,email):
+    import smtplib
+    con = smtplib.SMTP("smtp.gmail.com",587)
+    con.ehlo()
+    con.starttls()
+    admin_email = "your email"
+    admin_password = "your password"
+    con.login(admin_email,admin_password)
+    msg = "Otp is"+str(otp)
+    con.sendmail("your email",email,"Subject:Password Reset \n\n"+msg)
+
 
 def index(request):
     return render(request,'index.html')
@@ -34,8 +47,12 @@ def registeruser(request):
 
         if result['success']==False:
             messages.error(request, 'Invalid reCAPTCHA. Please try again.')
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-        
+            return render(request,"login.html")
+        if User.objects.filter(email=request.POST['email']).exists():
+            messages.error(request, 'Email Already Exists!!')
+            return render(request,"login.html")
+        else:
+            pass
         if request.POST["password"]==request.POST["rpassword"]:
             if (len(request.POST["password"]) > 7):
                 data=User()
@@ -47,19 +64,19 @@ def registeruser(request):
                 data.is_active = True
                 print("user saved")
                 data.save() 
+                messages.success(request,"Account Created Successfully ! . Please Login.")
                 return render(request,"login.html")
             else:
-                context="Length must be greter then 8"
-                return render(request,"login.html",{'errorP':context})
+                messages.error(request,"Length must be greter then 8")
+                return render(request,"login.html")
 
         else:
-            context="Password confirmation doesn't match"
-            print("wrong password")
-            return render(request,"login.html",{'errorPC':context})
+            messages.error(request,"Password confirmation doesn't match")
+            return render(request,"login.html")
 
     else:
-        context="Username Already Exist"
-        return render(request,"login.html",{'errorE':context})
+        messages.error(request,"Username Already Exist")
+        return render(request,"login.html")
 
 def loginuser(request):
     if request.user.is_authenticated:
@@ -79,12 +96,69 @@ def loginuser(request):
             else:
                 print("Someone tried to login and failed.")
                 print("They used username: {} and password: {}".format(username,password))
-                context="Wrong password or email"
-                return render(request,"login.html",{"invalid":context})
+                messages.error(request,"Wrong password or email")
+                return render(request,"login.html")
         else:
             return render(request, 'login.html')
 
+global_dict = {'otp':"",'email':""}          
+def generate_otp():
+    digits = [i for i in range(0, 10)]
+    random_str = ""
+    for i in range(6):
+        index = math.floor(random.random() * 10)
+        random_str += str(digits[index])
+    print(random_str,type(random_str))
+    global_dict['otp'] = random_str
+    send_email_to_user(random_str,global_dict['email'])
+    return
+
 def forgotp(request):
+    if request.method == "POST":
+        print("post")
+        if User.objects.filter(email=request.POST["email"]).exists():
+            print("exist")
+            global_dict['email'] = request.POST["email"]
+            generate_otp()
+            return redirect('otp')
+        else:
+            print("Email not found")  
+       
+    else:
+        print("get")
+    return render(request,'forgotpassword.html')
+
+def otp(request):
+    if request.method == "POST":
+        print("post")
+        get_otp = request.POST["otp"]
+        if global_dict['otp'] == get_otp:
+            print("match")
+            return redirect('reset_password')
+        else:
+            print("not match")
+    else:
+        print("get")
+    return render(request,'otp.html')
+
+def reset_password(request):
+    if request.method == "POST":
+        print("post")
+        password = request.POST["password"]
+        rpassword = request.POST["rpassword"]
+        if rpassword != password:
+            print("not matched")
+        else:
+            print("matched",global_dict['email'])
+            user = User.objects.filter(email=global_dict['email']).first()
+            user.password = make_password(request.POST["password"])
+            print(user,user.email)
+            user.save()
+            return redirect("login")
+    else:
+        print("get")
+    return render(request,'resetpassword.html')
+'''def forgotp(request):
     if(request.method=="POST"):
         if User.objects.filter(username=request.POST["username"]).exists():
             user= User.objects.filter(username=request.POST["username"])
@@ -111,6 +185,7 @@ def forgotp(request):
             return render(request,'forgotpassword.html',{'ErrorEmail':context})
     else:
         return render(request,'forgotpassword.html')
+'''
 
 def logoutuser(request):
     logout(request)
@@ -131,6 +206,25 @@ def annnouncements(request):
 
 @login_required
 def feedback(request):
+    if request.method == "POST":
+        print("post")
+        try:
+            experience_rating = request.POST['experience_rating']
+            update_rating = request.POST['update_rating']
+            wating_response_rating = request.POST['wating_response_rating']
+            Satisfactory_rating = request.POST['Satisfactory_rating']
+            Quality_rating = request.POST['Quality_rating']
+            map_rating = request.POST['map_rating']
+            Announcement_rating = request.POST['Announcement_rating']
+            commentText = request.POST['commentText']
+            print(experience_rating)
+            entry = FeedBack(experienceRating=experience_rating,updateRating=update_rating,SatisfactoryRating=Satisfactory_rating,QualityRating=Quality_rating,MapsRating=map_rating,AnnouncementsRating=Announcement_rating,waiting_for_responseRating=wating_response_rating,commentText=commentText)
+            entry.save()
+            messages.success(request , "Thanks for the FeedBack!")
+        except:
+            messages.error(request, 'Please Fill FeedBack Properly !!')
+    else:
+        print("Get")
     return render(request,"feedback.html")
 
 #Contact view

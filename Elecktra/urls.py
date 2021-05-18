@@ -34,7 +34,9 @@ urlpatterns = [
     path('Forgot_Password/',views.forgotp,name="forgotp"),
     path('accounts/', include('allauth.urls')),
     path('check_username',views.check_username,name="check_username"),
-    path('check_email',views.check_email,name="check_email")
+    path('check_email',views.check_email,name="check_email"),
+    path('otp',views.otp,name="otp"),
+    path('reset_password',views.reset_password,name="reset_password"),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
