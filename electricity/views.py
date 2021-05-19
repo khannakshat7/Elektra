@@ -23,11 +23,11 @@ def send_email_to_user(otp,email):
     con = smtplib.SMTP("smtp.gmail.com",587)
     con.ehlo()
     con.starttls()
-    admin_email = "your email"
+    admin_email = "email"
     admin_password = "password"
     con.login(admin_email,admin_password)
     msg = "Otp is "+str(otp)
-    con.sendmail("your email",email,"Subject:Password Reset \n\n"+msg)
+    con.sendmail("email",email,"Subject:Password Reset \n\n"+msg)
 
 
 def index(request):
@@ -101,7 +101,7 @@ def loginuser(request):
         else:
             return render(request, 'login.html')
 
-global_dict = {'otp':"",'email':""}          
+global_dict = {'otp':"",'email':"",'otpcheck':""}          
 def generate_otp():
     digits = [i for i in range(0, 10)]
     random_str = ""
@@ -135,6 +135,7 @@ def otp(request):
         get_otp = request.POST["otp"]
         if global_dict['otp'] == get_otp:
             print("match")
+            global_dict['otpcheck'] = "1"
             return redirect('reset_password')
         else:
             print("otp is",global_dict['otp'])
@@ -145,13 +146,12 @@ def otp(request):
 
 def reset_password(request):
     if request.method == "POST":
-        print("post")
         password = request.POST["password"]
         rpassword = request.POST["rpassword"]
         if rpassword != password:
             messages.error(request, 'Password not Matched')
-        elif len(password)<=8:
-            messages.error(request,"Length must be greter then 8")
+        elif len(password)<=7:
+            messages.error(request,"Minimum 8 characters required")
         else:
             print("matched",global_dict['email'])
             user = User.objects.filter(email=global_dict['email']).first()
@@ -161,7 +161,17 @@ def reset_password(request):
             messages.success(request,"Password Reset Successfully! Please Login")
             return redirect("login")
     else:
-        print("get")
+        if global_dict['email'] == "":
+            messages.error(request,"Please Enter your email")
+            return redirect("forgotp")
+
+        if global_dict['otp'] == "":
+            messages.error(request,"Please Enter Otp first")
+            return redirect("otp")
+        if len(global_dict['otpcheck']) == 0:
+            messages.error(request,"Otp not found")
+            return redirect("otp")
+            
     return render(request,'resetpassword.html')
 
 def logoutuser(request):
