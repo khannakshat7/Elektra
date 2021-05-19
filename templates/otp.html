@@ -1,5 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block style %}
+<style>
+.alert {
+    width: 90%;
+    margin-left: 6vw;
+    margin-top: 1vh;
+}
+</style>
+{% endblock style %}
 {% block content %}
 
     <div class="container register">
@@ -10,6 +19,17 @@
             </div>
             <div class="col-md-9 register-right">
                 <div class="tab-content" id="myTabContent">
+                    {% if messages %}
+                                    <div>
+                                      {% for message in messages %}
+                                      {% if message.tags == 'error' %}
+                                      <div class="alert alert-danger text-center">{{ message }}</div>
+                                      {% else %}
+                                      <div class="alert alert-success text-center">{{message}}</div>
+                                      {% endif %}
+                                      {% endfor %}
+                                    </div>
+                                    {% endif %}
                     <div class="row">
                         <div class="col-md-6">
                             <form class="m-5" name="form_two" method="POST" action="">
