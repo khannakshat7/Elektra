@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-
+<script src="/static/showpassword.js"></script>
 <!-- css for google login button -->
 <style>
 
@@ -98,6 +98,11 @@
     left: -3px;
     content: "✖";
   }
+  .alert {
+    width:90%;
+    margin-left:6vw;
+    margin-top:1vh;
+  }
 </style>
 
     <div class="container register">
@@ -109,17 +114,27 @@
             </div>
             <div class="col-md-9 register-right">
                 <div class="tab-content" id="myTabContent">
-                  
+                         {% if messages %}
+                                    <div>
+                                      {% for message in messages %}
+                                      {% if message.tags == 'error' %}
+                                      <div class="alert alert-danger text-center">{{ message }}</div>
+                                      {% else %}
+                                      <div class="alert alert-success text-center">{{message}}</div>
+                                      {% endif %}
+                                      {% endfor %}
+                                    </div>
+                                    {% endif %}
+                           
                     <div class="row">
                         <div class="col-md-6">
-                          
                             <form class="m-5" action="{% url 'register' %}" method="POST">
                                 {% csrf_token %}
                                 <h2>Sign Up</h2>
                                 <div class="form-group">
-                                  <input type="email" class="form-control" name="username" placeholder="Email" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                  <input type="email" class="form-control" name="email" placeholder="Email" id="id_email" aria-describedby="emailHelp" required>
                                   
-                                  {{errorE}}
+
                                 </div>
                                 <div class="form-group">
                                   <input type="text" name="first_name" class="form-control" placeholder="first_name" id="exampleInputFirst" required>
@@ -128,7 +143,7 @@
                                   <input type="text" name="last_name" class="form-control" placeholder="last_name" id="exampleInputFirst" required>
                                 </div>
                                 <div class="form-group">
-                                  <input type="text" name="email" class="form-control" placeholder="Username" id="exampleInputFirst" required>
+                                  <input type="text" name="username" class="form-control" placeholder="Username" id="id_username" required>
                                 </div>
                                 <div class="form-group">
                                   <input type="password" name="password" class="form-control" placeholder="Password" id="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Password" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
@@ -140,7 +155,7 @@
                                         <p id="length" class="invalid">Minimum <b>8 characters</b></p>
                                       </div>
                                     </div>
-                                    {{errorP}}
+                                  
                                 </div>
                                 <div class="form-group">
                                   <input type="password" name="rpassword" class="form-control" placeholder="Confirm Password" id="psw2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
@@ -149,8 +164,16 @@
                                         <p id="passwordmatch" class="invalid"> <b>Password</b>Matched</p>
                                     </div>
                                         </div>
-                                  {{errorPC}}
+                              
                                 </div>
+                                <div>
+                                  <input type="checkbox" id="box1" onclick="showpasforsignup()">
+                                  <span id="notice">show password</span>
+                              </div>
+                                <div class="form-group">
+                                    <div class="g-recaptcha" data-sitekey="6LfEWpIaAAAAAF-fgAPji1I65tIdQNERnTgYF0Yg"></div>
+                                </div>
+                    
                                 <button type="submit" class="btn btn-primary">Submit</button>  
                               </form>
                         </div>
@@ -160,14 +183,17 @@
                                 {% csrf_token %}
                                 <h2>Log in</h2>
                                 <div class="form-group">
-                                  <input type="text" class="form-control" name="username" placeholder="Email" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                  <input type="text" class="form-control" name="username" placeholder="Username" id="exampleInputEmail1" aria-describedby="emailHelp">
                                   
                                 </div>
                                 <div class="form-group">
-                                  <input type="password" name="password" class="form-control" placeholder="Password" id="exampleInputPassword1">
-                                    {{invalid}}
+                                  <input type="password" name="password" class="form-control" placeholder="Password" id="loginpsw2">
                                 </div>
-                                <i class="ion-ios-arrow-right"></i> <a href="{% url 'forgotp' %}">Forgot Password?</a>
+                                <div>
+                                  <input type="checkbox" id="box2" onclick="showpasforlogin()">
+                                  <span id="notice">show password</span>
+                              </div>
+                              <i class="ion-ios-arrow-right"></i> <a href="{% url 'forgotp' %}">Forgot Password?</a>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                               </form>
                               <!-- social login buttons -->
@@ -189,12 +215,9 @@
         </div>
 
     </div>
-
 <script>
-  console.log("helo");
     var myInput = document.getElementById("psw");
 var myinput2 = document.getElementById("psw2");
-document.getElementById('registerBtn').disabled = true;
   var letter = document.getElementById("letter");
   var capital = document.getElementById("capital");
   var number = document.getElementById("number");
@@ -236,7 +259,7 @@ myinput2.onblur = function() {
   
   // When the user starts to type something inside the password field
   myInput.onkeyup = function() {
-    document.getElementById('registerBtn').disabled = true;
+
     // Validate lowercase letters
     var lowerCaseLetters = /[a-z]/g;
     if(myInput.value.match(lowerCaseLetters)) {  
@@ -278,21 +301,113 @@ myinput2.onblur = function() {
   }
 
   myinput2.onkeyup = function() {
-    console.log(myInput.value,myinput2.value);
+  
     // validating confirm password
     if (myInput.value == myinput2.value)
     {
         passwordmatch.classList.remove("invalid");
         passwordmatch.classList.add("valid");
-        document.getElementById('registerBtn').disabled = false;
+
     }
     else
     {
         passwordmatch.classList.remove("valid");
         passwordmatch.classList.add("invalid");
-        document.getElementById('registerBtn').disabled = true;
     }
   
   }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+<script>
+      // Creating nodes for the mark and alert text
+        var newNode = document.createElement('span');
+        newNode.id = "validationmark1"
+        var referenceNode = document.querySelector("#id_username");
+        referenceNode.after(newNode);
+
+        var newNode = document.createElement('small');
+        newNode.id = "username_alert"
+        var referenceNode = document.querySelector("#validationmark1");
+        referenceNode.after(newNode);
+
+        var newNode = document.createElement('span');
+        newNode.id = "validationmark2"
+        var referenceNode = document.querySelector("#id_email");
+        referenceNode.after(newNode);
+
+        var newNode = document.createElement('small');
+        newNode.id = "email_alert"
+        var referenceNode = document.querySelector("#validationmark2");
+        referenceNode.after(newNode);
+
+       
+
+        $('#id_username').on('input', function () {
+                $.ajax({
+                    url: "/check_username",
+                    data: {
+                        'name':this.value
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        //Getting mark and alert text elements
+                        x = document.getElementById("username_alert")
+                        y = document.getElementById("validationmark1")
+
+                        if(data.exists == "yes"){
+                                x.style = "color: red;font-size: 17px;"
+                                x.innerHTML = "<br>x Username not available <br>"
+                                document.getElementById('registerBtn').disabled = true;
+                        }
+                        else{
+                            // If the input field is not empty and the username is available
+                            if($('#id_username').val() != ""){
+                                x.style = "color: green;font-size: 17px;"
+                                x.innerHTML = "<br>✓ Username is available <br>"
+                            }
+                            else{
+                                x.innerHTML = ""
+                                y.innerHTML = ""
+                            }
+                        }
+                    }
+                })
+            });
+
+
+            $('#id_email').on('input', function () {
+                $.ajax({
+                    url: "/check_email",
+                    data: {
+                        'email':this.value
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        x = document.getElementById("email_alert")
+                        y = document.getElementById("validationmark2")
+                        if(data.exists == "yes"){
+                                x.style = "color: red;font-size: 17px;"
+                                x.innerHTML = "<br>x Email not available <br>"
+                                document.getElementById('registerBtn').disabled = true;
+                              
+                        }
+                        else{
+                            // If the input is not empty and the entered email is valid
+                            if($('#id_email').val() != "" && document.getElementById("id_email").checkValidity()){
+                                x.style = "color: green;font-size: 17px;"
+                                x.innerHTML = "<br> ✓ Email is available <br>"
+
+                            }
+                            else{
+                                x.innerHTML = ""
+                                y.innerHTML = ""
+                            }
+                        }
+                    }
+                })
+            });
+
 </script>
 {% endblock %}
