@@ -4,8 +4,7 @@
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
-  overflow: hidden;
-
+  overflow: auto;
 }
 
 a {
@@ -26,6 +25,18 @@ h6 {
   font-family: "Raleway", sans-serif;
 }
 
+.btnKnow {
+  background-color: #FED103 !important;
+  border-radius: 2em;
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: #4f5a62 !important;
+  padding: 0.75em 1.75em;
+}
+
+.btnKnow:hover {
+  color: #2AB5E8;
+}
 
 
 /*--------------------------------------------------------------
@@ -94,7 +105,7 @@ h6 {
   display: block;
   position: relative;
   color: #4f5a62;
-  padding: 12px 15px;
+  padding: 12px 10px;
   transition: 0.3s;
   font-size: 16px;
   font-weight: 500;

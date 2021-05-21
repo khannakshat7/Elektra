@@ -52,10 +52,176 @@
       text-decoration: none;
       color: black;
     }
+    html {
+  scroll-behavior: smooth;
+}
+a
+{
+  text-decoration: none;
+}
+#button {
+  display: inline-block;
+  background-color: #22b2ee;
+  width: 52px;
+  height: 52px;
+  text-align: center;
+  border-radius: 25px;
+  position: fixed;
+  bottom: 10px;
+  right: -12px;
+  transition: background-color .3s, 
+    opacity .5s, visibility .5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+}
+#button::after {
+  content: "\f077";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 2em;
+  line-height: 50px;
+  color: #fff;
+}
+#button:hover {
+  cursor: pointer;
+  background-color: #1981ad;
+}
+#button:active {
+  background-color: #1981ad;
+}
+#button.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Styles for the content section */
+
+
+@media (min-width: 500px) {
+  
+  #button {
+    margin: 30px;
+  }
+}
+
+/* css for dark-mode */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 3.8rem;
+  height: 2.1rem;
+}
+
+/*   // Hide checkbox
+ */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/*   // The slider
+   */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: lightblue;
+  transition: 0.4s ease-in-out;
+}
+
+/*   
+  // Design of slider for light mode
+ */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 23px;
+  width: 23px;
+  left: 6px;
+  bottom: 6px;
+  background-color: yellow;
+  box-shadow: 0px 0px 5px 4px #ffd900;
+  transition: 0.4s;
+}
+
+/*   // When theme is dark, background is dark */
+.dark-mode .slider {
+  background-color: #3a2864;
+}
+
+/*    // If theme is dark, but slider is to the left, move it to the right and turn it into a moon
+ */
+.dark-mode .slider:before {
+  transform: translateX(26px);
+  height: 3px;
+  width: 3px;
+  background-color: lightgrey;
+  bottom: 15px;
+  left: 10px;
+  box-shadow: 10px -7px 0px 1px lightgrey, -4px -8px 0px 0px lightgrey, 6px 6px 0px 1px lightgrey, 5px -1px 5px 13px white, 5px -1px 0px 12px white;
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+.dark-mode , .dark-mode #footer .footer-top , .dark-mode #footer
+{
+  background-color:#222222;
+}
+.dark-mode .about h3 , .dark-mode .about p ,.dark-mode .section-title h2 , .dark-mode .copyright , .dark-mode #footer .footer-top h4
+{
+  color:#fff !important;
+}
+.dark-mode #footer .footer-top .footer-links ul a 
+{
+  color:#24b1ea !important;
+}
+#darkmode
+{
+  padding-top:5px;
+}
+.dark-mode #header
+{
+  background:#5a5a5a !important;
+  
+}
+.dark-mode .nav-menu a
+{
+  color:#fff !important;
+}
+.dark-mode .footer-top p
+{
+  color:#fff !important;
+}
+.dark-mode .featured .icon-box , .dark-mode .services .icon-box
+{
+  background:#8b8b8b !important;
+}
+.dark-mode .featured .icon-box p ,  .dark-mode .services .icon-box .description
+{
+  color:#fff !important;
+}
+.dark-mode .featured .icon-box:hover {
+  background: #DEA902 !important;
+}
   </style>
 </head>
 
 <body>
+  <!-- Back to top button -->
+<a id="button" style="text-decoration:none"></a>
+
   <!-- Preloader -->
 <div class="preloader" id="preloader">
   <div class=status id="status">
@@ -95,7 +261,7 @@
                     transition: 0.5s;
                     background: #FED103;
                     border-style: none;
-                    color: #fff;"><a href="{% url 'logout' %}">Logout</a></li>
+                    color: #fff;"><a href="#" onclick="confirmation()">Logout</a></li>
           {% else %}
                 <li style=" font-weight: 800;
                     font-size: 13px;
@@ -107,8 +273,15 @@
                     border-style: none;
                     color: #fff;"><a href="{% url 'login' %}">Login/Signup</a></li>
           {% endif %}
-          
+        <li><a class="active" href="#" id="darkmode">
+            <!-- partial:index.partial.html -->
+            <label id ="switch" class="switch">
+              <input type="checkbox" onchange="toggleTheme()" id="slider">
+              <span class="slider round"></span>
+            </label>
+            <!-- partial -->
 
+          </a></li>
         </ul>
       </nav>
 
@@ -224,7 +397,8 @@
   </section>
 
 
-
+  
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <!-- Vendor JS Files -->
   <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
   <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
@@ -238,6 +412,26 @@
             $("#confirm").trigger('click');
         }, 4000);
         });
+  </script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script>
+    function confirmation(){
+    swal({
+      title: "Are you sure?",
+      text: "You Want to LogOut!!",
+      icon: "warning",
+      buttons: true,
+      buttons: ['cancel','Yes, Log out'],
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        window.location = "{% url 'logout' %}";
+      } else {
+        
+      }
+    });
+    }
   </script>
 </body>
 
@@ -270,3 +464,20 @@
       document.getElementById("todayDeaths").innerHTML = data.todayDeaths;
     })
 </script>
+<script>
+  var btn = $('#button');
+$(window).scroll(function() {
+if ($(window).scrollTop() > 300) {
+btn.addClass('show');
+} else {
+btn.removeClass('show');
+}
+});
+
+btn.on('click', function(e) {
+e.preventDefault();
+$('html, body').animate({scrollTop:0}, '300');
+});
+</script>
+
+<script src="{% static 'darkmode.js' %}"></script>
