@@ -34,11 +34,11 @@ def send_warning_email(email):
     con = smtplib.SMTP("smtp.gmail.com",587)
     con.ehlo()
     con.starttls()
-    admin_email = "arpit456jain@gmail.com"
-    admin_password = "#jain vanshika#"
+    admin_email = "your email"
+    admin_password = "your password"
     con.login(admin_email,admin_password)
-    msg = "Otp is "+str(otp)
-    con.sendmail(admin_email,email,"Subject:Warning \n\n"+msg)
+    msg = "Some One is Trying To Login With Your Account !!"
+    con.sendmail(admin_email,email,"Subject:Login Warning \n\n"+msg)
 
 
 def index(request):
@@ -101,7 +101,7 @@ def loginuser(request):
             user = authenticate(username=username, password=password)
             if user:
                 if user.is_active:
-                    login_users[username] = 0
+                    del login_users[username]
                     login(request,user)
                     return redirect('/')
                 else:
@@ -113,7 +113,7 @@ def loginuser(request):
                 else:
                     login_users[username]=1
                 print(login_users)
-                if login_users[username] >=2:
+                if login_users[username] == 5:
                     user1 = User.objects.filter(username=username).first()
                     print(user1.email)
                     send_warning_email(user1.email)
