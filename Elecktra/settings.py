@@ -88,9 +88,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'HOST': '127.0.0.1',
-        'USER': '',
+        'USER': 'root',
         'PASSWORD': '',
-        'NAME': 'elecktra',
+        'NAME': 'crud',
     }
 }
 

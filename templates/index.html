@@ -2,6 +2,39 @@
 {% load static %}
 {% block content %}
 
+<link rel="stylesheet" type="text/css" href='{% static "home/css/style.css" %}'>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
+
+<style>
+  .con-sidenav a{
+	position: fixed;
+	bottom: 90px;
+	right: -150px;
+	width: 188px;
+	padding: 17px;
+	text-decoration: none;
+	color: white;
+	background-color: red;
+	border-radius: 5px 0 0 5px;
+	transition: 0.3s;
+	z-index: 2;
+	/*cursor: pointer;*/
+}
+.con-sidenav a:hover{
+	right:-14px;
+}
+
+.con-sidenav i{
+	margin-right: 17px;
+	font-size: 18px;
+}
+</style>
+
   <!-- ======= About Section ======= -->
 
   <section id="home" class="about">
@@ -86,7 +119,9 @@
 
     </div>
   </section>
-
+  <div class="con-sidenav">
+    <a href="#contact-us"><i class="fas fa-phone fa-rotate-90"></i>Contact Us</a>
+</div>
 
   <!-- ======= Featured Section ======= -->
   <section id="featured" class="featured ">
