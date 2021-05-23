@@ -2,6 +2,43 @@
 {% load static %}
 {% block content %}
 
+
+<link rel="stylesheet" type="text/css" href='{% static "home/css/style.css" %}'>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
+
+
+
+<style>
+  .con_logo a{
+  text-align: center;
+	position: fixed;
+	bottom: 80px;
+	right: -114px;
+	width: 170px;
+	padding: 10px;
+	text-decoration: none;
+	color: white;
+	background-color: red;
+	border-radius: 5px 0 0 5px;
+	transition: 0.3s;
+	z-index: 2;
+}
+.con_logo a:hover{
+	right:-11px;
+}
+
+.con_logo i{
+	margin-right: 15px;
+  margin-left: -10px;
+}
+</style>
+
+
   <!-- ======= About Section ======= -->
 
   <section id="home" class="about">
@@ -39,13 +76,17 @@
         </div>
 
         <div class="col-lg-6">
-          <a href=""><img src="{% static 'header.jpg' %}" class="img-fluid" alt=""></a>
+          <a href="#"><img src="{% static 'header.jpg' %}" class="img-fluid" alt=""></a>
         </div>
       </div>
     </div>
 
     </div>
   </section>
+
+  <div class="con_logo">
+    <a href="#contact-us" style="font-weight: bolder;"><i class="fas fa-phone fa-rotate-90" style="font-size: 26px;"></i>Contact Us</a>
+  </div>
 
   <!--===== End About Section ====== -->
   <br>
