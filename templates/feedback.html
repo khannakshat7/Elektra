@@ -1,5 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block style %}
+<style>
+.dark-mode , .dark-mode label
+{
+    color: #fff;
+}
+</style>
+{% endblock style %}
+
 {% block content %}
 
     <!-- ======= About Section ======= -->
@@ -23,7 +32,17 @@
     </style>
     <section  style="margin: 6rem; text-align: center; padding: 20px;  " class="border shadow">
         <div style="background:#43a7d5">
-
+            {% if messages %}
+            <div>
+              {% for message in messages %}
+              {% if message.tags == 'error' %}
+                                      <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+            {% else %}
+              <div class="alert alert-{{ message.tags}}" style="margin-top:10px">{{ message }}</div>
+             {% endif %}
+              {% endfor %}
+            </div>
+            {% endif %}
         </div>
 
         <aside style="padding:15px">
@@ -39,7 +58,6 @@
             <br>
 
             <h4>Please rate your service experience for the following parameters</h4>
-
             <form method="post" target="_blank">
                 {% csrf_token %}
                 <label>1. Your overall experience with us ?</label><br>
@@ -50,6 +68,7 @@
                     <input type="radio" name="rating3" value="3"><i></i>
                     <input type="radio" name="rating4" value="4"><i></i>
                     <input type="radio" name="rating5" value="5"><i></i>
+
                 </span>
 
                 <div class="clear"></div>
@@ -61,6 +80,7 @@
                     <input type="radio" name="rating8" value="3"><i></i>
                     <input type="radio" name="rating9" value="4"><i></i>
                     <input type="radio" name="rating10" value="5"><i></i>
+
                 </span>
 
                 <div class="clear"></div>
@@ -72,6 +92,7 @@
                     <input type="radio" name="rating13" value="3"><i></i>
                     <input type="radio" name="rating14" value="4"><i></i>
                     <input type="radio" name="rating15" value="5"><i></i>
+
                 </span>
 
                 <div class="clear"></div>
@@ -83,6 +104,7 @@
                     <input type="radio" name="rating18" value="3"><i></i>
                     <input type="radio" name="rating19" value="4"><i></i>
                     <input type="radio" name="rating20" value="5"><i></i>
+
                 </span>
 
                 <div class="clear"></div>
@@ -94,6 +116,7 @@
                     <input type="radio" name="rating23" value="3"><i></i>
                     <input type="radio" name="rating24" value="4"><i></i>
                     <input type="radio" name="rating25" value="5"><i></i>
+
                 </span>
 
                 <div class="clear"></div>
@@ -105,6 +128,7 @@
                     <input type="radio" name="rating28" value="3"><i></i>
                     <input type="radio" name="rating29" value="4"><i></i>
                     <input type="radio" name="rating30" value="5"><i></i>
+
                 </span>
 
                 <div class="clear"></div>
@@ -158,6 +182,7 @@
                     </label>
                     <label value="10">
                         <input type="radio" name="rating40" value="10">
+
                         <label style="width:100%;"></label>
                     </label>
                 </span>
@@ -177,3 +202,5 @@
     </section>
 
 {% endblock %}
+
+

@@ -87,6 +87,18 @@ Akshat Khanna </b></sub></a><br><a href="https://github.com/khannakshat7/Elektra
   </tr>
 </tbody></table>
 
+# Contributors:
+## Credit goes to these people:✨
+<table>
+	<tr>
+		<td>
+			<a href="https://github.com/khannakshat7/Elektra/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=khannakshat7/Elektra" />
+</a>
+		</td>
+	</tr>
+</table>
+
 # Code of Conduct
 You can find our Code of Conduct [here](https://github.com/khannakshat7/Elektra/blob/master/CODE_OF_CONDUCT.md).
 
