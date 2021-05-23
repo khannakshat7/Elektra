@@ -220,12 +220,12 @@ a
 </div>
   
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center">
+  <header id="header" class="fixed-top d-flex align-items-center" >
     <div class="container d-flex align-items-center">
       <div class="logo mr-auto">
         <h1>
           <!-- Icon -->
-          <a href="/"><img src="{% static 'Elektra_Logo.png' %}" style="margin-top: -10px;" alt=""></a>
+          <a href="/"><img src="{% static 'Elektra_Logo.png' %}" style="margin-top: -5px;" alt=""></a>
         </h1>
       </div>
 
@@ -243,25 +243,9 @@ a
           {%endwith%}
           {% if user.is_authenticated %}
           <li><a class="usernamelink" href="#" >Welcome, {{ user.first_name }}  {{user.last_name}}</a></li>
-          <li style=" font-weight: 800;
-                    font-size: 13px;
-                    display: inline-block;
-                    padding: 1px 1px 1px 1px;
-                    border-radius: 50px;
-                    transition: 0.5s;
-                    background: #FED103;
-                    border-style: none;
-                    color: #fff;"><a href="#" onclick="confirmation()">Logout</a></li>
+          <li ><a href="#" onclick="confirmation()">Logout</a></li>
           {% else %}
-                <li style=" font-weight: 800;
-                    font-size: 13px;
-                    display: inline-block;
-                    padding: 1px 1px 1px 1px;
-                    border-radius: 50px;
-                    transition: 0.5s;
-                    background: #FED103;
-                    border-style: none;
-                    color: #fff;"><a href="{% url 'login' %}">Login/Signup</a></li>
+                <li ><a href="{% url 'login' %}">Login/Signup</a></li>
           {% endif %}
         <li><a class="active" href="#" id="darkmode">
             <!-- partial:index.partial.html -->
