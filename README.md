@@ -67,9 +67,9 @@ You may go through these guidelines and contribute accordingly:
 
     
     After changing the username and password, create a database named `Elektra` and then continue on to following the steps given below.
-  * Make migrations `$ python manage.py make migrations
+  * Make migrations `$ python manage.py makemigrations
   * Migrate the changes to the database `$ python manage.py migrate`
-  * Create admin `$ python manage.py create superuser
+  * Create admin `$ python manage.py createsuperuser
   * Run the server `$ python manage.py runserver`
   * Open any web browser and then paste the server address to see the webpage working on your local machine
 - Happy Coding 😁
