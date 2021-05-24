@@ -29,6 +29,33 @@
         label {
             color: #000;
         }
+        .btn {
+  position: relative;
+  padding: 6px 30px 6px 30px;
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+  background-color: #008dc8;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 15px 20px -8px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.btn:hover {
+  text-decoration: none;
+  background: #55b1eb;
+  background-image: -webkit-linear-gradient(top, #79c5f5, #2389c4);
+  background-image: -moz-linear-gradient(top, #79c5f5, #2389c4);
+  background-image: -ms-linear-gradient(top, #79c5f5, #2389c4);
+  background-image: -o-linear-gradient(top, #79c5f5, #2389c4);
+  background-image: linear-gradient(to bottom, #79c5f5, #2389c4);
+}
+
+.btn:focus {
+  outline: none;
+}
     </style>
     
     <section  style="margin: 6rem; text-align: center; padding: 20px;  " class="border shadow">
@@ -193,7 +220,7 @@
                 <div class="clear"></div>
                 <form>
                     {% csrf_token %}
-                </a><button type="submit" class="btn btn-outline-primary  shadow" style="font-weight: bolder;">Submit your review</button>
+                </a><button type="submit" class="btn" style="font-weight: bolder;">Submit your review</button>
                 </form>
             </form>
         </aside>
