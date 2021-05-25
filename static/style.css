@@ -48,11 +48,10 @@ h6 {
   transition: all 0.5s;
   background: #fff;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-  background-color: lightgray;
 }
 
 #header .logo h1 {
-  font-size: 30px;
+  font-size: 33px;
   margin: 0;
   font-weight: 600;
   letter-spacing: 1px;
@@ -67,7 +66,7 @@ h6 {
 }
 
 #header .logo img {
-  max-height: 40px;
+  max-height: 44px;
 }
 
 @media (max-width: 768px) {
@@ -109,58 +108,73 @@ h6 {
 }
 .nav-menu a{
   text-decoration: none;
-  color: #f7fbfe;
+  color: black;
   width: 250px;
   height: 90px;
   transform: translate(-50%,-50%);
   line-height: 60px;
   text-align: center;
-  font-size: 16px;
-  background: linear-gradient(90deg,#03a9f4, #f441a5, #ffeb3b,#03a9f4);
-  background-size: 400%;
-  border-radius: 25px;
-  z-index: 1;
-  padding: 14px;
+  font-size: 18px;
+  font-weight: bold;
+  transition: 0.5s ease;
+  position: relative;
+  padding: 3px;
 }
-@keyframes animatecolor{
-  0%{
-    background-position: 0%;
-  }
-  100%{
-    background-position: 100%;
-  }
-}
+
 .nav-menu a:hover{
-  animation: animatecolor 8s linear infinite;
+  color: #00c6ff;
+
 }
 .nav-menu a::before{
-  content: "";
   position: absolute;
-  top: -5%;
-  bottom: -5%;
-  right: -5%;
-  left: -5%;
-  z-index: -2;
-  border-radius: 30px;
-  background: linear-gradient(90deg,#03a9f4, #f441a5, #ffeb3b,#03a9f4);
-  background-size: 400%;
+  content: "";
+  bottom: -5px;
+  left: 0;
+  width: 7px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #00c6ff;
+  transition: 0.5s ease;
   opacity: 0;
-  transform: 0.5%;
 }
-.nav-menu a:hover::before{
-  filter: blur(20px);
-  opacity: 35%;
-  animation: animatecolor 8s linear infinite;
+.nav-menu a::after{
+  position: absolute;
+  content: "";
+  bottom: -5px;
+  right: 0;
+  width: 7px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #00c6ff;
+  transition: 0.5s ease;
+  opacity: 0;
+}
+
+.nav-menu a:hover:before{
+  position: absolute;
+  content: "";
+  bottom: -5px;
+  left: 0;
+  width: 50%;
+  height: 5px;
+  border-radius: 20px;
+  background-color: #00c6ff;
+  opacity: 1;
+}
+.nav-menu a:hover:after{
+  position: absolute;
+  content: "";
+  bottom: -5px;
+  right: 0;
+  width: 50%;
+  height: 5px;
+  border-radius: 20px;
+  background-color: #00c6ff;
+  opacity: 1;
+ 
 }
 
 
-
-.nav-menu li a:hover,
-.nav-menu li .active,
-.nav-menu li a:focus {
-  color: #000;
-  text-decoration: none;
-}
 
 .nav-menu .drop-down ul {
   display: block;
