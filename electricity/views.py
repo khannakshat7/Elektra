@@ -101,7 +101,10 @@ def loginuser(request):
             user = authenticate(username=username, password=password)
             if user:
                 if user.is_active:
-                    del login_users[username]
+                    if username in login_users.keys():
+                        del login_users[username]
+                    else:
+                        pass
                     login(request,user)
                     return redirect('/')
                 else:
