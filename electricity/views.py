@@ -29,6 +29,17 @@ def send_email_to_user(otp,email):
     msg = "Otp is "+str(otp)
     con.sendmail("email",email,"Subject:Password Reset \n\n"+msg)
 
+def send_warning_email(email):
+    import smtplib
+    con = smtplib.SMTP("smtp.gmail.com",587)
+    con.ehlo()
+    con.starttls()
+    admin_email = "your email"
+    admin_password = "your password"
+    con.login(admin_email,admin_password)
+    msg = "Some One is Trying To Login With Your Account !!"
+    con.sendmail(admin_email,email,"Subject:Login Warning \n\n"+msg)
+
 
 def index(request):
     return render(request,'index.html')
@@ -78,6 +89,7 @@ def registeruser(request):
         messages.error(request,"Username Already Exist")
         return render(request,"login.html")
 
+login_users = {}
 def loginuser(request):
     if request.user.is_authenticated:
         print("Already Logged in")
@@ -89,12 +101,22 @@ def loginuser(request):
             user = authenticate(username=username, password=password)
             if user:
                 if user.is_active:
+                    del login_users[username]
                     login(request,user)
                     return redirect('/')
                 else:
                     return render(request,"login.html",{"err":True})
             else:
                 print("Someone tried to login and failed.")
+                if username in login_users.keys():
+                    login_users[username]+=1
+                else:
+                    login_users[username]=1
+                print(login_users)
+                if login_users[username] == 5:
+                    user1 = User.objects.filter(username=username).first()
+                    print(user1.email)
+                    send_warning_email(user1.email)
                 print("They used username: {} and password: {}".format(username,password))
                 messages.error(request,"Wrong password or email")
                 return render(request,"login.html")
