@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     #providers
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -137,7 +138,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-
+IMPORT_EXPORT_USE_TRANSACTIONS = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
