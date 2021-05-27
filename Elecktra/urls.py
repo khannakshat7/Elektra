@@ -37,6 +37,7 @@ urlpatterns = [
     path('check_email',views.check_email,name="check_email"),
     path('otp',views.otp,name="otp"),
     path('reset_password',views.reset_password,name="reset_password"),
+    path('changePassword',views.changePassword,name="changePassword"),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

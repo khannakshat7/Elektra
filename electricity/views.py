@@ -296,3 +296,24 @@ def check_email(request):
     if User.objects.filter(email=email).exists():
         return JsonResponse({"exists":"yes"})
     return JsonResponse({"exists":"no"})
+
+@login_required
+def changePassword(request):
+    if request.method == "POST":
+        new_password = request.POST["new_password"]
+        confirm_password = request.POST["confirm_password"]
+        print(new_password,confirm_password)
+        user = User.objects.filter(username=request.user).first()
+        print(user.password)
+        if new_password != confirm_password:
+            messages.error(request,"Password not Matched")
+            return redirect("/changePassword")
+        else:
+            user.password = make_password(new_password)
+            user.save()
+            # login(request,user)
+            messages.success(request,"Password changed successfully Please Login Again!")
+            return redirect("/login")
+    else:
+        pass
+    return render(request,'changePassword.html')
