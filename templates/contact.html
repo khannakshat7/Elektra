@@ -37,17 +37,33 @@
             text-align: center;
             color: #0062cc;
         }
-        .contact-form .btnContact {
-            width: 50%;
-            border: none;
-            border-radius: 1rem;
-            padding: 1.5%;
-            background: #dc3545;
-            font-weight: 600;
-            color: #fff;
-            cursor: pointer;
-            outline-style: none;
-        }
+        .btn {
+  position: relative;
+  padding: 5px 30px 5px 30px;
+  color: #fff;
+  font-size: 19px;
+  text-align: center;
+  background-color: #008dc8;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 15px 20px -8px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.btn:hover {
+  text-decoration: none;
+  background: #55b1eb;
+  background-image: -webkit-linear-gradient(top, #79c5f5, #2389c4);
+  background-image: -moz-linear-gradient(top, #79c5f5, #2389c4);
+  background-image: -ms-linear-gradient(top, #79c5f5, #2389c4);
+  background-image: -o-linear-gradient(top, #79c5f5, #2389c4);
+  background-image: linear-gradient(to bottom, #79c5f5, #2389c4);
+}
+
+.btn:focus {
+  outline: none;
+}     
         .btnContactSubmit
         {
             width: 50%;
@@ -109,7 +125,7 @@
                         {% endif %}
                     </div>
                     <div class="form-group">
-                        <input type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
+                        <input type="submit" name="btnSubmit" class="btn" value="Send Message" />
                     </div>
                 </div>
                 <div class="col-md-6">

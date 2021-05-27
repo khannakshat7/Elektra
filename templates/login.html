@@ -12,36 +12,91 @@
 <!-- css for google login button -->
 <style>
 
-  .fb{
-    width:240px;
-    height:40px;
-    border:0px;
-    border-radius: 50px;
-    background-color: #1877F2;
-    font-family: 'Roboto', sans-serif;
-    font-size:20px;
-    color:white;
-  }
-  .fb i{
+.btn {
+  position: relative;
+  margin-right: 10%;
+  padding: 5px 30px 5px 30px;
+  color: #fff;
+  font-size: 17px;
+  text-align: center;
+  background-color: #008dc8;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 15px 20px -8px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  transition: all 0.5s;
+}
 
-    padding-left:1px;
-    padding-right: 8px;
-  }
+.btn:hover {
+  text-decoration: none;
+  background: #55b1eb;
+  background-image: -webkit-linear-gradient(top, #79c5f5, #2389c4);
+  background-image: -moz-linear-gradient(top, #79c5f5, #2389c4);
+  background-image: -ms-linear-gradient(top, #79c5f5, #2389c4);
+  background-image: -o-linear-gradient(top, #79c5f5, #2389c4);
+  background-image: linear-gradient(to bottom, #79c5f5, #2389c4);
+}
 
-  .gg{
-    width:240px;
-    height:40px;
-    border:0px;
-    border-radius: 50px;
-    background-color: #DB4437;
-    font-family: 'Roboto', sans-serif;
-    font-size:20px;
-    color:white;
-  }
-  .gg i{
-    margin-left: -20px;
-    padding-right:8px;
-  }
+.btn:focus {
+  outline: none;
+}
+
+.ggbtn {
+  position: relative;
+  padding: 5px 30px 5px 30px;
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+  background-color: #DB4437;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 15px 20px -8px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.ggbtn:hover {
+  text-decoration: none;
+  background: #55b1eb;
+  background-image: -webkit-linear-gradient(top, #f07e74, #da6459);
+  background-image: -moz-linear-gradient(top, #f07e74, #da6459);
+  background-image: -ms-linear-gradient(top, #f07e74, #da6459);
+  background-image: -o-linear-gradient(top, #f07e74, #da6459);
+  background-image: linear-gradient(to bottom, #f07e74, #da6459);
+}
+
+.ggbtn:focus {
+  outline: none;
+}
+
+.fbbtn {
+  position: relative;
+  padding: 5px 30px 5px 30px;
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+  background-color: #1877F2;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 15px 20px -8px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.fbbtn:hover {
+  text-decoration: none;
+  background: #55b1eb;
+  background-image: -webkit-linear-gradient(top, #7eaeec, #549af5);
+  background-image: -moz-linear-gradient(top, #7eaeec, #549af5);
+  background-image: -ms-linear-gradient(top, #7eaeec, #549af5);
+  background-image: -o-linear-gradient(top, #7eaeec, #549af5);
+  background-image: linear-gradient(to bottom, #7eaeec, #549af5);
+}
+
+.fbbtn:focus {
+  outline: none;
+}
+
 
   
   /*css for errror area*/
@@ -174,7 +229,7 @@
                                     <div class="g-recaptcha" data-sitekey="6LfEWpIaAAAAAF-fgAPji1I65tIdQNERnTgYF0Yg"></div>
                                 </div>
                     
-                                <button type="submit" class="btn btn-primary">Submit</button>  
+                                <button type="submit" class="btn">Submit</button>  
                               </form>
                         </div>
                         <!-- Login form -->
@@ -194,17 +249,17 @@
                                   <span id="notice">show password</span>
                               </div>
                               <i class="ion-ios-arrow-right"></i> <a href="{% url 'forgotp' %}">Forgot Password?</a>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn">Submit</button>
                               </form>
                               <!-- social login buttons -->
                               <center>or <br> <br>
                                 <!-- google -->
-                              <p><button class="gg" onclick="location.href = '{% provider_login_url 'google' %}';">
+                              <p><button class="ggbtn" onclick="location.href = '{% provider_login_url 'google' %}';">
                                 <i class="fab fa-google fa-align-left" aria-hidden="true"></i>Log in with Google
                               </button></p>
 
                               <!-- facebook -->
-                              <button class="fb" onclick="location.href='{% provider_login_url "facebook" method="oauth2" %}';">
+                              <button class="fbbtn" onclick="location.href='{% provider_login_url "facebook" method="oauth2" %}';">
                                 <i class="fab fa-facebook "></i>Log in with facebook
                               </button>
                           </center>
