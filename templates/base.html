@@ -242,7 +242,15 @@ a
           <li><a {% if url_name == 'contact' %}class="active"{% endif %} href="{% url 'contact' %}">Contact Us</a></li>
           {%endwith%}
           {% if user.is_authenticated %}
-          <li><a class="usernamelink" href="#" >Welcome, {{ user.first_name }}  {{user.last_name}}</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Welcome, {{ user.first_name }}  {{user.last_name}}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="/changePassword">Change Password</a></li>
+              
+            </ul>
+          </li>
           <li style=" font-weight: 800;
                     font-size: 13px;
                     display: inline-block;
@@ -444,3 +452,4 @@ $('html, body').animate({scrollTop:0}, '300');
 </script>
 
 <script src="{% static 'darkmode.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
