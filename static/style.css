@@ -43,7 +43,7 @@ h6 {
 # Header
 --------------------------------------------------------------*/
 #header {
-  height: 70px;
+  height: 90px;
   transition: all 0.5s;
   transition: all 0.5s;
   background: #fff;
@@ -51,7 +51,7 @@ h6 {
 }
 
 #header .logo h1 {
-  font-size: 28px;
+  font-size: 33px;
   margin: 0;
   font-weight: 600;
   letter-spacing: 1px;
@@ -66,7 +66,7 @@ h6 {
 }
 
 #header .logo img {
-  max-height: 40px;
+  max-height: 44px;
 }
 
 @media (max-width: 768px) {
@@ -93,31 +93,88 @@ h6 {
   margin: 0;
   padding: 0;
   list-style: none;
+  text-align: center;
 }
 
 .nav-menu>ul>li {
   position: relative;
   white-space: nowrap;
   float: left;
-}
-
-.nav-menu a {
-  display: block;
-  position: relative;
-  color: #4f5a62;
-  padding: 12px 10px;
-  transition: 0.3s;
+  padding: 12px 8px;
   font-size: 16px;
-  font-weight: 500;
-  font-family: "Poppins", sans-serif;
+  font-weight: 500px;
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+}
+.nav-menu a{
+  text-decoration: none;
+  color: black;
+  width: 250px;
+  height: 90px;
+  transform: translate(-50%,-50%);
+  line-height: 60px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  transition: 0.5s ease;
+  position: relative;
+  padding: 3px;
 }
 
-.nav-menu li a:hover,
-.nav-menu li .active,
-.nav-menu li a:focus {
-  color: #2AB5E8;
-  text-decoration: none;
+.nav-menu a:hover{
+  color: #00c6ff;
+
 }
+.nav-menu a::before{
+  position: absolute;
+  content: "";
+  bottom: -5px;
+  left: 0;
+  width: 7px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #00c6ff;
+  transition: 0.5s ease;
+  opacity: 0;
+}
+.nav-menu a::after{
+  position: absolute;
+  content: "";
+  bottom: -5px;
+  right: 0;
+  width: 7px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #00c6ff;
+  transition: 0.5s ease;
+  opacity: 0;
+}
+
+.nav-menu a:hover:before{
+  position: absolute;
+  content: "";
+  bottom: -5px;
+  left: 0;
+  width: 50%;
+  height: 5px;
+  border-radius: 20px;
+  background-color: #00c6ff;
+  opacity: 1;
+}
+.nav-menu a:hover:after{
+  position: absolute;
+  content: "";
+  bottom: -5px;
+  right: 0;
+  width: 50%;
+  height: 5px;
+  border-radius: 20px;
+  background-color: #00c6ff;
+  opacity: 1;
+ 
+}
+
+
 
 .nav-menu .drop-down ul {
   display: block;
