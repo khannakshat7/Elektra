@@ -91,6 +91,7 @@ def registeruser(request):
 
 login_users = {}
 def loginuser(request):
+
     if request.user.is_authenticated:
         print("Already Logged in")
         return redirect("dashboard")
@@ -124,6 +125,7 @@ def loginuser(request):
                 messages.error(request,"Wrong password or email")
                 return render(request,"login.html")
         else:
+            messages.error(request,"You have to login First in order to use any feature")
             return render(request, 'login.html')
 
 global_dict = {'otp':"",'email':"",'otpcheck':""}          
