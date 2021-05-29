@@ -9,11 +9,23 @@ on:
     branches: [ deploy ]
   pull_request:
     branches: [ deploy ]
-
-  workflow_dispatch:
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  create-envfile:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_DEBUG: False
+          envkey_DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          envkey_USER: ${{ secrets.USER }}
+          envkey_PASSWORD: ${{ secrets.PASSWORD }}
+          envkey_DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+          directory: Elecktra
+          file_name: .env
+
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
@@ -41,16 +53,3 @@ jobs:
           gcloud config set project ${{ secrets.PROJECT_ID }}
           gcloud -q app deploy app.yaml --promote
   
-  create-envfile:
-    runs-on: ubuntu-18.04
-    steps:
-      - name: Make envfile
-        uses: SpicyPizza/create-envfile@v1
-        with:
-          envkey_DEBUG: False
-          envkey_DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          envkey_USER: ${{ secrets.USER }}
-          envkey_PASSWORD: ${{ secrets.PASSWORD }}
-          envkey_DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
-          directory: Elecktra
-          file_name: .env
