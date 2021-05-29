@@ -23,7 +23,6 @@ jobs:
           envkey_USER: ${{ secrets.USER }}
           envkey_PASSWORD: ${{ secrets.PASSWORD }}
           envkey_DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
-          directory: Elecktra
           file_name: .env
 
   # This workflow contains a single job called "build"
