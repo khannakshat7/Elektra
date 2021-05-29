@@ -40,7 +40,10 @@ jobs:
           gcloud auth activate-service-account ${{ secrets.GCP_SA_EMAIL }} --key-file=client-secret.json
           gcloud config set project ${{ secrets.PROJECT_ID }}
           gcloud -q app deploy app.yaml --promote
-      
+  
+  create-envfile:
+    runs-on: ubuntu-18.04
+    steps:
       - name: Make envfile
         uses: SpicyPizza/create-envfile@v1
         with:
