@@ -103,16 +103,26 @@
     margin-left:6vw;
     margin-top:1vh;
   }
+  .register{
+            background-color: rgb(167, 216, 247);
+            border-radius: 30px;
+            box-shadow: -15px -15px 15px rgb(199, 229, 247),
+                        15px 15px 15px rgb(95, 172, 219)
+        }
+        body{
+            background-color: lightskyblue;
+        }
+
 </style>
 
     <div class="container register">
         <div class="row">
             <div class="col-md-3 register-left">
-                <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+                <img src="https://image.ibb.co/n7oTvU/logo_white.png"/>
                 <h3>Welcome</h3>
                 <p>You are 30 seconds away from Elektra!</p>
             </div>
-            <div class="col-md-9 register-right">
+            <div class="col-md-9 register-right" style="box-shadow: -30px 30px 20px rgba(0, 0, 0,0.3);">
                 <div class="tab-content" id="myTabContent">
                          {% if messages %}
                                     <div>
@@ -130,23 +140,23 @@
                         <div class="col-md-6">
                             <form class="m-5" action="{% url 'register' %}" method="POST">
                                 {% csrf_token %}
-                                <h2>Sign Up</h2>
+                                <h2 style="font-weight: bolder;">Sign Up</h2>
                                 <div class="form-group">
-                                  <input type="email" class="form-control" name="email" placeholder="Email" id="id_email" aria-describedby="emailHelp" required>
+                                  <input type="email" class="form-control border shadow" name="email" placeholder="Email" id="id_email" aria-describedby="emailHelp" required>
                                   
 
                                 </div>
                                 <div class="form-group">
-                                  <input type="text" name="first_name" class="form-control" placeholder="first_name" id="exampleInputFirst" required>
+                                  <input type="text" name="first_name" class="form-control border shadow" placeholder="first_name" id="exampleInputFirst" required>
                                 </div>
                                 <div class="form-group">
-                                  <input type="text" name="last_name" class="form-control" placeholder="last_name" id="exampleInputFirst" required>
+                                  <input type="text" name="last_name" class="form-control border shadow" placeholder="last_name" id="exampleInputFirst" required>
                                 </div>
                                 <div class="form-group">
-                                  <input type="text" name="username" class="form-control" placeholder="Username" id="id_username" required>
+                                  <input type="text" name="username" class="form-control border shadow" placeholder="Username" id="id_username" required>
                                 </div>
                                 <div class="form-group">
-                                  <input type="password" name="password" class="form-control" placeholder="Password" id="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Password" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                                  <input type="password" name="password" class="form-control border shadow" placeholder="Password" id="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Password" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
                                     <div class="errorarea1" id="errorarea1">
                                       <div id="message" class="col col-11">
                                         <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
@@ -158,7 +168,7 @@
                                   
                                 </div>
                                 <div class="form-group">
-                                  <input type="password" name="rpassword" class="form-control" placeholder="Confirm Password" id="psw2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                                  <input type="password" name="rpassword" class="form-control border shadow" placeholder="Confirm Password" id="psw2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
                                         <div class="errorarea2" id="errorarea2">
                                         <div id="message2" class="col col-11">
                                         <p id="passwordmatch" class="invalid"> <b>Password</b>Matched</p>
@@ -167,10 +177,10 @@
                               
                                 </div>
                                 <div>
-                                  <input type="checkbox" id="box1" onclick="showpasforsignup()">
+                                  <input class="border shadow" type="checkbox" id="box1" onclick="showpasforsignup()">
                                   <span id="notice">show password</span>
                               </div>
-                                <div class="form-group">
+                                <div class="form-group border shadow">
                                     <div class="g-recaptcha" data-sitekey="6LfEWpIaAAAAAF-fgAPji1I65tIdQNERnTgYF0Yg"></div>
                                 </div>
                     
@@ -178,19 +188,19 @@
                               </form>
                         </div>
                         <!-- Login form -->
-                        <div class="col-md-6">
-                            <form class="m-5" action="{% url 'login' %}" method="POST">
+                        <div class="col-md-6 border shadow">
+                            <form class="m-5 " action="{% url 'login' %}" method="POST">
                                 {% csrf_token %}
-                                <h2>Log in</h2>
+                                <h2 style="font-weight: bolder;">Log in</h2>
                                 <div class="form-group">
-                                  <input type="text" class="form-control" name="username" placeholder="Username" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                  <input type="text" class="form-control border shadow" name="username" placeholder="Username" id="exampleInputEmail1" aria-describedby="emailHelp">
                                   
                                 </div>
                                 <div class="form-group">
-                                  <input type="password" name="password" class="form-control" placeholder="Password" id="loginpsw2">
+                                  <input type="password" name="password" class="form-control border shadow" placeholder="Password" id="loginpsw2">
                                 </div>
                                 <div>
-                                  <input type="checkbox" id="box2" onclick="showpasforlogin()">
+                                  <input type="checkbox" class="border shadow" id="box2" onclick="showpasforlogin()">
                                   <span id="notice">show password</span>
                               </div>
                               <i class="ion-ios-arrow-right"></i> <a href="{% url 'forgotp' %}">Forgot Password?</a>
