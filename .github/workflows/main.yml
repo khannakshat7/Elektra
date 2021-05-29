@@ -41,12 +41,13 @@ jobs:
           gcloud config set project ${{ secrets.PROJECT_ID }}
           gcloud -q app deploy app.yaml --promote
       
-      - run: cd ./Elecktra
-      - run: echo DEBUG=False >> .env
-      - run: echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
-      - run: echo USER=${{ secrets.USER }} >> .env
-      - run: echo PASSWORD=${{ secrets.PASSWORD }} >> .env
-      - run: echo DATABASE_NAME=${{ secrets.DATABASE_NAME }} >> .env
-      - uses: actions/upload-artifact@v2
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1
         with:
-          path: Elecktra/.env
+          envkey_DEBUG: False
+          envkey_DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          envkey_USER: ${{ secrets.USER }}
+          envkey_PASSWORD: ${{ secrets.PASSWORD }}
+          envkey_DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+          directory: Elecktra
+          file_name: .env
