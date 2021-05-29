@@ -127,6 +127,9 @@
 }
 
   </style>
+  <!-- Vendor CSS Files -->
+<link href="{% static 'vendor/icofont/icofont.min.css' %}" rel="stylesheet" />
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
 </head>
 
 <body>
@@ -151,7 +154,7 @@
           <li><a href="{% url 'announcements' %}">Announcements</a></li>
           <li><a href="{% url 'feedback' %}">Feedback</a></li>
           {% if user.is_authenticated %}
-          <li><a class="usernamelink" href="#">Welcome, {{ user }}</a></li>
+          <li><a class="usernamelink" href="#">Welcome, {{ user.first_name }}  {{user.last_name}}</a></li>
           <li style=" font-weight: 800;
                     font-size: 13px;
                     display: inline-block;

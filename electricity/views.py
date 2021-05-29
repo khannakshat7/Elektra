@@ -29,6 +29,17 @@ def send_email_to_user(otp,email):
     msg = "Otp is "+str(otp)
     con.sendmail("email",email,"Subject:Password Reset \n\n"+msg)
 
+def send_warning_email(email):
+    import smtplib
+    con = smtplib.SMTP("smtp.gmail.com",587)
+    con.ehlo()
+    con.starttls()
+    admin_email = "your email"
+    admin_password = "your password"
+    con.login(admin_email,admin_password)
+    msg = "Some One is Trying To Login With Your Account !!"
+    con.sendmail(admin_email,email,"Subject:Login Warning \n\n"+msg)
+
 
 def index(request):
     return render(request,'index.html')
@@ -78,7 +89,9 @@ def registeruser(request):
         messages.error(request,"Username Already Exist")
         return render(request,"login.html")
 
+login_users = {}
 def loginuser(request):
+
     if request.user.is_authenticated:
         print("Already Logged in")
         return redirect("dashboard")
@@ -89,16 +102,30 @@ def loginuser(request):
             user = authenticate(username=username, password=password)
             if user:
                 if user.is_active:
+                    if username in login_users.keys():
+                        del login_users[username]
+                    else:
+                        pass
                     login(request,user)
                     return redirect('/')
                 else:
                     return render(request,"login.html",{"err":True})
             else:
                 print("Someone tried to login and failed.")
+                if username in login_users.keys():
+                    login_users[username]+=1
+                else:
+                    login_users[username]=1
+                print(login_users)
+                if login_users[username] == 5:
+                    user1 = User.objects.filter(username=username).first()
+                    print(user1.email)
+                    send_warning_email(user1.email)
                 print("They used username: {} and password: {}".format(username,password))
                 messages.error(request,"Wrong password or email")
                 return render(request,"login.html")
         else:
+            messages.error(request,"You have to login First in order to use any feature")
             return render(request, 'login.html')
 
 global_dict = {'otp':"",'email':"",'otpcheck':""}          
@@ -269,3 +296,28 @@ def check_email(request):
     if User.objects.filter(email=email).exists():
         return JsonResponse({"exists":"yes"})
     return JsonResponse({"exists":"no"})
+
+@login_required
+def changePassword(request):
+    if request.method == "POST":
+        current_password = request.POST["current_password"]
+        new_password = request.POST["new_password"]
+        confirm_password = request.POST["confirm_password"]
+        user = User.objects.filter(username=request.user).first()
+        
+        if check_password(current_password,user.password):
+            pass
+        else:
+            messages.error(request,"Current Password Not Matched")
+            return redirect("/changePassword")
+        if new_password != confirm_password:
+            messages.error(request,"Password not Matched")
+            return redirect("/changePassword")
+        else:
+            user.password = make_password(new_password)
+            user.save()
+            messages.success(request,"Password changed successfully Please Login Again!")
+            return redirect("/login")
+    else:
+        pass
+    return render(request,'changePassword.html')
