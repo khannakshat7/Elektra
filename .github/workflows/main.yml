@@ -50,7 +50,7 @@ jobs:
         run: chmod 777 Elecktra
       
       - name: Copy env file
-        run: sudo cp .env /Elecktra
+        run: sudo cp .env /Elecktra/.
       
       - name: Initialize Google Cloud SDK
         uses: zxyle/publish-gae-action@master
