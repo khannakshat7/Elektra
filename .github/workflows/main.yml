@@ -44,7 +44,7 @@ jobs:
           envkey_USER: ${{ secrets.USER }}
           envkey_PASSWORD: ${{ secrets.PASSWORD }}
           envkey_DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
-          directory: Elecktra
+          directory: ./Elecktra
           file_name: .env
           
       - name: Initialize Google Cloud SDK
