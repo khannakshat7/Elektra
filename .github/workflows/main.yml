@@ -12,18 +12,18 @@ on:
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  create-envfile:
-    runs-on: ubuntu-18.04
-    steps:
-      - name: Make envfile
-        uses: SpicyPizza/create-envfile@v1
-        with:
-          envkey_DEBUG: False
-          envkey_DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          envkey_USER: ${{ secrets.USER }}
-          envkey_PASSWORD: ${{ secrets.PASSWORD }}
-          envkey_DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
-          file_name: .env
+#   create-envfile:
+#     runs-on: ubuntu-18.04
+#     steps:
+#       - name: Make envfile
+#         uses: SpicyPizza/create-envfile@v1
+#         with:
+#           envkey_DEBUG: False
+#           envkey_DATABASE_URL: ${{ secrets.DATABASE_URL }}
+#           envkey_USER: ${{ secrets.USER }}
+#           envkey_PASSWORD: ${{ secrets.PASSWORD }}
+#           envkey_DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+#           file_name: .env
 
   # This workflow contains a single job called "build"
   build:
@@ -33,9 +33,15 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-        
+      - name: Checkout Repo
       - uses: actions/checkout@v2
-
+      
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_DEBUG: false
+          file_name: .env
+          
       - name: Initialize Google Cloud SDK
         uses: zxyle/publish-gae-action@master
         with:
