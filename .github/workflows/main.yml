@@ -47,7 +47,7 @@ jobs:
           file_name: .env
           
       - name: permission
-        run: chmod 777 /Elecktra
+        run: chmod 777 Elecktra
       
       - name: Copy env file
         run: cp .env /Elecktra
