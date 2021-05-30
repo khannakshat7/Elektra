@@ -220,6 +220,19 @@ def annnouncements(request):
 
 @login_required
 def feedback(request):
+    if request.method == 'POST':
+        username = request.POST['recipient-name']
+        location = request.POST['message-text']
+        send_mail(
+            'Modified feedback form of ELECKTRA',
+            'This is an demo of an issue: Acknowledging the user about future outrages. Have a look through this and update me for further modificationds',
+            'sumekagarwal123@gmail.com',
+            [username,'khannakshat7@gmail.com'],
+            fail_silently=False
+            )
+        return render(request,"feedback.html")
+    else:
+        return render(request,"feedback.html")
     if request.method == "POST":
         print("post")
         try:
