@@ -45,6 +45,9 @@ jobs:
           envkey_PASSWORD: ${{ secrets.PASSWORD }}
           envkey_DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
           file_name: .env
+          
+      - name: permission
+        run: chmod 777 /Elecktra
       
       - name: Copy env file
         run: cp .env /Elecktra
