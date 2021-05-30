@@ -44,13 +44,8 @@ jobs:
           envkey_USER: ${{ secrets.USER }}
           envkey_PASSWORD: ${{ secrets.PASSWORD }}
           envkey_DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+          directory: ./Elecktra/
           file_name: .env
-          
-      - name: permission
-        run: chmod 777 Elecktra
-      
-      - name: Copy env file
-        run: sudo cp .env /Elecktra/.
       
       - name: Initialize Google Cloud SDK
         uses: zxyle/publish-gae-action@master
