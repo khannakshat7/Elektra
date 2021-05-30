@@ -19,7 +19,117 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
   <link href="{% static 'style.css' %}" rel="stylesheet" />
+  <style>
+    
+/* css for dark-mode */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 3.8rem;
+  height: 2.1rem;
+}
 
+/*   // Hide checkbox
+ */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/*   // The slider
+   */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: lightblue;
+  transition: 0.4s ease-in-out;
+}
+
+/*   
+  // Design of slider for light mode
+ */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 23px;
+  width: 23px;
+  left: 6px;
+  bottom: 6px;
+  background-color: yellow;
+  box-shadow: 0px 0px 5px 4px #ffd900;
+  transition: 0.4s;
+}
+
+/*   // When theme is dark, background is dark */
+.dark-mode .slider {
+  background-color: #3a2864;
+}
+
+/*    // If theme is dark, but slider is to the left, move it to the right and turn it into a moon
+ */
+.dark-mode .slider:before {
+  transform: translateX(26px);
+  height: 3px;
+  width: 3px;
+  background-color: lightgrey;
+  bottom: 15px;
+  left: 10px;
+  box-shadow: 10px -7px 0px 1px lightgrey, -4px -8px 0px 0px lightgrey, 6px 6px 0px 1px lightgrey, 5px -1px 5px 13px white, 5px -1px 0px 12px white;
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+.dark-mode , .dark-mode #footer .footer-top , .dark-mode #footer
+{
+  background-color:#222222;
+}
+
+.dark-mode #footer .footer-top .footer-links ul a 
+{
+  color:#24b1ea !important;
+}
+#darkmode
+{
+  padding-top:5px;
+}
+.dark-mode .bg-gradient-primary
+{
+  background:linear-gradient(87deg,#282e44 0,#240f5c 100%)!important;
+}
+.dark-mode .about h3 , .dark-mode .about p ,.dark-mode .section-title h2 , .dark-mode .copyright , .dark-mode #footer .footer-top h4
+{
+  color:#fff !important;
+}
+
+.dark-mode #header
+{
+  background:#5a5a5a !important;
+  
+}
+.dark-mode .nav-menu a
+{
+  color:#fff !important;
+}
+.dark-mode .footer-top p
+{
+  color:#fff !important;
+}
+
+  </style>
+  <!-- Vendor CSS Files -->
+<link href="{% static 'vendor/icofont/icofont.min.css' %}" rel="stylesheet" />
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
 </head>
 
 <body>
@@ -44,7 +154,7 @@
           <li><a href="{% url 'announcements' %}">Announcements</a></li>
           <li><a href="{% url 'feedback' %}">Feedback</a></li>
           {% if user.is_authenticated %}
-          <li><a class="usernamelink" href="#">Welcome, {{ user }}</a></li>
+          <li><a class="usernamelink" href="#">Welcome, {{ user.first_name }}  {{user.last_name}}</a></li>
           <li style=" font-weight: 800;
                     font-size: 13px;
                     display: inline-block;
@@ -53,7 +163,7 @@
                     transition: 0.5s;
                     background: #FED103;
                     border-style: none;
-                    color: #fff;"><a href="{% url 'logout' %}">Logout</a></li>
+                    color: #fff;"><a href="#" onclick="confirmation()">Logout</a></li>
           {% else %}
                 <li style=" font-weight: 800;
                     font-size: 13px;
@@ -66,7 +176,15 @@
                     color: #fff;"><a href="{% url 'login' %}">Login/Signup</a></li>
           {% endif %}
           
+          <li><a class="active" href="#" id="darkmode">
+            <!-- partial:index.partial.html -->
+            <label id ="switch" class="switch">
+              <input type="checkbox" onchange="toggleTheme()" id="slider">
+              <span class="slider round"></span>
+            </label>
+            <!-- partial -->
 
+          </a></li>
         </ul>
       </nav>
 
@@ -599,7 +717,27 @@
 
 <!-- Main JS File -->
 <script src="{% static 'main.js' %}"></script>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script>
+    function confirmation(){
+    swal({
+      title: "Are you sure?",
+      text: "You Want to LogOut!!",
+      icon: "warning",
+      buttons: true,
+      buttons: ['cancel','Yes, Log out'],
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        window.location = "{% url 'logout' %}";
+      } else {
+        
+      }
+    });
+    }
+  </script>
+  <script src="{% static 'darkmode.js' %}"></script> 
 </body>
 
 </html>

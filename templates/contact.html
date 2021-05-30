@@ -46,6 +46,7 @@
             font-weight: 600;
             color: #fff;
             cursor: pointer;
+            outline-style: none;
         }
         .btnContactSubmit
         {
@@ -56,6 +57,20 @@
             background-color: #0062cc;
             border: none;
             cursor: pointer;
+        }
+        
+        /* css to remove arrows from the number field */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+
+        input[type=number] {
+        -moz-appearance: textfield;
+        }
+        .dark-mode{
+            background:-webkit-linear-gradient(left, #171f29, #0d1b1f)
         }
     </style>
 {% endblock style %}
@@ -77,7 +92,7 @@
                         <input type="text" name="email" class="form-control" placeholder="Your Email *" value="" required/>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="phone" class="form-control" placeholder="Your Phone Number " value="" />
+                        <input type="number" name="phone" class="form-control" placeholder="Your Phone Number " value="" />
                     </div>
                     <div class="form-group">
                         <div class="g-recaptcha" data-sitekey="6LfEWpIaAAAAAF-fgAPji1I65tIdQNERnTgYF0Yg"></div>
