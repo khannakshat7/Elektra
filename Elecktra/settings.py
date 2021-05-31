@@ -27,7 +27,7 @@ SECRET_KEY = '%l0if_(99*#lmd732n&o2ue99&5zersve+$l5!zd*lui_pd-&%'
 
 env = environ.Env(
     # set casting, default value
-    DEBUG=(bool, False)
+    DEBUG=(bool, True)
 )
 # reading .env file
 environ.Env.read_env()
