@@ -33,7 +33,7 @@ jobs:
           gae_variables: ${{ secrets.GAE_VARIABLES }}
       
       - name: Make envfile
-        uses: SpicyPizza/create-envfile@v1
+        uses: SpicyPizza/create-envfile@master
         with:
           envkey_DEBUG: False
           envkey_DATABASE_URL: ${{ secrets.DATABASE_URL }}
