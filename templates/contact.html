@@ -72,6 +72,15 @@
         .dark-mode{
             background:-webkit-linear-gradient(left, #171f29, #0d1b1f)
         }
+        .contact-form{
+            background-color: rgb(167, 216, 247);
+            border-radius: 30px;
+            box-shadow: -15px -15px 15px rgb(199, 229, 247),
+                        15px 15px 15px rgb(95, 172, 219)
+        }
+        body{
+            background-color: lightskyblue;
+        }
     </style>
 {% endblock style %}
 
@@ -82,17 +91,17 @@
         </div>
         <form method="POST">
         {% csrf_token %}
-            <h3>Drop Us a Message</h3>
+            <h3 style="font-weight: bolder;">Drop Us a Message</h3>
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <input type="text" name="name" class="form-control" placeholder="Your Name *" value="" required/>
+                        <input type="text" name="name" class="form-control border shadow" placeholder="Your Name *" value="" required/>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="email" class="form-control" placeholder="Your Email *" value="" required/>
+                        <input type="text" name="email" class="form-control border shadow" placeholder="Your Email *" value="" required/>
                     </div>
                     <div class="form-group">
-                        <input type="number" name="phone" class="form-control" placeholder="Your Phone Number " value="" />
+                        <input type="number" name="phone" class="form-control border shadow" placeholder="Your Phone Number " value="" />
                     </div>
                     <div class="form-group">
                         <div class="g-recaptcha" data-sitekey="6LfEWpIaAAAAAF-fgAPji1I65tIdQNERnTgYF0Yg"></div>
@@ -109,12 +118,12 @@
                         {% endif %}
                     </div>
                     <div class="form-group">
-                        <input type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
+                        <input type="submit"  name="btnSubmit" class="btnContact border shadow" value="Send Message" />
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <textarea name="message" class="form-control" placeholder="Your Message " style="width: 100%; height: 150px;" required></textarea>
+                        <textarea name="message" class="form-control border shadow" placeholder="Your Message " style="width: 100%; height: 150px;" required></textarea>
                     </div>
                 </div>
             </div>
