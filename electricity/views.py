@@ -297,6 +297,17 @@ def check_email(request):
         return JsonResponse({"exists":"yes"})
     return JsonResponse({"exists":"no"})
 
+def send_confirmation_email(email):
+    import smtplib
+    con = smtplib.SMTP("smtp.gmail.com",587)
+    con.ehlo()
+    con.starttls()
+    admin_email = "your email"
+    admin_password = "your password"
+    con.login(admin_email,admin_password)
+    msg = "Password of You Account is changed!!"
+    con.sendmail(admin_email,email,"Subject:Login Warning \n\n"+msg)
+
 @login_required
 def changePassword(request):
     if request.method == "POST":
@@ -316,6 +327,7 @@ def changePassword(request):
         else:
             user.password = make_password(new_password)
             user.save()
+            send_confirmation_email(user.email)
             messages.success(request,"Password changed successfully Please Login Again!")
             return redirect("/login")
     else:
