@@ -35,7 +35,7 @@ jobs:
       - name: Make envfile
         uses: SpicyPizza/create-envfile@master
         with:
-          envkey_DEBUG: False
+#           envkey_DEBUG: False
           envkey_DATABASE_URL: ${{ secrets.DATABASE_URL }}
           envkey_USER: ${{ secrets.USER }}
           envkey_PASSWORD: ${{ secrets.PASSWORD }}
