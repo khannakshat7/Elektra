@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
+<script src="https://unpkg.com/scrollreveal"></script>
+    
   <!-- ======= About Section ======= -->
 
   <section id="home" class="about">
@@ -11,13 +12,13 @@
 
         <div class="col-lg-6 pt-4 pt-lg-0 mb-5 pb-3">
 
-          <img src="{% static 'Elektra_Logo.png' %}" width="320px">
+          <img src="{% static 'Elektra_Logo.png' %}" width="320px" class="elektralogo">
           <br>
 
-          <h3 style="font-size: 2.5rem;">An ML Powered <br>Electricity Outage<br> Prediction Tool</h3>
+          <h3 style="font-size: 2.5rem;" class="heading1">An ML Powered <br>Electricity Outage<br> Prediction Tool</h3>
           <br>
 
-          <p style="font-size: 1.25rem;">To predict the time and venue of a probable electricity outage using real-time monitoring and smart decisions.</p>
+          <p style="font-size: 1.25rem;" class="para1">To predict the time and venue of a probable electricity outage using real-time monitoring and smart decisions.</p>
 
           <br>
           <br>
@@ -35,7 +36,7 @@
         </div>
 
         <div class="col-lg-6">
-          <a href=""><img src="{% static 'header.jpg' %}" class="img-fluid" alt=""></a>
+          <a href=""><img src="{% static 'header.jpg' %}" class="img-fluid" alt="" class="cityimg"></a>
         </div>
       </div>
     </div>
@@ -60,7 +61,7 @@
 
         <div class="col-lg-6 pt-4 pt-lg-0">
 
-          <a href=""><img src="{% static 'home-2.jpg' %}" class="img-fluid" alt=""></a>
+          <a href=""><img src="{% static 'home-2.jpg' %}" class="img-fluid" alt="" class="home2img"></a>
 
           <br>
           <br>
@@ -72,7 +73,7 @@
 
         <div class="col-lg-6">
 
-          <p style="font-size: 1.1rem;">In India, unannounced electricity outages are a significant issue.
+          <p style="font-size: 1.1rem;" class="home2para">In India, unannounced electricity outages are a significant issue.
             <b>Elektra</b> is an ML based Web App which will keep track of the electricity outages in an area and
             visually represent them in the form of maps, dashboard with pie charts and line graphs. The mechanism behind this app is that,
             when there is an electricity outage, people will report in this web app, in response to which the Electricity Department will solve the fault.
@@ -95,9 +96,9 @@
     </div>
     <div class="container">
       <div class="row ">
-        <div class="col-lg-4 ">
+        <div class="col-lg-4 feature1">
           <div class="icon-box  card h-100">
-            <i class="icofont-computer "></i>
+            <i class="icofont-computer"></i>
             <p>Real-time monitoring with in-built map
             </p>
           </div>
@@ -109,7 +110,7 @@
             </p>
           </div>
         </div>
-        <div class="col-lg-4 mt-4 mt-lg-0">
+        <div class="col-lg-4 mt-4 mt-lg-0 feature2">
           <div class="icon-box card h-100">
             <i class="icofont-bars"></i>
             <p>Analysis reports of various cities 
@@ -122,7 +123,7 @@
     <br>
     <div class="container">
       <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-4 feature3">
           <div class="icon-box  card h-100">
             <i class="icofont-chart-pie"></i>
             <p>City-wise preceding data analysis
@@ -136,7 +137,7 @@
             </p>
           </div>
         </div>
-        <div class="col-lg-4 mt-4 mt-lg-0">
+        <div class="col-lg-4 mt-4 mt-lg-0 feature4">
           <div class="icon-box  card h-100">
             <i class="icofont-tasks-alt"></i>
             <p>User feedback for better enhancements
@@ -165,7 +166,7 @@
     <div class="container">
 
       <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-4 feature5">
           <div class="icon-box card h-100">
             <i class="icofont-computer"></i>
 
@@ -182,7 +183,7 @@
 
           </div>
         </div>
-        <div class="col-lg-4 mt-4 mt-lg-0">
+        <div class="col-lg-4 mt-4 mt-lg-0 feature6">
           <div class="icon-box card h-100">
             <i class="icofont-tasks-alt"></i>
 
@@ -194,5 +195,88 @@
 
     </div>
   </section><!-- End Featured Section -->
+
+  
+<!--added scroll animation functionality-->
+<script
+src="https://code.jquery.com/jquery-3.6.0.js"
+integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+crossorigin="anonymous"></script>
+
+<script>
+   window.sr=ScrollReveal();
+        sr.reveal('.elektralogo',{
+            duration:3000,
+            origin:'left',
+            distance:'300px',
+            viewFactor:0.2
+        });
+        sr.reveal('.heading1',{
+            duration:3000,
+            origin:'left',
+            distance:'300px',
+            viewFactor:0.2
+        });
+        sr.reveal('.para1',{
+            duration:3000,
+            origin:'left',
+            distance:'300px',
+            viewFactor:0.2
+        });
+        sr.reveal('.cityimg',{
+            duration:3000,
+            origin:'top',
+            distance:'300px',
+            viewFactor:0.2
+        });
+        sr.reveal('.home2img',{
+            duration:3000,
+            origin:'left',
+            distance:'300px',
+            viewFactor:0.2
+        });
+        sr.reveal('.home2para',{
+            duration:3000,
+            origin:'right',
+            distance:'300px',
+            viewFactor:0.2
+        });
+        sr.reveal('.feature1',{
+            duration:3000,
+            origin:'left',
+            distance:'300px',
+            viewFactor:0.2
+        });
+        sr.reveal('.feature2',{
+            duration:3000,
+            origin:'right',
+            distance:'300px',
+            viewFactor:0.2
+        });
+        sr.reveal('.feature3',{
+            duration:3000,
+            origin:'left',
+            distance:'300px',
+            viewFactor:0.2
+        });
+        sr.reveal('.feature4',{
+            duration:3000,
+            origin:'right',
+            distance:'300px',
+            viewFactor:0.2
+        });
+        sr.reveal('.feature5',{
+            duration:3000,
+            origin:'left',
+            distance:'300px',
+            viewFactor:0.2
+        });
+        sr.reveal('.feature6',{
+            duration:3000,
+            origin:'right',
+            distance:'300px',
+            viewFactor:0.2
+        });
+</script>
 
   {% endblock %}
