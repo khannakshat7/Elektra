@@ -74,7 +74,6 @@ You may go through these guidelines and contribute accordingly:
   * Open any web browser and then paste the server address to see the webpage working on your local machine
 - Happy Coding 😁
 
-## Detailed Step by Step [Video](https://drive.google.com/file/d/1qbT_aC0SY6gosG66ZP8dyoBai86LeDqS/view?usp=sharing)
 
 ### Deployment ✔️Google Cloud Platform
 

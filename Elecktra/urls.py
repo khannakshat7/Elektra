@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 from electricity import views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -30,16 +30,7 @@ urlpatterns = [
     path('feedback/',views.feedback,name="feedback"),
     path('logout/',views.logoutuser,name="logout"),
     path('coordinates/',views.getmapcoordinates,name="coordinates"),
-    path('contact/',views.contact,name="contact"),
     path('Forgot_Password/',views.forgotp,name="forgotp"),
-    path('accounts/', include('allauth.urls')),
-    path('check_username',views.check_username,name="check_username"),
-    path('check_email',views.check_email,name="check_email"),
-    path('otp',views.otp,name="otp"),
-    path('reset_password/',views.reset_password,name="reset_password"),
-    path('changePassword/',views.changePassword,name="changePassword"),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-handler404 = 'electricity.views.error_404'
-handler500 = 'electricity.views.error_404'
