@@ -69,3 +69,22 @@ class electricity(models.Model):
     longitude = models.CharField(max_length=50)
     is_solved = models.BooleanField(default=False)
 
+#Model for contact
+class Contact(models.Model):
+    sno = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=50)
+    email = models.EmailField( max_length=254)
+    phone = models.CharField(max_length=13)
+    message = models.TextField()
+
+#Model for FeedBack
+class FeedBack(models.Model):
+    sno = models.AutoField(primary_key=True)
+    experienceRating = models.CharField(max_length=50,default=0)
+    updateRating = models.CharField(max_length=50,default=0)
+    SatisfactoryRating = models.CharField(max_length=50,default=0)
+    QualityRating = models.CharField(max_length=50,default=0)
+    MapsRating = models.CharField(max_length=50,default=0)
+    AnnouncementsRating = models.CharField(max_length=50,default=0)
+    waiting_for_responseRating = models.CharField(max_length=50,default=0)
+    commentText = models.TextField(max_length=500,default=0)
