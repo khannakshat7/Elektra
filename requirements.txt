@@ -4,5 +4,5 @@ mysqlclient
 argon2-cffi
 bcrypt
 django-allauth
-import_export
+django-import-export
 django-environ
