@@ -1,14 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block style %}
-<style>
-.dark-mode , .dark-mode label
-{
-    color: #fff;
-}
-</style>
-{% endblock style %}
-
 {% block content %}
 
     <!-- ======= About Section ======= -->
@@ -30,26 +21,13 @@
             color: #000;
         }
     </style>
-    
-    <section  style="margin: 6rem; text-align: center; padding: 20px;  " class="border shadow">
+    <section style="border:2px solid #43a7d5">
         <div style="background:#43a7d5">
-            {% if messages %}
-            <div>
-              {% for message in messages %}
-              {% if message.tags == 'error' %}
-                                      <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
-            {% else %}
-              <div class="alert alert-{{ message.tags}}" style="margin-top:10px">{{ message }}</div>
-             {% endif %}
-              {% endfor %}
-            </div>
-            {% endif %}
+
         </div>
 
         <aside style="padding:15px">
             <h5 style="color: #000;">
-                <h1 style="color:#43a7d5; font-weight:bold; ">Feedback  Form</h1>
-            <br>
                 <p>Dear Customer,<br>
                     Thank you for letting us serve you. We would like to know how we performed.
                     Please
@@ -60,127 +38,126 @@
 
             <h4>Please rate your service experience for the following parameters</h4>
 
-            <form method="post">
-
+            <form method="post" target="_blank">
                 
                 {% csrf_token %}
                 
                 <label>1. Your overall experience with us ?</label><br>
 
                 <span class="star-rating">
-                    <input type="radio" name="experience_rating" value="1"><i></i>
-                    <input type="radio" name="experience_rating" value="2"><i></i>
-                    <input type="radio" name="experience_rating" value="3"><i></i>
-                    <input type="radio" name="experience_rating" value="4"><i></i>
-                    <input type="radio" name="experience_rating" value="5"><i></i>
+                    <input type="radio" name="rating" value="1"><i></i>
+                    <input type="radio" name="rating" value="2"><i></i>
+                    <input type="radio" name="rating" value="3"><i></i>
+                    <input type="radio" name="rating" value="4"><i></i>
+                    <input type="radio" name="rating" value="5"><i></i>
                 </span>
 
                 <div class="clear"></div>
                 <hr class="survey-hr">
                 <label>2. Time to time update of your location.</label><br>
                 <span class="star-rating">
-                    <input type="radio" name="update_rating" value="1"><i></i>
-                    <input type="radio" name="update_rating" value="2"><i></i>
-                    <input type="radio" name="update_rating" value="3"><i></i>
-                    <input type="radio" name="update_rating" value="4"><i></i>
-                    <input type="radio" name="update_rating" value="5"><i></i>
+                    <input type="radio" name="rating" value="1"><i></i>
+                    <input type="radio" name="rating" value="2"><i></i>
+                    <input type="radio" name="rating" value="3"><i></i>
+                    <input type="radio" name="rating" value="4"><i></i>
+                    <input type="radio" name="rating" value="5"><i></i>
                 </span>
 
                 <div class="clear"></div>
                 <hr class="survey-hr">
                 <label>3. Experience while waiting for response from Electricity board.</label><br>
                 <span class="star-rating">
-                    <input type="radio" name="wating_response_rating" value="1"><i></i>
-                    <input type="radio" name="wating_response_rating" value="2"><i></i>
-                    <input type="radio" name="wating_response_rating" value="3"><i></i>
-                    <input type="radio" name="wating_response_rating" value="4"><i></i>
-                    <input type="radio" name="wating_response_rating" value="5"><i></i>
+                    <input type="radio" name="rating" value="1"><i></i>
+                    <input type="radio" name="rating" value="2"><i></i>
+                    <input type="radio" name="rating" value="3"><i></i>
+                    <input type="radio" name="rating" value="4"><i></i>
+                    <input type="radio" name="rating" value="5"><i></i>
                 </span>
 
                 <div class="clear"></div>
                 <hr class="survey-hr">
                 <label>4. Satisfactory Visuals/Images</label><br>
                 <span class="star-rating">
-                    <input type="radio" name="Satisfactory_rating" value="1"><i></i>
-                    <input type="radio" name="Satisfactory_rating" value="2"><i></i>
-                    <input type="radio" name="Satisfactory_rating" value="3"><i></i>
-                    <input type="radio" name="Satisfactory_rating" value="4"><i></i>
-                    <input type="radio" name="Satisfactory_rating" value="5"><i></i>
+                    <input type="radio" name="rating" value="1"><i></i>
+                    <input type="radio" name="rating" value="2"><i></i>
+                    <input type="radio" name="rating" value="3"><i></i>
+                    <input type="radio" name="rating" value="4"><i></i>
+                    <input type="radio" name="rating" value="5"><i></i>
                 </span>
 
                 <div class="clear"></div>
                 <hr class="survey-hr">
                 <label>5. Quality of work done</label><br>
                 <span class="star-rating">
-                    <input type="radio" name="Quality_rating" value="1"><i></i>
-                    <input type="radio" name="Quality_rating" value="2"><i></i>
-                    <input type="radio" name="Quality_rating" value="3"><i></i>
-                    <input type="radio" name="Quality_rating" value="4"><i></i>
-                    <input type="radio" name="Quality_rating" value="5"><i></i>
+                    <input type="radio" name="rating" value="1"><i></i>
+                    <input type="radio" name="rating" value="2"><i></i>
+                    <input type="radio" name="rating" value="3"><i></i>
+                    <input type="radio" name="rating" value="4"><i></i>
+                    <input type="radio" name="rating" value="5"><i></i>
                 </span>
 
                 <div class="clear"></div>
                 <hr class="survey-hr">
                 <label>6.The display of Maps</label><br>
                 <span class="star-rating">
-                    <input type="radio" name="map_rating" value="1"><i></i>
-                    <input type="radio" name="map_rating" value="2"><i></i>
-                    <input type="radio" name="map_rating" value="3"><i></i>
-                    <input type="radio" name="map_rating" value="4"><i></i>
-                    <input type="radio" name="map_rating" value="5"><i></i>
+                    <input type="radio" name="rating" value="1"><i></i>
+                    <input type="radio" name="rating" value="2"><i></i>
+                    <input type="radio" name="rating" value="3"><i></i>
+                    <input type="radio" name="rating" value="4"><i></i>
+                    <input type="radio" name="rating" value="5"><i></i>
                 </span>
 
                 <div class="clear"></div>
                 <hr class="survey-hr">
                 <label>7. The Announcements section</label><br><br />
                 <div style="color:grey">
-                    <span style="float:left;font-weight: bold;">
+                    <span style="float:left">
                         POOR
                     </span>
-                    <span style="float:right;font-weight: bold;">
+                    <span style="float:right">
                         BEST
                     </span>
 
                 </div>
                 <span class="scale-rating">
                     <label value="1">
-                        <input type="radio" name="Announcement_rating">
+                        <input type="radio" name="rating">
                         <label style="width:100%;"></label>
                     </label>
                     <label value="2">
-                        <input type="radio" name="Announcement_rating">
+                        <input type="radio" name="rating">
                         <label style="width:100%;"></label>
                     </label>
                     <label value="3">
-                        <input type="radio" name="Announcement_rating">
+                        <input type="radio" name="rating">
                         <label style="width:100%;"></label>
                     </label>
                     <label value="4">
-                        <input type="radio" name="Announcement_rating">
+                        <input type="radio" name="rating">
                         <label style="width:100%;"></label>
                     </label>
                     <label value="5">
-                        <input type="radio" name="Announcement_rating">
+                        <input type="radio" name="rating">
                         <label style="width:100%;"></label>
                     </label>
                     <label value="6">
-                        <input type="radio" name="Announcement_rating">
+                        <input type="radio" name="rating">
                         <label style="width:100%;"></label>
                     </label>
                     <label value="7">
-                        <input type="radio" name="Announcement_rating">
+                        <input type="radio" name="rating">
                         <label style="width:100%;"></label>
                     </label>
                     <label value="8">
-                        <input type="radio" name="Announcement_rating">
+                        <input type="radio" name="rating">
                         <label style="width:100%;"></label>
                     </label>
                     <label value="9">
-                        <input type="radio" name="Announcement_rating">
+                        <input type="radio" name="rating">
                         <label style="width:100%;"></label>
                     </label>
                     <label value="10">
-                        <input type="radio" name="Announcement_rating" value="10">
+                        <input type="radio" name="rating" value="10">
                         <label style="width:100%;"></label>
                     </label>
                 </span>
@@ -188,17 +165,13 @@
                 <div class="clear"></div>
                 <hr class="survey-hr">
                 <label for="m_3189847521540640526commentText">8. Any Other suggestions:</label><br /><br />
-                <textarea cols="75" name="commentText" rows="5" style="width:350px;height: 100px;color: black;font-weight: bold;"></textarea><br>
+                <textarea cols="75" name="commentText" rows="5" style="width:320px"></textarea><br>
                 <br>
                 <div class="clear"></div>
-                <form>
-                    {% csrf_token %}
-                </a><button type="submit" class="btn btn-outline-primary  shadow" style="font-weight: bolder;">Submit your review</button>
-                </form>
+                <input style="background:#43a7d5;color:#fff;padding:12px;border:0" type="submit"
+                    value="Submit your review">&nbsp;
             </form>
         </aside>
     </section>
 
 {% endblock %}
-
-
