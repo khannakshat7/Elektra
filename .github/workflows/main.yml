@@ -50,3 +50,4 @@ jobs:
           gcloud config set project ${{ secrets.PROJECT_ID }}
           gcloud -q app deploy app.yaml --promote
   
+ 
