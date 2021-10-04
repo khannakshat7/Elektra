@@ -23,8 +23,8 @@ def send_email_to_user(otp,email):
     con = smtplib.SMTP("smtp.gmail.com",587)
     con.ehlo()
     con.starttls()
-    admin_email = "email"
-    admin_password = "password"
+    admin_email = "email"  # Admin Email
+    admin_password = "password"  # Admin Password
     con.login(admin_email,admin_password)
     msg = "Otp is "+str(otp)
     con.sendmail("email",email,"Subject:Password Reset \n\n"+msg)
@@ -34,8 +34,8 @@ def send_warning_email(email):
     con = smtplib.SMTP("smtp.gmail.com",587)
     con.ehlo()
     con.starttls()
-    admin_email = "your email"
-    admin_password = "your password"
+    admin_email = "your email" # Admin Email
+    admin_password = "your password" # Admin Password
     con.login(admin_email,admin_password)
     msg = "Some One is Trying To Login With Your Account !!"
     con.sendmail(admin_email,email,"Subject:Login Warning \n\n"+msg)
