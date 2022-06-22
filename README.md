@@ -1,5 +1,5 @@
 #  ⚡ ELEKTRA⚡
-**An ML powered Electricity Outage prediction tool**
+**An ML-powered Electricity Outage prediction tool**
 
 [CHECK LIVE](https://elecktra.uc.r.appspot.com)
 
@@ -46,7 +46,7 @@ You may go through these guidelines and contribute accordingly:
 
 - Make sure you do not copy codes from external sources because that work will not be considered. **Plagiarism is strictly not allowed.** 
 - You can only work on issues that you have been assigned to you.
-- If you want to contribute for an existing code, we prefer that you create an issue before making a PR and link your PR to that issue.
+- If you want to contribute to an existing code, we prefer that you create an issue before making a PR and link your PR to that issue.
 - If you have modified/added code work, make sure that it is working fine before submitting.
 - Strictly use camel case in your functions and classes.
 - Do not update the [README.md](README.md).
@@ -60,16 +60,16 @@ You may go through these guidelines and contribute accordingly:
   * Change directory to Elektra `$ cd Elektra`
   * Install virtualenv `$ pip3 install virtualenv`
   * Create a virtual environment `$ virtualenv env -p python`  
-  * Activate the env: `$ source env/bin/activate` (for linux) `> env\Scripts\activate` (for Windows PowerShell)
+  * Activate the env: `$ source env/bin/activate` (for Linux) `> env\Scripts\activate` (for Windows PowerShell)
   * Install the requirements: `$ pip install -r requirements.txt`
   * Go to `Elektra\settings.py` and change the username and password of databases as per your own local mysql database. Here is a reference below to where you can find the code:
     ![Screenshot (129)](https://user-images.githubusercontent.com/71708571/110449895-aa212900-80e8-11eb-9469-84da185b9c13.png)
 
     
     After changing the username and password, create a database named `Elektra` and then continue on to following the steps given below.
-  * Make migrations `$ python manage.py makemigrations`
+  * Make migrations `$ python manage.py makemigrations
   * Migrate the changes to the database `$ python manage.py migrate`
-  * Create admin `$ python manage.py createsuperuser`
+  * Create admin `$ python manage.py createsuperuser
   * Run the server `$ python manage.py runserver`
   * Open any web browser and then paste the server address to see the webpage working on your local machine
 - Happy Coding 😁
@@ -112,3 +112,5 @@ This project follows the [MIT License](https://choosealicense.com/licenses/mit/)
 [![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/uses-git.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
+
+
